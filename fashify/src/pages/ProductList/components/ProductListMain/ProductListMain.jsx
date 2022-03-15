@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { useData } from "../../../../contexts/data-context";
-import { useFilterHook } from "../../../../Hooks/FilterHook";
+import { useFilterHook } from "../../../../Hooks";
 import { ProductCard } from "../ProductCard/ProductCard";
 import "./ProductListMain.css";
 

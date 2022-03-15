@@ -5,7 +5,7 @@ import {
   ratingFilter,
   sizeFilter,
   sortByPrice,
-} from "../utils/utils";
+} from "../utils/FilterFunctions";
 
 export const useFilterHook = () => {
   const { state } = useData();
