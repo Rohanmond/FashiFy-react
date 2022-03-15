@@ -1,7 +1,16 @@
 import { useData } from "../../../../contexts/data-context";
+import { ActionType, SortBy } from "../../../../DataReducer/constants";
+import { Filters } from "../../../../DataReducer/constants";
 import "./ProductListAside.css";
+const Rating = ["4", "3", "2", "1"];
+
 export const ProductListAside = () => {
   const { state, dispatch } = useData();
+  const maxValue = state.products.reduce(
+    (acc, curr) => (Number(curr.price) > acc ? Number(curr.price) : acc),
+    0
+  );
+  console.log("state chnage", state);
   return (
     <aside className="productlist-aside nav-desktop">
       <div className="productlist-aside-header">
@@ -19,8 +28,8 @@ export const ProductListAside = () => {
         <p className="font-wt-bold">Price</p>
         <div className="productlist-slider-label">
           <p className="text-secondary-color">0</p>
-          <p className="text-secondary-color">500</p>
-          <p className="text-secondary-color">1000</p>
+          <p className="text-secondary-color">{maxValue / 2}</p>
+          <p className="text-secondary-color">{maxValue}</p>
         </div>
         <div className="productlist-input-container">
           <input
@@ -28,15 +37,17 @@ export const ProductListAside = () => {
             name="rangeInput"
             className="slider"
             min="0"
-            max="999"
-            // value={state.filter.maxPrice}
-            // onChange={(e) => {
-            //   dispatch({
-            //     type: "filter",
-            //     payload: ["maxPrice", e.target.value],
-            //   });
-            //   console.log(e.target.value);
-            // }}
+            max={maxValue}
+            value={state.filters.priceRange}
+            onChange={(e) => {
+              dispatch({
+                type: ActionType.ChangeFilter,
+                payload: {
+                  filterType: Filters.PriceRange,
+                  filterValue: e.target.value,
+                },
+              });
+            }}
           />
         </div>
       </div>
@@ -51,19 +62,19 @@ export const ProductListAside = () => {
                     type="checkbox"
                     name="category-checkbox"
                     id={`${cat}-checkbox`}
-                    //   checked={state.filter.category.men}
-                    //   onChange={() =>
-                    //     dispatch({
-                    //       type: "filter",
-                    //       payload: [
-                    //         "category",
-                    //         {
-                    //           ...state.filter.category,
-                    //           men: !state.filter.category.men,
-                    //         },
-                    //       ],
-                    //     })
-                    //   }
+                    checked={state.filters.categories[cat]}
+                    onChange={() =>
+                      dispatch({
+                        type: ActionType.ChangeFilter,
+                        payload: {
+                          filterType: Filters.Categories,
+                          filterValue: {
+                            ...state.filters.categories,
+                            [cat]: !state.filters.categories[cat],
+                          },
+                        },
+                      })
+                    }
                   />
                   <label for={`${cat}-checkbox`}>{cat}</label>
                 </div>
@@ -82,19 +93,19 @@ export const ProductListAside = () => {
                     type="checkbox"
                     name="category-checkbox"
                     id={`${size}-checkbox`}
-                    //   checked={state.filter.category.men}
-                    //   onChange={() =>
-                    //     dispatch({
-                    //       type: "filter",
-                    //       payload: [
-                    //         "category",
-                    //         {
-                    //           ...state.filter.category,
-                    //           men: !state.filter.category.men,
-                    //         },
-                    //       ],
-                    //     })
-                    //   }
+                    checked={state.filters.sizes[size]}
+                    onChange={() =>
+                      dispatch({
+                        type: ActionType.ChangeFilter,
+                        payload: {
+                          filterType: Filters.Sizes,
+                          filterValue: {
+                            ...state.filters.sizes,
+                            [size]: !state.filters.sizes[size],
+                          },
+                        },
+                      })
+                    }
                   />
                   <label for={`${size}-checkbox`}>{size}</label>
                 </div>
@@ -106,111 +117,53 @@ export const ProductListAside = () => {
       <div className="productlist-aside-item">
         <p className="font-wt-bold">Rating</p>
         <div className="productlist-input-container">
-          <div className="productlist-input-item-hz">
-            <input
-              type="radio"
-              name="rating-radio"
-              id="4star-radio"
-              value="4star"
-              //   checked={state.filter.rating === "4-star" ? true : false}
-              //   onChange={() =>
-              //     dispatch({
-              //       type: "filter",
-              //       payload: ["rating", "4-star"],
-              //     })
-              //   }
-            />
-            <label for="4star-radio">4 stars &#38; above</label>
-          </div>
-          <div className="productlist-input-item-hz">
-            <input
-              type="radio"
-              name="rating-radio"
-              id="3star-radio"
-              value="3star"
-              //   checked={state.filter.rating === "3-star" ? true : false}
-              //   onChange={() =>
-              //     dispatch({
-              //       type: "filter",
-              //       payload: ["rating", "3-star"],
-              //     })
-              //   }
-            />
-            <label for="3star-radio">3 stars &#38; above</label>
-          </div>
-          <div className="productlist-input-item-hz">
-            <input
-              type="radio"
-              name="rating-radio"
-              id="2star-radio"
-              value="2star"
-              //   checked={state.filter.rating === "2-star" ? true : false}
-              //   onChange={() =>
-              //     dispatch({
-              //       type: "filter",
-              //       payload: ["rating", "2-star"],
-              //     })
-              //   }
-            />
-            <label for="2star-radio">2 stars &#38; above</label>
-          </div>
-          <div className="productlist-input-item-hz">
-            <input
-              type="radio"
-              name="rating-radio"
-              id="1star-radio"
-              value="1star"
-              //   checked={state.filter.rating === "1-star" ? true : false}
-              //   onChange={() =>
-              //     dispatch({
-              //       type: "filter",
-              //       payload: ["rating", "1-star"],
-              //     })
-              //   }
-            />
-            <label for="1star-radio">1 stars &#38; above</label>
-          </div>
+          {Rating.map((el) => {
+            return (
+              <div className="productlist-input-item-hz">
+                <input
+                  type="radio"
+                  name="rating-radio"
+                  id={`${el}star-radio`}
+                  value={el}
+                  checked={state.filters.rating === el ? true : false}
+                  onChange={() =>
+                    dispatch({
+                      type: ActionType.ChangeFilter,
+                      payload: { filterType: Filters.Rating, filterValue: el },
+                    })
+                  }
+                />
+                <label for={`${el}star-radio`}>
+                  {el} stars {"&"} above
+                </label>
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className="productlist-aside-item">
         <p className="font-wt-bold">Sort by Price</p>
         <div className="productlist-input-container">
-          <div className="productlist-input-item-hz">
-            <input
-              type="radio"
-              name="sortby-radio"
-              id="lowtohigh-radio"
-              value="lowtohigh"
-              //   checked={
-              //     state.filter.sortByPrice === "low-to-high" ? true : false
-              //   }
-              //   onChange={() =>
-              //     dispatch({
-              //       type: "filter",
-              //       payload: ["sortByPrice", "low-to-high"],
-              //     })
-              //   }
-            />
-            <label for="lowtohigh-radio">price - Low to High</label>
-          </div>
-          <div className="productlist-input-item-hz">
-            <input
-              type="radio"
-              name="sortby-radio"
-              id="hightolow-radio"
-              value="hightolow"
-              //   checked={
-              //     state.filter.sortByPrice === "high-to-low" ? true : false
-              //   }
-              //   onChange={() =>
-              //     dispatch({
-              //       type: "filter",
-              //       payload: ["sortByPrice", "high-to-low"],
-              //     })
-              //   }
-            />
-            <label for="hightolow-radio">price - High to Low</label>
-          </div>
+          {Object.values(SortBy).map((el) => {
+            return (
+              <div className="productlist-input-item-hz">
+                <input
+                  type="radio"
+                  name="sortby-radio"
+                  id={`${el}-radio`}
+                  value={el}
+                  checked={state.filters.sortBy === el ? true : false}
+                  onChange={() =>
+                    dispatch({
+                      type: ActionType.ChangeFilter,
+                      payload: { filterType: Filters.SortBy, filterValue: el },
+                    })
+                  }
+                />
+                <label for={`${el}-radio`}>price - {el}</label>
+              </div>
+            );
+          })}
         </div>
       </div>
     </aside>
