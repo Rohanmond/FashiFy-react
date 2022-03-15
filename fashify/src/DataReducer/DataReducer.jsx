@@ -1,4 +1,4 @@
-import { ActionType } from "./constants";
+import { ActionType, Filters } from "./constants";
 
 export const initialState = {
   filters: {
@@ -60,6 +60,27 @@ export const DataReducer = (state, action) => {
         filters: {
           ...state.filters,
           [action.payload.filterType]: action.payload.filterValue,
+        },
+      };
+    }
+    case ActionType.ClearFilter: {
+      const maxValue = state.products.reduce(
+        (acc, curr) => (Number(curr.price) > acc ? Number(curr.price) : acc),
+        0
+      );
+      return {
+        ...state,
+        filters: {
+          ...initialState.filters,
+          categories: Object.keys(state.filters.categories).reduce(
+            (acc, curr) => ({ ...acc, [curr]: false }),
+            {}
+          ),
+          sizes: Object.keys(state.filters.sizes).reduce(
+            (acc, curr) => ({ ...acc, [curr]: false }),
+            {}
+          ),
+          [Filters.PriceRange]: maxValue,
         },
       };
     }

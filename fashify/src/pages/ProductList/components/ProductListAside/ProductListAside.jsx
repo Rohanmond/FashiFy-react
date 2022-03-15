@@ -10,16 +10,16 @@ export const ProductListAside = () => {
     (acc, curr) => (Number(curr.price) > acc ? Number(curr.price) : acc),
     0
   );
-  console.log("state chnage", state);
+
   return (
     <aside className="productlist-aside nav-desktop">
       <div className="productlist-aside-header">
         <p className="font-wt-bold">Filters</p>
         <p
           style={{ cursor: "pointer" }}
-          //   onClick={() => {
-          //     dispatch({ type: "clearFilter" });
-          //   }}
+          onClick={() => {
+            dispatch({ type: ActionType.ClearFilter });
+          }}
         >
           Clear
         </p>
@@ -54,63 +54,61 @@ export const ProductListAside = () => {
       <div className="productlist-aside-item">
         <p className="font-wt-bold">Categories</p>
         <div className="productlist-input-container">
-          {state.filters.categories &&
-            Object.keys(state.filters.categories).map((cat) => {
-              return (
-                <div className="productlist-input-item-hz">
-                  <input
-                    type="checkbox"
-                    name="category-checkbox"
-                    id={`${cat}-checkbox`}
-                    checked={state.filters.categories[cat]}
-                    onChange={() =>
-                      dispatch({
-                        type: ActionType.ChangeFilter,
-                        payload: {
-                          filterType: Filters.Categories,
-                          filterValue: {
-                            ...state.filters.categories,
-                            [cat]: !state.filters.categories[cat],
-                          },
+          {Object.keys(state.filters.categories).map((cat) => {
+            return (
+              <div className="productlist-input-item-hz" key={cat}>
+                <input
+                  type="checkbox"
+                  name="category-checkbox"
+                  id={`${cat}-checkbox`}
+                  checked={state.filters.categories[cat]}
+                  onChange={() =>
+                    dispatch({
+                      type: ActionType.ChangeFilter,
+                      payload: {
+                        filterType: Filters.Categories,
+                        filterValue: {
+                          ...state.filters.categories,
+                          [cat]: !state.filters.categories[cat],
                         },
-                      })
-                    }
-                  />
-                  <label for={`${cat}-checkbox`}>{cat}</label>
-                </div>
-              );
-            })}
+                      },
+                    })
+                  }
+                />
+                <label htmlFor={`${cat}-checkbox`}>{cat}</label>
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className="productlist-aside-item">
         <p className="font-wt-bold">Sizes</p>
         <div className="productlist-input-container">
-          {state.filters.sizes &&
-            Object.keys(state.filters.sizes).map((size) => {
-              return (
-                <div className="productlist-input-item-hz">
-                  <input
-                    type="checkbox"
-                    name="category-checkbox"
-                    id={`${size}-checkbox`}
-                    checked={state.filters.sizes[size]}
-                    onChange={() =>
-                      dispatch({
-                        type: ActionType.ChangeFilter,
-                        payload: {
-                          filterType: Filters.Sizes,
-                          filterValue: {
-                            ...state.filters.sizes,
-                            [size]: !state.filters.sizes[size],
-                          },
+          {Object.keys(state.filters.sizes).map((size) => {
+            return (
+              <div className="productlist-input-item-hz" key={size}>
+                <input
+                  type="checkbox"
+                  name="category-checkbox"
+                  id={`${size}-checkbox`}
+                  checked={state.filters.sizes[size]}
+                  onChange={() =>
+                    dispatch({
+                      type: ActionType.ChangeFilter,
+                      payload: {
+                        filterType: Filters.Sizes,
+                        filterValue: {
+                          ...state.filters.sizes,
+                          [size]: !state.filters.sizes[size],
                         },
-                      })
-                    }
-                  />
-                  <label for={`${size}-checkbox`}>{size}</label>
-                </div>
-              );
-            })}
+                      },
+                    })
+                  }
+                />
+                <label htmlFor={`${size}-checkbox`}>{size}</label>
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -119,7 +117,7 @@ export const ProductListAside = () => {
         <div className="productlist-input-container">
           {Rating.map((el) => {
             return (
-              <div className="productlist-input-item-hz">
+              <div className="productlist-input-item-hz" key={el}>
                 <input
                   type="radio"
                   name="rating-radio"
@@ -133,7 +131,7 @@ export const ProductListAside = () => {
                     })
                   }
                 />
-                <label for={`${el}star-radio`}>
+                <label htmlFor={`${el}star-radio`}>
                   {el} stars {"&"} above
                 </label>
               </div>
@@ -146,7 +144,7 @@ export const ProductListAside = () => {
         <div className="productlist-input-container">
           {Object.values(SortBy).map((el) => {
             return (
-              <div className="productlist-input-item-hz">
+              <div className="productlist-input-item-hz" key={el}>
                 <input
                   type="radio"
                   name="sortby-radio"
@@ -160,7 +158,7 @@ export const ProductListAside = () => {
                     })
                   }
                 />
-                <label for={`${el}-radio`}>price - {el}</label>
+                <label htmlFor={`${el}-radio`}>price - {el}</label>
               </div>
             );
           })}

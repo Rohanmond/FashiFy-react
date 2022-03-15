@@ -8,7 +8,7 @@ export const Nav = () => {
         <div className="nav-left">
           <div className="nav-logo-container">
             <Link to="/" className="nav-logo-link">
-              <img class="hero-logo" src={logo} alt="nav logo" />
+              <img className="hero-logo" src={logo} alt="nav logo" />
               <small>FashiFy</small>
             </Link>
           </div>
