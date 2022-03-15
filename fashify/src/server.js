@@ -14,6 +14,10 @@ import {
   getCategoryHandler,
 } from "./backend/controllers/CategoryController";
 import {
+  getAllSizesHandler,
+  getSizeHandler,
+} from "./backend/controllers/SizeController";
+import {
   getAllProductsHandler,
   getProductHandler,
 } from "./backend/controllers/ProductController";
@@ -23,6 +27,7 @@ import {
   removeItemFromWishlistHandler,
 } from "./backend/controllers/WishlistController";
 import { categories } from "./backend/db/categories";
+import { sizes } from "./backend/db/sizes";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
 
@@ -35,6 +40,7 @@ export function makeServer({ environment = "development" } = {}) {
     models: {
       product: Model,
       category: Model,
+      size: Model,
       user: Model,
       cart: Model,
       wishlist: Model,
@@ -53,6 +59,8 @@ export function makeServer({ environment = "development" } = {}) {
       );
 
       categories.forEach((item) => server.create("category", { ...item }));
+
+      sizes.forEach((item) => server.create("size", { ...item }));
     },
 
     routes() {
@@ -68,6 +76,10 @@ export function makeServer({ environment = "development" } = {}) {
       // categories routes (public)
       this.get("/categories", getAllCategoriesHandler.bind(this));
       this.get("/categories/:categoryId", getCategoryHandler.bind(this));
+
+      // size routes (public)
+      this.get("/sizes", getAllSizesHandler.bind(this));
+      this.get("/sizes/:sizeId", getSizeHandler.bind(this));
 
       // cart routes (private)
       this.get("/user/cart", getCartItemsHandler.bind(this));

@@ -1,6 +1,8 @@
 import "./Home.css";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div class="home-container">
@@ -46,15 +48,15 @@ export const Home = () => {
             </a>
           </div>
         </div>
-        <a href="./pages/productionlist/productList.html">
-          <div class="home-hero-img-container">
-            <img
-              class="img-responsive home-hero-img"
-              src="https://res.cloudinary.com/donqbxlnc/image/upload/v1647264442/heroimage_vrvxcz.gif"
-              alt="home-image"
-            />
-          </div>
-        </a>
+
+        <div class="home-hero-img-container">
+          <img
+            onClick={() => navigate("/products")}
+            class="img-responsive home-hero-img"
+            src="https://res.cloudinary.com/donqbxlnc/image/upload/v1647264442/heroimage_vrvxcz.gif"
+            alt="home-image"
+          />
+        </div>
 
         <div class="home-subheading-text text-align-center">
           <h2>DEALS OF THE DAY</h2>

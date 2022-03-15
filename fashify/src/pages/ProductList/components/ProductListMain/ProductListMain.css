@@ -1,0 +1,22 @@
+.productlist-main {
+  flex-grow: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  border-left: 2px solid var(--grey-200);
+}
+
+.productlist-main-header {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.productlist-main-card-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
