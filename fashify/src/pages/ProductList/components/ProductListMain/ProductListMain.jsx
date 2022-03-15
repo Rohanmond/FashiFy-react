@@ -1,17 +1,20 @@
+import { useState } from "react";
 import { useData } from "../../../../contexts/data-context";
+import { useFilterHook } from "../../../../Hooks/FilterHook";
 import { ProductCard } from "../ProductCard/ProductCard";
 import "./ProductListMain.css";
 
 export const ProductListMain = () => {
-  const { state } = useData();
+  const { filteredData } = useFilterHook();
+
   return (
     <main className="productlist-main">
       <div className="productlist-main-header">
         <p className="font-wt-bold">Showing All Products</p>
-        <p>(Showing {state.products.length} products)</p>
+        <p>(Showing {filteredData.length} products)</p>
       </div>
       <div className="productlist-main-card-container">
-        {state.products.map((el) => {
+        {filteredData.map((el) => {
           return <ProductCard product={el} key={el._id} />;
         })}
       </div>

@@ -1,6 +1,15 @@
 export const ActionType = {
   InitialDataFetch: "initial-data-fetch",
   ToggleNav: "toggle-nav",
+  ChangeFilter: "change-filter",
+  ClearFilter: "clear-filter",
+};
+export const Filters = {
+  SortBy: "sortBy",
+  Categories: "categories",
+  Rating: "rating",
+  Sizes: "sizes",
+  PriceRange: "priceRange",
 };
 export const Categories = {
   men: "Men",
@@ -15,4 +24,8 @@ export const Sizes = {
   l: "L",
   xl: "XL",
   xxl: "XXL",
+};
+export const SortBy = {
+  LowToHigh: "Low-to-High",
+  HighToLow: "High-to-Low",
 };

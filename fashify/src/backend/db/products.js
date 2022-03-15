@@ -69,7 +69,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Men Premium Jeans",
-    price: "8000",
+    price: "6000",
     rating: "4.7",
     size: "M",
     image:
