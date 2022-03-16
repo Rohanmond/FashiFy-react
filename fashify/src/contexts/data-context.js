@@ -6,14 +6,16 @@ import {
   GetAllCategories,
   GetAllProducts,
   GetAllSizes,
+  GetWishList,
 } from "../Services/services";
+import { useAuth } from "./auth-context";
 
 const DataContext = createContext();
 export const DataProvider = ({ children }) => {
-  console.log("COntext called");
+  const { token } = useAuth();
+
   const [state, dispatch] = useReducer(DataReducer, initialState);
   useEffect(() => {
-    console.log("useEffect called");
     (async () => {
       const prodRes = await GetAllProducts();
 
@@ -34,6 +36,15 @@ export const DataProvider = ({ children }) => {
           type: ActionType.InitialDataFetch,
           payload: { sizes: sizeRes.data.sizes },
         });
+      if (token) {
+        const wishListRes = await GetWishList({ encodedToken: token });
+        if (wishListRes.status === 200 || wishListRes.status === 201) {
+          dispatch({
+            type: ActionType.SetWishList,
+            payload: { wishlist: wishListRes.data.wishlist },
+          });
+        }
+      }
     })();
   }, []);
   return (

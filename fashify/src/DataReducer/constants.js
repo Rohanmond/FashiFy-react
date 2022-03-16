@@ -3,6 +3,7 @@ export const ActionType = {
   ToggleNav: "toggle-nav",
   ChangeFilter: "change-filter",
   ClearFilter: "clear-filter",
+  SetWishList: "set-wishlist",
 };
 export const Filters = {
   SortBy: "sortBy",

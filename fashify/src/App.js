@@ -17,7 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductList />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/:productId" element={<ProductDetails />} />
+        <Route path="/product/:productId" element={<ProductDetails />} />
         <Route
           path="/wishlist"
           element={token ? <WishList /> : <Navigate to="/login" />}

@@ -23,9 +23,7 @@
   justify-content: center;
   align-content: center;
 }
-.wishlist-icon-filled {
-  color: var(--red-600);
-}
+
 .wishlist-card {
   max-width: 15rem;
 }
