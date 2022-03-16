@@ -42,7 +42,9 @@ export const Nav = () => {
                       favorite_border
                     </span>
                   </div>
-                  <div className="badge-number background-online">12</div>
+                  {token && (
+                    <div className="badge-number background-online">12</div>
+                  )}
                 </div>
               </a>
             </li>
@@ -54,7 +56,9 @@ export const Nav = () => {
                       shopping_cart
                     </span>
                   </div>
-                  <div className="badge-number background-online">12</div>
+                  {token && (
+                    <div className="badge-number background-online">12</div>
+                  )}
                 </div>
               </a>
             </li>

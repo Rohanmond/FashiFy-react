@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
       const {
         data: { foundUser, encodedToken },
         status,
-      } = await axios.post("/api/auth/login", { email, password });
+      } = await LoginService({ email, password });
       if (status === 200 || status === 201) {
         localStorage.setItem("login", JSON.stringify({ token: encodedToken }));
         setToken(encodedToken);

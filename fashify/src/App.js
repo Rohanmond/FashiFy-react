@@ -1,8 +1,8 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 
 import Mockman from "mockman-js";
 import { Nav } from "./components";
-import { Home, ProductDetails, ProductList } from "./pages";
+import { Home, ProductDetails, ProductList, WishList } from "./pages";
 import Login from "./pages/Auth/Login/Login";
 import { useAuth } from "./contexts/auth-context";
 
@@ -18,6 +18,10 @@ function App() {
         <Route path="/products" element={<ProductList />} />
         <Route path="/login" element={<Login />} />
         <Route path="/:productId" element={<ProductDetails />} />
+        <Route
+          path="/wishlist"
+          element={token ? <WishList /> : <Navigate to="/login" />}
+        />
       </Routes>
     </>
   );
