@@ -3,10 +3,12 @@ import { useData } from "../../contexts/data-context";
 import "./ProductDetails.css";
 export const ProductDetails = () => {
   const { productId } = useParams();
-  const { state } = useData();
+  const {
+    state: { products },
+  } = useData();
 
-  const { image, price, rating, title } = state.products.find(
-    (el) => el._id === productId
+  const { image, price, rating, title } = products.find(
+    (el) => el.id === productId
   );
   return (
     <div className="productlist-container">

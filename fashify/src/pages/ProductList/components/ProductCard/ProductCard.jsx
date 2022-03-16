@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 export const ProductCard = ({ product }) => {
   const navigate = useNavigate();
-  const { _id, image, category, size, rating, title, price } = product;
+  const { id, image, category, size, rating, title, price } = product;
   const [showAdd, setShowAdd] = useState(true);
   return (
     <div className="card-container card-container-shadow productlist-card brd-rd-semi-sq">
       <div className="card-img-container">
         <img
-          onClick={() => navigate(`/${_id}`)}
+          onClick={() => navigate(`/${id}`)}
           className="card-img productlist-card-img brd-rd-semi-sq"
           src={image}
           alt="card "
