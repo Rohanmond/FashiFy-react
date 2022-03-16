@@ -1,19 +1,27 @@
+import { useParams } from "react-router-dom";
+import { useData } from "../../contexts/data-context";
 import "./ProductDetails.css";
 export const ProductDetails = () => {
+  const { productId } = useParams();
+  const { state } = useData();
+
+  const { image, price, rating, title } = state.products.find(
+    (el) => el._id === productId
+  );
   return (
     <div className="productlist-container">
       <main className="product-details-main">
         <div className="product-details-img-container brd-rd-semi-sq">
           <img
             className="brd-rd-semi-sq img-responsive"
-            src="https://picsum.photos/800/800"
-            alt=""
+            src={image}
+            alt="product_image"
           />
         </div>
         <div className="product-details-text-container">
-          <h2 className="product-details-header">Puma T-Shirt</h2>
+          <h2 className="product-details-header">{title}</h2>
           <small className="product-reviews">4 review</small>
-          <p className="text-xl font-wt-semibold product-price">$500 /-</p>
+          <p className="text-xl font-wt-semibold product-price">₹{price} /-</p>
           <hr />
           <p>
             <span className="font-wt-bold">Brand :</span>

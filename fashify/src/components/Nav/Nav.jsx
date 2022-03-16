@@ -1,7 +1,9 @@
 import "./Nav.css";
 import logo from "../../logos/hero-logo.png";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/auth-context";
 export const Nav = () => {
+  const { token } = useAuth();
   return (
     <nav className="navigation home-nav">
       <div className="nav-mobile-up">
@@ -23,12 +25,14 @@ export const Nav = () => {
         <div className="nav-right">
           <ul className="nav-links">
             <li className="nav-link-item nav-link-item-btn">
-              <a
-                className="btn btn-link-secondary outlined-primary brd-rd-semi-sq"
-                href="./pages/authentication/login.html"
-              >
-                Login
-              </a>
+              {!token && (
+                <Link
+                  className="btn btn-link-secondary outlined-primary brd-rd-semi-sq"
+                  to={"/login"}
+                >
+                  Login
+                </Link>
+              )}
             </li>
             <li className="nav-link-item">
               <a href="./pages/wishlist/wishlist.html">
