@@ -1,9 +1,9 @@
 import { Plane } from "react-loader-spinner";
 import "./Loader.css";
-const Loader = ({ visible }) => {
+const Loader = () => {
   return (
     <div className="loader">
-      <Plane visible={visible} color={"var(--primary-color)"} />
+      <Plane color={"var(--primary-color)"} />
     </div>
   );
 };
