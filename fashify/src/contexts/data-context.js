@@ -32,6 +32,7 @@ export const DataProvider = ({ children }) => {
           type: ActionType.InitialDataFetch,
           payload: { products: prodRes.data.products },
         });
+      setLoader(false);
       const catRes = await GetAllCategories();
       if (catRes.status === 200 || catRes.status === 201)
         dispatch({
@@ -53,7 +54,6 @@ export const DataProvider = ({ children }) => {
           });
         }
       }
-      setLoader(false);
     })();
   }, []);
   return (
