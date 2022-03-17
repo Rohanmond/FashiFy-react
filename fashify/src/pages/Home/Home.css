@@ -15,6 +15,7 @@
 }
 .home-hero-img-container {
   width: 100%;
+  cursor: pointer;
 }
 
 .home-hero-img {
