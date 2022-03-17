@@ -11,6 +11,7 @@ export const Filters = {
   Rating: "rating",
   Sizes: "sizes",
   PriceRange: "priceRange",
+  Search: "search",
 };
 export const Categories = {
   men: "Men",

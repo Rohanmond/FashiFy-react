@@ -5,6 +5,7 @@ export const initialState = {
     sortBy: "",
     categories: {},
     rating: "",
+    search: "",
     sizes: {},
     priceRange: 0,
   },

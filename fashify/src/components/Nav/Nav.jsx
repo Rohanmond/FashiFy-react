@@ -3,9 +3,11 @@ import logo from "../../logos/hero-logo.png";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { useData } from "../../contexts/data-context";
+import { ActionType, Filters } from "../../DataReducer/constants";
+
 export const Nav = () => {
   const { token } = useAuth();
-  const { state } = useData();
+  const { state, dispatch } = useData();
   const navigate = useNavigate();
   return (
     <nav className="navigation home-nav">
@@ -21,6 +23,17 @@ export const Nav = () => {
         <div className="nav-mid nav-desktop">
           <input
             placeholder="search"
+            value={state.filters.search}
+            onChange={(e) => {
+              navigate("/products");
+              dispatch({
+                type: ActionType.ChangeFilter,
+                payload: {
+                  filterType: Filters.Search,
+                  filterValue: e.target.value,
+                },
+              });
+            }}
             className="nav-search brd-rd-semi-sq nav-text-input"
             type="text"
           />

@@ -8,4 +8,5 @@
   align-items: center;
   top: 0;
   background-color: var(--blue-200);
+  opacity: 0.9;
 }

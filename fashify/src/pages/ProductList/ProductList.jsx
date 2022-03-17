@@ -10,6 +10,7 @@ export const ProductList = () => {
     const id = setTimeout(() => {
       setLoader(false);
     }, 500);
+    return () => clearTimeout(id);
   }, []);
   return (
     <div className="productlist-content">
