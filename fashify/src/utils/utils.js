@@ -54,11 +54,17 @@ const sortByPrice = (data, sortCat) => {
 const priceRangeFilter = (data, maxValue) => {
   return data.filter((el) => Number(el.price) <= maxValue);
 };
-
+const searchFilter = (data, keyword) => {
+  if (keyword === "") return data;
+  return data.filter((el) =>
+    el.title.toLowerCase().startsWith(keyword.toLowerCase())
+  );
+};
 export {
   categoryFilter,
   sizeFilter,
   ratingFilter,
   sortByPrice,
   priceRangeFilter,
+  searchFilter,
 };

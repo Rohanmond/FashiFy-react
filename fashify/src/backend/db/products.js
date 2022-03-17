@@ -18,7 +18,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "women Premium Jeans",
+    title: "Women Premium Jeans",
     price: "1000",
     rating: "5",
     size: "M",
@@ -28,7 +28,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "Men Premium Jeans",
+    title: "Women Premium Jeans",
     price: "2000",
     rating: "4.5",
     size: "L",
@@ -58,7 +58,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "Men Premium Jeans",
+    title: "Kids Premium Jeans",
     price: "1000",
     rating: "4.8",
     size: "S",
@@ -68,7 +68,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "Men Premium Jeans",
+    title: "Kids Premium Jeans",
     price: "6000",
     rating: "4.7",
     size: "M",
