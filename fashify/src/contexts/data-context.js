@@ -12,6 +12,7 @@ import {
   GetAllCategories,
   GetAllProducts,
   GetAllSizes,
+  GetCartList,
   GetWishList,
 } from "../Services/services";
 import { useAuth } from "./auth-context";
@@ -51,6 +52,13 @@ export const DataProvider = ({ children }) => {
           dispatch({
             type: ActionType.SetWishList,
             payload: { wishlist: wishListRes.data.wishlist },
+          });
+        }
+        const cartListRes = await GetCartList({ encodedToken: token });
+        if (cartListRes.status === 200 || cartListRes.status === 201) {
+          dispatch({
+            type: ActionType.SetCartList,
+            payload: { cartlist: cartListRes.data.cart },
           });
         }
       }

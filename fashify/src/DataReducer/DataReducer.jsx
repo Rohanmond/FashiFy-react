@@ -11,6 +11,7 @@ export const initialState = {
   },
   products: [],
   wishlist: [],
+  cartlist: [],
   showNav: true,
 };
 
@@ -90,6 +91,12 @@ export const DataReducer = (state, action) => {
       return {
         ...state,
         wishlist: action.payload.wishlist,
+      };
+    }
+    case ActionType.SetCartList: {
+      return {
+        ...state,
+        cartlist: action.payload.cartlist,
       };
     }
     default:

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { useData } from "../../contexts/data-context";
 import { ActionType } from "../../DataReducer/constants";
-import { DeleteWish, PostWishList } from "../../Services/services";
+import { DeleteWish, PostCart, PostWishList } from "../../Services/services";
 import "./ProductDetails.css";
 
 export const ProductDetails = () => {
@@ -11,9 +11,10 @@ export const ProductDetails = () => {
   const { token } = useAuth();
   const { dispatch } = useData();
   const {
-    state: { products, wishlist },
+    state: { products, wishlist, cartlist },
   } = useData();
   const [wished, setWished] = useState(false);
+  const [carted, setCart] = useState(false);
 
   const product = products.find((el) => el.id === productId) || {};
   const { _id, image, price } = product;
@@ -21,7 +22,8 @@ export const ProductDetails = () => {
 
   useEffect(() => {
     wishlist.find((el) => el._id === _id) && setWished(true);
-  }, [wishlist]);
+    cartlist.find((el) => el._id === _id) && setCart(true);
+  }, [wishlist, cartlist]);
   const wishlistHandler = async () => {
     try {
       if (!token) {
@@ -39,6 +41,32 @@ export const ProductDetails = () => {
           payload: { wishlist: res.data.wishlist },
         });
         setWished((wish) => !wish);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const cartHandler = async () => {
+    try {
+      if (!token) {
+        navigate("/login");
+        return;
+      }
+      if (carted) {
+        navigate("/cartlist");
+        return;
+      }
+
+      const res = await PostCart({
+        product: { ...product, qty: 1 },
+        encodedToken: token,
+      });
+      if (res.status === 200 || res.status === 201) {
+        dispatch({
+          type: ActionType.SetCartList,
+          payload: { cartlist: res.data.cart },
+        });
+        setCart((cart) => !cart);
       }
     } catch (err) {
       console.log(err);
@@ -91,18 +119,20 @@ export const ProductDetails = () => {
                 dignissimos architecto voluptate assumenda consectetur.
               </p>
               <div className="product-details-footer">
-                <a
+                <button
                   className="btn btn-link-primary background-primary brd-rd-semi-sq"
                   href="../cart_mngmt/cart_mngmt.html"
                 >
                   Buy Now
-                </a>
-                <a
-                  className="btn btn-link-secondary outlined-secondary brd-rd-semi-sq"
-                  href="../wishlist/wishlist.html"
+                </button>
+                <button
+                  onClick={() => cartHandler()}
+                  className={`btn btn-primary brd-rd-semi-sq ${
+                    !carted ? "outlined-primary" : "background-success"
+                  }`}
                 >
-                  Add to Cart
-                </a>
+                  {!carted ? "Add to cart" : "Go to cart"}
+                </button>
               </div>
             </div>
           </main>

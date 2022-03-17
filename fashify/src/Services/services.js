@@ -37,3 +37,43 @@ export const DeleteWish = async ({ productId, encodedToken }) => {
     },
   });
 };
+
+export const GetCartList = async ({ encodedToken }) =>
+  await axios.get("/api/user/cart", {
+    headers: {
+      authorization: encodedToken,
+    },
+  });
+
+export const PostCart = async ({ product, encodedToken }) => {
+  return await axios.post(
+    "/api/user/cart",
+    { product },
+    {
+      headers: {
+        authorization: encodedToken,
+      },
+    }
+  );
+};
+
+export const IncDecCart = async ({ productId, encodedToken, type }) => {
+  return await axios.post(
+    `/api/user/cart/${productId}`,
+    {
+      action: { type },
+    },
+    {
+      headers: {
+        authorization: encodedToken,
+      },
+    }
+  );
+};
+export const DeleteCart = async ({ productId, encodedToken }) => {
+  return await axios.delete(`/api/user/cart/${productId}`, {
+    headers: {
+      authorization: encodedToken,
+    },
+  });
+};

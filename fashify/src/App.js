@@ -8,6 +8,7 @@ import Login from "./pages/Auth/Login/Login";
 import { useAuth } from "./contexts/auth-context";
 import Loader from "./components/Loader/Loader";
 import { useData } from "./contexts/data-context";
+import CartList from "./pages/Cart/CartList";
 
 function App() {
   const location = useLocation();
@@ -26,6 +27,10 @@ function App() {
         <Route
           path="/wishlist"
           element={token ? <WishList /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/cartlist"
+          element={token ? <CartList /> : <Navigate to={"/login"} />}
         />
       </Routes>
     </>
