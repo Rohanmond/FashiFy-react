@@ -1,21 +1,21 @@
-export const ACTIONTYPE = {
+export const ActionType = {
   InitialDataFetch: "initial-data-fetch",
   ToggleNav: "toggle-nav",
   ChangeFilter: "change-filter",
   ClearFilter: "clear-filter",
   SetWishList: "set-wishlist",
 };
-export const FILTERS = {
+export const Filters = {
   SortBy: "sortBy",
   Categories: "categories",
   Rating: "rating",
   Sizes: "sizes",
   PriceRange: "priceRange",
 };
-export const CATEGORIES = {
-  Men: "Men",
-  Women: "Women",
-  Kids: "Kids",
+export const Categories = {
+  men: "Men",
+  women: "Women",
+  kids: "Kids",
   home_n_living: "Home & Living",
   beauty: "Beauty",
 };
