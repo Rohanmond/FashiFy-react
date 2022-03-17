@@ -1,5 +1,11 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { ActionType } from "../DataReducer/constants";
 import { DataReducer, initialState } from "../DataReducer/DataReducer";
 import {
@@ -15,7 +21,9 @@ export const DataProvider = ({ children }) => {
   const { token } = useAuth();
 
   const [state, dispatch] = useReducer(DataReducer, initialState);
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
+    setLoader(true);
     (async () => {
       const prodRes = await GetAllProducts();
 
@@ -45,10 +53,11 @@ export const DataProvider = ({ children }) => {
           });
         }
       }
+      setLoader(false);
     })();
   }, []);
   return (
-    <DataContext.Provider value={{ state, dispatch }}>
+    <DataContext.Provider value={{ state, dispatch, loader, setLoader }}>
       {children}
     </DataContext.Provider>
   );
