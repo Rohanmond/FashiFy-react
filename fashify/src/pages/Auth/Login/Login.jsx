@@ -1,19 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/auth-context";
+import { useData } from "../../../contexts/data-context";
+import { ActionType } from "../../../DataReducer/constants";
 import "./Login.css";
 const Login = () => {
   const { loginHandler, token, currUser } = useAuth();
+  const { state, dispatch } = useData();
   const navigate = useNavigate();
   const [loginForm, setLoginForm] = useState({
     email: "johndoe@gmail.com",
     password: "johnDoe123",
   });
-  if (token) {
-    setTimeout(() => {
-      navigate("/");
-    }, 1000);
-  }
+  useEffect(() => {
+    if (token) {
+      dispatch({
+        type: ActionType.SetWishList,
+        payload: { wishlist: currUser.wishlist },
+      });
+      setTimeout(() => {
+        navigate("/");
+      }, 500);
+    }
+  }, [token]);
+
   return (
     <div class="login-container">
       <main class="login-main">

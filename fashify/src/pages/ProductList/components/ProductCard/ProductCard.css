@@ -31,3 +31,6 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+.wishlist-icon-filled {
+  color: var(--red-600);
+}

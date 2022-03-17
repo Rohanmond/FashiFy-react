@@ -9,6 +9,7 @@ export const initialState = {
     priceRange: 0,
   },
   products: [],
+  wishlist: [],
   showNav: true,
 };
 
@@ -82,6 +83,12 @@ export const DataReducer = (state, action) => {
           ),
           [Filters.PriceRange]: maxValue,
         },
+      };
+    }
+    case ActionType.SetWishList: {
+      return {
+        ...state,
+        wishlist: action.payload.wishlist,
       };
     }
     default:

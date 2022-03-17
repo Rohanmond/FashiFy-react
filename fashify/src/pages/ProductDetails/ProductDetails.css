@@ -15,6 +15,7 @@
   max-width: 25rem;
   padding: 1.5rem;
   background-color: var(--white-color);
+  display: grid;
 }
 .product-details-text-container {
   padding: 0.5rem;
@@ -43,4 +44,13 @@
     max-width: 20rem;
     margin: 1rem;
   }
+}
+.prod-details-img {
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+.prod-details-img-tag {
+  grid-row: 1/2;
+  grid-column: 1/2;
+  background-color: var(--yellow-200);
 }

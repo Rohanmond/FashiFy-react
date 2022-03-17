@@ -8,44 +8,44 @@ export const Home = () => {
       <div className="home-container">
         <div className="home-subheader">
           <div className="home-subheader-item">
-            <a
-              className="btn btn-link-secondary outlined-secondary brd-rd-semi-sq"
-              href="./pages/productionlist/productList.html"
+            <button
+              className="btn btn-secondary outlined-secondary brd-rd-semi-sq"
+              onClick={() => navigate("/products")}
             >
               MEN
-            </a>
+            </button>
           </div>
           <div className="home-subheader-item">
-            <a
+            <button
               className="btn btn-link-secondary outlined-secondary brd-rd-semi-sq"
-              href="./pages/productionlist/productList.html"
+              onClick={() => navigate("/products")}
             >
               WOMEN
-            </a>
+            </button>
           </div>
           <div className="home-subheader-item">
-            <a
+            <button
               className="btn btn-link-secondary outlined-secondary brd-rd-semi-sq"
-              href="./pages/productionlist/productList.html"
+              onClick={() => navigate("/products")}
             >
               KIDS
-            </a>
+            </button>
           </div>
           <div className="home-subheader-item">
-            <a
-              className="btn btn-link-secondary outlined-secondary brd-rd-semi-sq"
-              href="./pages/productionlist/productList.html"
+            <button
+              className="btn btn-secondary outlined-secondary brd-rd-semi-sq"
+              onClick={() => navigate("/products")}
             >
               HOME & LIVING
-            </a>
+            </button>
           </div>
           <div className="home-subheader-item">
-            <a
-              className="btn btn-link-secondary outlined-secondary brd-rd-semi-sq"
-              href="./pages/productionlist/productList.html"
+            <button
+              className="btn btn-secondary outlined-secondary brd-rd-semi-sq"
+              onClick={() => navigate("/products")}
             >
               BEAUTY
-            </a>
+            </button>
           </div>
         </div>
 
