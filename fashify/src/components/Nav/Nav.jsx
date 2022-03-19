@@ -61,7 +61,7 @@ export const Nav = () => {
                     favorite_border
                   </span>
                 </div>
-                {token && (
+                {token && state.wishlist.length>0 && (
                   <div className="badge-number background-online">
                     {state.wishlist.length}
                   </div>
@@ -76,7 +76,7 @@ export const Nav = () => {
                 <div className="badge-icon">
                   <span className="material-icons-outlined">shopping_cart</span>
                 </div>
-                {token && (
+                {token && state.cartlist.length>0 && (
                   <div className="badge-number background-online">
                     {state.cartlist.length}
                   </div>
