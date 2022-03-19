@@ -19,12 +19,10 @@ import { useAuth } from "./auth-context";
 
 const DataContext = createContext();
 export const DataProvider = ({ children }) => {
-  console.log("context is calling")
 
   const [state, dispatch] = useReducer(DataReducer, initialState);
   const [loader, setLoader] = useState(false);
   useEffect(() => {
-    console.log("use Effect called")
     setLoader(true);
     (async () => {
       const prodRes = await GetAllProducts();

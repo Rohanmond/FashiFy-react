@@ -100,6 +100,7 @@ export const DataReducer = (state, action) => {
       };
     }
     case ActionType.SetCartList: {
+      console.log("action",action.payload)
       return {
         ...state,
         cartlist: [...action.payload.cartlist],

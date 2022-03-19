@@ -43,7 +43,6 @@ export const Nav = () => {
             }}
             onKeyDown={(e)=>{
               if(e.key==="Enter" || e.target.value==="") {
-                console.log("e",e.key)
                dispatch({
                  type: ActionType.ChangeFilter,
                  payload: {
@@ -119,7 +118,6 @@ export const Nav = () => {
             }}
             onKeyDown={(e)=>{
               if(e.key==="Enter" || e.target.value==="") {
-                console.log("e",e.key)
                dispatch({
                  type: ActionType.ChangeFilter,
                  payload: {

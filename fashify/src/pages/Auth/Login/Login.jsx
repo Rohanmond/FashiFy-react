@@ -13,14 +13,16 @@ const Login = () => {
     password: "johnDoe123",
   });
   useEffect(() => {
+    console.log("useEffect login")
+    console.log("curruser",currUser)
     if (token) {
       dispatch({
         type: ActionType.SetWishList,
-        payload: { wishlist: currUser.wishlist },
+        payload: { wishlist: currUser?.wishlist },
       });
       dispatch({
         type:ActionType.SetCartList,
-        payload:{cartlist:currUser.cartlist}
+        payload:{cartlist:currUser?.cart}
       })
       setTimeout(() => {
         navigate("/");
