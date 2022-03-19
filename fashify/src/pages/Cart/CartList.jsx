@@ -23,9 +23,6 @@ const CartList = () => {
               <CartCard
                 el={el}
                 key={el.id}
-                // removeCartHandler={removeCartHandler}
-                // quantityIncreaseHandler={quantityIncreaseHandler}
-                // quantityDecreaseHandler={quantityDecreaseHandler}
               />
             );
           })}
@@ -41,11 +38,12 @@ const CartList = () => {
                 </button>
               </div>
               {cartData.map((el) => {
+                const {_id,title,qty,price}=el;
                 return (
-                  <div className="mngmt_cart-price-item" key={el.id}>
-                    <p>{el.title}</p>
-                    <p>Q:{el.qty}</p>
-                    <p>₹{el.price * el.qty}</p>
+                  <div className="mngmt_cart-price-item" key={_id}>
+                    <p>{title}</p>
+                    <p>Q:{qty}</p>
+                    <p>₹{price * qty}</p>
                   </div>
                 );
               })}

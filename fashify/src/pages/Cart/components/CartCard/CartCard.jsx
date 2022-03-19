@@ -71,7 +71,7 @@ const CartCard = ({ el }) => {
             <h4>{title}</h4>
           </div>
           <div className="cart_mngmt-card-item">
-            <p className="font-wt-semibold">₹{price}</p>
+            <p className="font-wt-semibold">₹ {price}</p>
             <p className="text-secondary-color">
               <del>₹3999</del>
             </p>
