@@ -3,7 +3,8 @@ import { ProductCard } from "../ProductList/components";
 import "./WishList.css";
 export const WishList = () => {
   const { state } = useData();
-  console.log("state,", state);
+  const wishData=state.products.filter(el=>el.wished)
+  console.log("wishlist called",state.wishlist)
   return (
     <main className="wishlist-main-container">
       <div className="wishlist-main-heading text-align-center">
@@ -14,10 +15,11 @@ export const WishList = () => {
       </div>
       <div className="productlist-main-card-container">
         {state.wishlist.length > 0 &&
-          state.wishlist.map((el) => {
-            return <ProductCard product={el} />;
+          wishData.map(el=>{
+            return <ProductCard product={el}  />
           })}
-      </div>
+        </div>  
+      
     </main>
   );
 };

@@ -18,6 +18,10 @@ const Login = () => {
         type: ActionType.SetWishList,
         payload: { wishlist: currUser.wishlist },
       });
+      dispatch({
+        type:ActionType.SetCartList,
+        payload:{cartlist:currUser.cartlist}
+      })
       setTimeout(() => {
         navigate("/");
       }, 500);

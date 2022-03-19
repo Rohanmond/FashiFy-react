@@ -13,15 +13,15 @@ import { ActionType } from "../../../../DataReducer/constants";
 export const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const { dispatch, state } = useData();
-  const { id, _id, image, category, size, rating, title, price } = product;
+  const { id, _id, image, category, size, rating, title, price,wished ,carted} = product;
   const { token } = useAuth();
-  const [carted, setCart] = useState(false);
-  const [wished, setWished] = useState(false);
-  useEffect(() => {
-    state.wishlist.find((el) => el._id === _id) && setWished(true);
-    state.cartlist.find((el) => el._id === _id) && setCart(true);
-    console.log("cart", state.cartlist);
-  }, [state.wishlist, state.cartlist]);
+  console.log("product",product)
+  console.log("product card called")
+  // useEffect(() => {
+  //   //state.wishlist.find((el) => el._id === _id) && setWished(true);
+  //   // state.cartlist.find((el) => el._id === _id) && setCart(true);
+  //   // console.log("cart", state.cartlist);
+  // }, [ s]);
   const wishlistHandler = async () => {
     try {
       if (!token) {
@@ -38,7 +38,7 @@ export const ProductCard = ({ product }) => {
           type: ActionType.SetWishList,
           payload: { wishlist: res.data.wishlist },
         });
-        setWished((wish) => !wish);
+      
       }
     } catch (err) {
       console.log(err);
@@ -64,7 +64,7 @@ export const ProductCard = ({ product }) => {
           type: ActionType.SetCartList,
           payload: { cartlist: res.data.cart },
         });
-        setCart((cart) => !cart);
+        
       }
     } catch (err) {
       console.log(err);

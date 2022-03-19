@@ -16,6 +16,7 @@ export const initialState = {
 };
 
 export const DataReducer = (state, action) => {
+  
   switch (action.type) {
     case ActionType.InitialDataFetch: {
       if (action.payload.products) {
@@ -25,7 +26,9 @@ export const DataReducer = (state, action) => {
         );
         return {
           ...state,
-          products: [...action.payload.products],
+          products: action.payload.products.map((el)=>{
+            return {...el,wished:false,carted:false}
+          }),
           filters: { ...state.filters, priceRange: maxValue },
         };
       }
@@ -90,13 +93,19 @@ export const DataReducer = (state, action) => {
     case ActionType.SetWishList: {
       return {
         ...state,
-        wishlist: action.payload.wishlist,
+        wishlist: [...action.payload.wishlist],
+        products:state.products.map((el)=>{
+          return {...el,wished:action.payload.wishlist.some(item=>item._id===el._id)}
+        })
       };
     }
     case ActionType.SetCartList: {
       return {
         ...state,
-        cartlist: action.payload.cartlist,
+        cartlist: [...action.payload.cartlist],
+        products:state.products.map((el)=>{
+          return {...el,carted:action.payload.cartlist.some(item=>item._id===el._id)}
+        })
       };
     }
     default:

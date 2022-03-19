@@ -5,6 +5,7 @@ import { ProductCard } from "../ProductCard/ProductCard";
 import "./ProductListMain.css";
 
 export const ProductListMain = () => {
+  console.log("product list main called")
   const { filteredData } = useFilterHook();
 
   return (
