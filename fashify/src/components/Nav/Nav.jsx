@@ -1,14 +1,27 @@
 import "./Nav.css";
 import logo from "../../logos/hero-logo.png";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { useData } from "../../contexts/data-context";
 import { ActionType, Filters } from "../../DataReducer/constants";
+import { useEffect, useState } from "react";
 
 export const Nav = () => {
   const { token } = useAuth();
   const { state, dispatch } = useData();
+  const [input,setInput]=useState("");
   const navigate = useNavigate();
+  
+  useEffect(()=>{
+    setInput("");
+    dispatch({
+      type: ActionType.ChangeFilter,
+      payload: {
+        filterType: Filters.Search,
+        filterValue: "",
+      },
+    })
+  },[navigate])
   return (
     <nav className="navigation home-nav">
       <div className="nav-mobile-up">
@@ -23,17 +36,36 @@ export const Nav = () => {
         <div className="nav-mid nav-desktop">
           <input
             placeholder="search"
-            value={state.filters.search}
-            onChange={(e) => {
-              navigate("/products");
-              dispatch({
-                type: ActionType.ChangeFilter,
-                payload: {
-                  filterType: Filters.Search,
-                  filterValue: e.target.value,
-                },
-              });
+            // value={input}
+            // onChange={(e) => {
+            //   navigate("/products");
+            //   // dispatch({
+            //   //   type: ActionType.ChangeFilter,
+            //   //   payload: {
+            //   //     filterType: Filters.Search,
+            //   //     filterValue: e.target.value,
+            //   //   },
+            //   // });
+            // }}
+            value={input}
+            onChange={(e)=>{
+              setInput(e.target.value)
             }}
+            onKeyDown={(e)=>{
+              if(e.key==="Enter" || e.target.value==="") {
+                console.log("e",e.key)
+               dispatch({
+                 type: ActionType.ChangeFilter,
+                 payload: {
+                   filterType: Filters.Search,
+                   filterValue: e.target.value,
+                 },
+                
+               })
+               navigate("/products") ;
+             
+              } 
+             }}
             className="nav-search brd-rd-semi-sq nav-text-input"
             type="search"
           />
@@ -92,16 +124,17 @@ export const Nav = () => {
           className="nav-search brd-rd-semi-sq nav-text-input"
           type="search"
           value={state.filters.search}
-            onChange={(e) => {
-              navigate("/products");
-              dispatch({
-                type: ActionType.ChangeFilter,
-                payload: {
-                  filterType: Filters.Search,
-                  filterValue: e.target.value,
-                },
-              });
-            }}
+            // onChange={(e) => {
+            //   navigate("/products");
+            //   dispatch({
+            //     type: ActionType.ChangeFilter,
+            //     payload: {
+            //       filterType: Filters.Search,
+            //       filterValue: e.target.value,
+            //     },
+            //   });
+            // }}
+            
         />
       </div>
     </nav>
