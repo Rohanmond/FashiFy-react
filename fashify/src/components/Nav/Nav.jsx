@@ -1,14 +1,27 @@
 import "./Nav.css";
 import logo from "../../logos/hero-logo.png";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { useData } from "../../contexts/data-context";
 import { ActionType, Filters } from "../../DataReducer/constants";
+import { useEffect, useState } from "react";
 
 export const Nav = () => {
   const { token } = useAuth();
   const { state, dispatch } = useData();
+  const [input,setInput]=useState("");
   const navigate = useNavigate();
+  
+  useEffect(()=>{
+    setInput("");
+    dispatch({
+      type: ActionType.ChangeFilter,
+      payload: {
+        filterType: Filters.Search,
+        filterValue: "",
+      },
+    })
+  },[navigate])
   return (
     <nav className="navigation home-nav">
       <div className="nav-mobile-up">
@@ -23,19 +36,27 @@ export const Nav = () => {
         <div className="nav-mid nav-desktop">
           <input
             placeholder="search"
-            value={state.filters.search}
-            onChange={(e) => {
-              navigate("/products");
-              dispatch({
-                type: ActionType.ChangeFilter,
-                payload: {
-                  filterType: Filters.Search,
-                  filterValue: e.target.value,
-                },
-              });
+        
+            value={input}
+            onChange={(e)=>{
+              setInput(e.target.value)
             }}
+            onKeyDown={(e)=>{
+              if(e.key==="Enter" || e.target.value==="") {
+               dispatch({
+                 type: ActionType.ChangeFilter,
+                 payload: {
+                   filterType: Filters.Search,
+                   filterValue: e.target.value,
+                 },
+                
+               })
+               navigate("/products") ;
+             
+              } 
+             }}
             className="nav-search brd-rd-semi-sq nav-text-input"
-            type="text"
+            type="search"
           />
         </div>
         <div className="nav-right">
@@ -45,7 +66,7 @@ export const Nav = () => {
                 <button
                   onClick={() => navigate("/login")}
                   className="btn btn-secondary outlined-primary brd-rd-semi-sq"
-                  to={"/login"}
+                
                 >
                   Login
                 </button>
@@ -61,7 +82,7 @@ export const Nav = () => {
                     favorite_border
                   </span>
                 </div>
-                {token && (
+                {token && state.wishlist.length>0 && (
                   <div className="badge-number background-online">
                     {state.wishlist.length}
                   </div>
@@ -76,7 +97,7 @@ export const Nav = () => {
                 <div className="badge-icon">
                   <span className="material-icons-outlined">shopping_cart</span>
                 </div>
-                {token && (
+                {token && state.cartlist.length>0 && (
                   <div className="badge-number background-online">
                     {state.cartlist.length}
                   </div>
@@ -90,7 +111,26 @@ export const Nav = () => {
         <input
           placeholder="search"
           className="nav-search brd-rd-semi-sq nav-text-input"
-          type="text"
+          type="search"
+          value={input}
+            onChange={(e)=>{
+              setInput(e.target.value)
+            }}
+            onKeyDown={(e)=>{
+              if(e.key==="Enter" || e.target.value==="") {
+               dispatch({
+                 type: ActionType.ChangeFilter,
+                 payload: {
+                   filterType: Filters.Search,
+                   filterValue: e.target.value,
+                 },
+                
+               })
+               navigate("/products") ;
+             
+              } 
+             }}
+            
         />
       </div>
     </nav>

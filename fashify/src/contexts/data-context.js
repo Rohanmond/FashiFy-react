@@ -19,7 +19,6 @@ import { useAuth } from "./auth-context";
 
 const DataContext = createContext();
 export const DataProvider = ({ children }) => {
-  const { token } = useAuth();
 
   const [state, dispatch] = useReducer(DataReducer, initialState);
   const [loader, setLoader] = useState(false);
@@ -46,22 +45,7 @@ export const DataProvider = ({ children }) => {
           type: ActionType.InitialDataFetch,
           payload: { sizes: sizeRes.data.sizes },
         });
-      if (token) {
-        const wishListRes = await GetWishList({ encodedToken: token });
-        if (wishListRes.status === 200 || wishListRes.status === 201) {
-          dispatch({
-            type: ActionType.SetWishList,
-            payload: { wishlist: wishListRes.data.wishlist },
-          });
-        }
-        const cartListRes = await GetCartList({ encodedToken: token });
-        if (cartListRes.status === 200 || cartListRes.status === 201) {
-          dispatch({
-            type: ActionType.SetCartList,
-            payload: { cartlist: cartListRes.data.cart },
-          });
-        }
-      }
+     
     })();
   }, []);
   return (

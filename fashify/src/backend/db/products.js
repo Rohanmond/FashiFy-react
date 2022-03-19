@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export const products = [
   {
-    _id: uuid(),
+    _id: "f08af0cc-ecdb-4b95-a645-151feebde03c",
     title: "Men Premium Jeans",
     price: "400",
     rating: "4",
@@ -17,7 +17,7 @@ export const products = [
     category: "Men",
   },
   {
-    _id: uuid(),
+    _id: "9e4b1e88-78f0-452f-b891-131ae5c51774",
     title: "Women Premium Jeans",
     price: "1000",
     rating: "5",
@@ -27,7 +27,7 @@ export const products = [
     category: "Women",
   },
   {
-    _id: uuid(),
+    _id: "9af5b671-e89e-4163-a64e-48cc6a9a1c12",
     title: "Women Premium Jeans",
     price: "2000",
     rating: "4.5",
@@ -37,7 +37,7 @@ export const products = [
     category: "Women",
   },
   {
-    _id: uuid(),
+    _id: "a423a9a3-957e-48c6-aa69-e2f2c91b8b0a",
     title: "Men Premium Jeans",
     price: "400",
     rating: "3.5",
@@ -47,7 +47,7 @@ export const products = [
     category: "Men",
   },
   {
-    _id: uuid(),
+    _id: "e6b1602d-fa3c-46b9-ad1a-319e4353f700",
     title: "Men Premium Jeans",
     price: "300",
     rating: "3.5",
@@ -57,7 +57,7 @@ export const products = [
     category: "Men",
   },
   {
-    _id: uuid(),
+    _id: "1a2c43a0-6fe6-41ec-bb36-2cce1b45264f",
     title: "Kids Premium Jeans",
     price: "1000",
     rating: "4.8",
@@ -67,7 +67,7 @@ export const products = [
     category: "Kids",
   },
   {
-    _id: uuid(),
+    _id: "b3f53ae2-6335-4ed1-8497-169e0557a7d8",
     title: "Kids Premium Jeans",
     price: "6000",
     rating: "4.7",
@@ -77,7 +77,7 @@ export const products = [
     category: "Kids",
   },
   {
-    _id: uuid(),
+    _id: "0d284061-3d80-4634-9ef7-622c4d65fef6",
     title: "Men Premium Jeans",
     price: "7000",
     rating: "3.7",

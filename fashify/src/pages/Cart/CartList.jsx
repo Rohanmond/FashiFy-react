@@ -3,7 +3,6 @@ import "./CartList.css";
 import CartCard from "./components/CartCard/CartCard";
 const CartList = () => {
   const { state } = useData();
-  console.log(state);
   const cartData = [...state.cartlist];
   return (
     <main className="cart_mngmt-main">

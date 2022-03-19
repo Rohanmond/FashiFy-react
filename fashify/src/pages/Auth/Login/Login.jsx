@@ -16,8 +16,12 @@ const Login = () => {
     if (token) {
       dispatch({
         type: ActionType.SetWishList,
-        payload: { wishlist: currUser.wishlist },
+        payload: { wishlist: currUser?.wishlist },
       });
+      dispatch({
+        type:ActionType.SetCartList,
+        payload:{cartlist:currUser?.cart}
+      })
       setTimeout(() => {
         navigate("/");
       }, 500);

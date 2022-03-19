@@ -13,15 +13,9 @@ import { ActionType } from "../../../../DataReducer/constants";
 export const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const { dispatch, state } = useData();
-  const { id, _id, image, category, size, rating, title, price } = product;
+  const { id, _id, image, category, size, rating, title, price,wished ,carted} = product;
   const { token } = useAuth();
-  const [carted, setCart] = useState(false);
-  const [wished, setWished] = useState(false);
-  useEffect(() => {
-    state.wishlist.find((el) => el._id === _id) && setWished(true);
-    state.cartlist.find((el) => el._id === _id) && setCart(true);
-    console.log("cart", state.cartlist);
-  }, [state.wishlist, state.cartlist]);
+  
   const wishlistHandler = async () => {
     try {
       if (!token) {
@@ -38,7 +32,7 @@ export const ProductCard = ({ product }) => {
           type: ActionType.SetWishList,
           payload: { wishlist: res.data.wishlist },
         });
-        setWished((wish) => !wish);
+      
       }
     } catch (err) {
       console.log(err);
@@ -64,7 +58,7 @@ export const ProductCard = ({ product }) => {
           type: ActionType.SetCartList,
           payload: { cartlist: res.data.cart },
         });
-        setCart((cart) => !cart);
+        
       }
     } catch (err) {
       console.log(err);
@@ -75,7 +69,7 @@ export const ProductCard = ({ product }) => {
     <div className="card-container card-container-shadow productlist-card brd-rd-semi-sq">
       <div className="card-img-container">
         <img
-          onClick={() => navigate(`/product/${id}`)}
+          onClick={() => navigate(`/product/${_id}`)}
           className="card-img productlist-card-img brd-rd-semi-sq"
           src={image}
           alt="card "
