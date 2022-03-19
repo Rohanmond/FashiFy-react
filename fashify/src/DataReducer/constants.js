@@ -1,10 +1,10 @@
 export const ActionType = {
-  InitialDataFetch: "initial-data-fetch",
-  ToggleNav: "toggle-nav",
-  ChangeFilter: "change-filter",
-  ClearFilter: "clear-filter",
-  SetWishList: "set-wishlist",
-  SetCartList: "set-cartlist",
+  InitialDataFetch: "INITIAL_DATA_FETCH",
+  ToggleNav: "TOGGLE_NAV",
+  ChangeFilter: "CHANGE_FILTER",
+  ClearFilter: "CLEAR_FILTER",
+  SetWishList: "SET_WISHLIST",
+  SetCartList: "SET_CARTLIST",
 };
 export const Filters = {
   SortBy: "sortBy",
