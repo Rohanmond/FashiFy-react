@@ -4,7 +4,6 @@ import "./WishList.css";
 export const WishList = () => {
   const { state } = useData();
   const wishData=state.products.filter(el=>el.wished)
-  console.log("wishlist called",state.wishlist)
   return (
     <main className="wishlist-main-container">
       <div className="wishlist-main-heading text-align-center">

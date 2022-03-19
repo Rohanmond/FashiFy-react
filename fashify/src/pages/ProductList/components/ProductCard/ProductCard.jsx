@@ -15,13 +15,7 @@ export const ProductCard = ({ product }) => {
   const { dispatch, state } = useData();
   const { id, _id, image, category, size, rating, title, price,wished ,carted} = product;
   const { token } = useAuth();
-  console.log("product",product)
-  console.log("product card called")
-  // useEffect(() => {
-  //   //state.wishlist.find((el) => el._id === _id) && setWished(true);
-  //   // state.cartlist.find((el) => el._id === _id) && setCart(true);
-  //   // console.log("cart", state.cartlist);
-  // }, [ s]);
+  
   const wishlistHandler = async () => {
     try {
       if (!token) {

@@ -13,8 +13,6 @@ const Login = () => {
     password: "johnDoe123",
   });
   useEffect(() => {
-    console.log("useEffect login")
-    console.log("curruser",currUser)
     if (token) {
       dispatch({
         type: ActionType.SetWishList,
