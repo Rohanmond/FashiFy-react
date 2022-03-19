@@ -36,17 +36,7 @@ export const Nav = () => {
         <div className="nav-mid nav-desktop">
           <input
             placeholder="search"
-            // value={input}
-            // onChange={(e) => {
-            //   navigate("/products");
-            //   // dispatch({
-            //   //   type: ActionType.ChangeFilter,
-            //   //   payload: {
-            //   //     filterType: Filters.Search,
-            //   //     filterValue: e.target.value,
-            //   //   },
-            //   // });
-            // }}
+        
             value={input}
             onChange={(e)=>{
               setInput(e.target.value)
@@ -77,7 +67,7 @@ export const Nav = () => {
                 <button
                   onClick={() => navigate("/login")}
                   className="btn btn-secondary outlined-primary brd-rd-semi-sq"
-                  to={"/login"}
+                
                 >
                   Login
                 </button>

@@ -1,18 +1,18 @@
 export const ActionType = {
-  InitialDataFetch: "INITIAL_DATA_FETCH",
-  ToggleNav: "TOGGLE_NAV",
-  ChangeFilter: "CHANGE_FILTER",
-  ClearFilter: "CLEAR_FILTER",
-  SetWishList: "SET_WISHLIST",
-  SetCartList: "SET_CARTLIST",
+  InitialDataFetch: "initial-data-fetch",
+  ToggleNav: "toggle-nav",
+  ChangeFilter: "change-filter",
+  ClearFilter: "clear-filter",
+  SetWishList: "set-wishlist",
+  SetCartList: "set-cartlist",
 };
 export const Filters = {
-  SortBy: "SORTBY",
-  Categories: "CATEGORIES",
-  Rating: "RATING",
-  Sizes: "SIZES",
-  PriceRange: "PRICE_RANGE",
-  Search: "SEARCH",
+  SortBy: "sortBy",
+  Categories: "categories",
+  Rating: "rating",
+  Sizes: "sizes",
+  PriceRange: "priceRange",
+  Search: "search",
 };
 export const CartListActionType = {
   Increment: "increment",
@@ -33,6 +33,6 @@ export const Sizes = {
   xxl: "XXL",
 };
 export const SortBy = {
-  LowToHigh: "LOW_TO_HIGH",
-  HighToLow: "HIGH_TO_LOW",
+  LowToHigh: "Low-to-High",
+  HighToLow: "High-to-Low",
 };
