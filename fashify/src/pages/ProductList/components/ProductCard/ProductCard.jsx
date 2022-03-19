@@ -75,7 +75,7 @@ export const ProductCard = ({ product }) => {
     <div className="card-container card-container-shadow productlist-card brd-rd-semi-sq">
       <div className="card-img-container">
         <img
-          onClick={() => navigate(`/product/${id}`)}
+          onClick={() => navigate(`/product/${_id}`)}
           className="card-img productlist-card-img brd-rd-semi-sq"
           src={image}
           alt="card "

@@ -13,17 +13,13 @@ export const ProductDetails = () => {
   const {
     state: { products, wishlist, cartlist },
   } = useData();
-  const [wished, setWished] = useState(false);
-  const [carted, setCart] = useState(false);
+  
 
-  const product = products.find((el) => el.id === productId) || {};
-  const { _id, image, price } = product;
+  const product = products.find((el) => el._id === productId) || {};
+  const { _id, image, price,wished,carted } = product;
   const navigate = useNavigate();
 
-  useEffect(() => {
-    wishlist.find((el) => el._id === _id) && setWished(true);
-    cartlist.find((el) => el._id === _id) && setCart(true);
-  }, [wishlist, cartlist]);
+  
   const wishlistHandler = async () => {
     try {
       if (!token) {
