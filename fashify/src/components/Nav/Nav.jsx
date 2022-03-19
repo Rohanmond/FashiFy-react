@@ -35,7 +35,7 @@ export const Nav = () => {
               });
             }}
             className="nav-search brd-rd-semi-sq nav-text-input"
-            type="text"
+            type="search"
           />
         </div>
         <div className="nav-right">
@@ -90,7 +90,18 @@ export const Nav = () => {
         <input
           placeholder="search"
           className="nav-search brd-rd-semi-sq nav-text-input"
-          type="text"
+          type="search"
+          value={state.filters.search}
+            onChange={(e) => {
+              navigate("/products");
+              dispatch({
+                type: ActionType.ChangeFilter,
+                payload: {
+                  filterType: Filters.Search,
+                  filterValue: e.target.value,
+                },
+              });
+            }}
         />
       </div>
     </nav>
