@@ -123,17 +123,25 @@ export const Nav = () => {
           placeholder="search"
           className="nav-search brd-rd-semi-sq nav-text-input"
           type="search"
-          value={state.filters.search}
-            // onChange={(e) => {
-            //   navigate("/products");
-            //   dispatch({
-            //     type: ActionType.ChangeFilter,
-            //     payload: {
-            //       filterType: Filters.Search,
-            //       filterValue: e.target.value,
-            //     },
-            //   });
-            // }}
+          value={input}
+            onChange={(e)=>{
+              setInput(e.target.value)
+            }}
+            onKeyDown={(e)=>{
+              if(e.key==="Enter" || e.target.value==="") {
+                console.log("e",e.key)
+               dispatch({
+                 type: ActionType.ChangeFilter,
+                 payload: {
+                   filterType: Filters.Search,
+                   filterValue: e.target.value,
+                 },
+                
+               })
+               navigate("/products") ;
+             
+              } 
+             }}
             
         />
       </div>
