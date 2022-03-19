@@ -30,7 +30,7 @@
   justify-content: space-between;
   gap: 0.375rem;
 }
-.product-details-footer a {
+.product-details-footer button {
   padding: 0.5rem;
   flex-grow: 1;
   text-align: center;

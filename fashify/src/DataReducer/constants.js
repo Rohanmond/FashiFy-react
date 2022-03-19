@@ -4,6 +4,7 @@ export const ActionType = {
   ChangeFilter: "change-filter",
   ClearFilter: "clear-filter",
   SetWishList: "set-wishlist",
+  SetCartList: "set-cartlist",
 };
 export const Filters = {
   SortBy: "sortBy",
@@ -12,6 +13,10 @@ export const Filters = {
   Sizes: "sizes",
   PriceRange: "priceRange",
   Search: "search",
+};
+export const CartListActionType = {
+  Increment: "increment",
+  Decrement: "decrement",
 };
 export const Categories = {
   men: "Men",

@@ -1,12 +1,17 @@
+import { useData } from "../../contexts";
+import "./CartList.css";
+import CartCard from "./components/CartCard/CartCard";
 const CartList = () => {
-  const cartData = [];
+  const { state } = useData();
+  console.log(state);
+  const cartData = [...state.cartlist];
   return (
     <main className="cart_mngmt-main">
       <div className="cart_mngmt-main-heading text-align-center">
         <h4>
           MY CART(
           {cartData.reduce((acc, curr) => {
-            return acc + curr.quantity;
+            return acc + curr.qty;
           }, 0)}
           )
         </h4>
@@ -15,12 +20,9 @@ const CartList = () => {
         <div className="cart_mngmt-carts">
           {cartData.map((el) => {
             return (
-              <Cart
+              <CartCard
                 el={el}
                 key={el.id}
-                removeCartHandler={removeCartHandler}
-                quantityIncreaseHandler={quantityIncreaseHandler}
-                quantityDecreaseHandler={quantityDecreaseHandler}
               />
             );
           })}
@@ -36,11 +38,12 @@ const CartList = () => {
                 </button>
               </div>
               {cartData.map((el) => {
+                const {_id,title,qty,price}=el;
                 return (
-                  <div className="mngmt_cart-price-item" key={el.id}>
-                    <p>{el.name}</p>
-                    <p>Q:{el.quantity}</p>
-                    <p>₹{el.price * el.quantity}</p>
+                  <div className="mngmt_cart-price-item" key={_id}>
+                    <p>{title}</p>
+                    <p>Q:{qty}</p>
+                    <p>₹{price * qty}</p>
                   </div>
                 );
               })}
@@ -49,7 +52,7 @@ const CartList = () => {
                 <p className="font-wt-bold">Total price:</p>
                 <p className="font-wt-bold">
                   {cartData.reduce((acc, curr) => {
-                    return acc + curr.price * curr.quantity;
+                    return acc + curr.price * curr.qty;
                   }, 0)}
                 </p>
               </div>

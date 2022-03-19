@@ -2,7 +2,11 @@ import "./ProductCard.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useData } from "../../../../contexts/data-context";
-import { DeleteWish, PostWishList } from "../../../../Services/services";
+import {
+  DeleteWish,
+  PostCart,
+  PostWishList,
+} from "../../../../Services/services";
 import { useAuth } from "../../../../contexts/auth-context";
 import { ActionType } from "../../../../DataReducer/constants";
 
@@ -11,11 +15,13 @@ export const ProductCard = ({ product }) => {
   const { dispatch, state } = useData();
   const { id, _id, image, category, size, rating, title, price } = product;
   const { token } = useAuth();
-  const [showAdd, setShowAdd] = useState(true);
+  const [carted, setCart] = useState(false);
   const [wished, setWished] = useState(false);
   useEffect(() => {
     state.wishlist.find((el) => el._id === _id) && setWished(true);
-  }, [state]);
+    state.cartlist.find((el) => el._id === _id) && setCart(true);
+    console.log("cart", state.cartlist);
+  }, [state.wishlist, state.cartlist]);
   const wishlistHandler = async () => {
     try {
       if (!token) {
@@ -33,6 +39,32 @@ export const ProductCard = ({ product }) => {
           payload: { wishlist: res.data.wishlist },
         });
         setWished((wish) => !wish);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const cartHandler = async () => {
+    try {
+      if (!token) {
+        navigate("/login");
+        return;
+      }
+      if (carted) {
+        navigate("/cartlist");
+        return;
+      }
+
+      const res = await PostCart({
+        product: { ...product, qty: 1 },
+        encodedToken: token,
+      });
+      if (res.status === 200 || res.status === 201) {
+        dispatch({
+          type: ActionType.SetCartList,
+          payload: { cartlist: res.data.cart },
+        });
+        setCart((cart) => !cart);
       }
     } catch (err) {
       console.log(err);
@@ -75,12 +107,12 @@ export const ProductCard = ({ product }) => {
 
         <div className="card-footer-elements">
           <button
-            // onClick={() => addToCartHandler(el, showAdd) && setShowAdd(false)}
+            onClick={() => cartHandler()}
             className={`btn btn-primary brd-rd-semi-sq ${
-              showAdd ? "background-primary" : "background-success"
+              !carted ? "background-primary" : "background-success"
             }`}
           >
-            {showAdd ? "Add to cart" : "Go to cart"}
+            {!carted ? "Add to cart" : "Go to cart"}
           </button>
         </div>
       </div>

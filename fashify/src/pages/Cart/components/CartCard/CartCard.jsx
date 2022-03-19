@@ -1,10 +1,65 @@
-const Cart = ({
-  el,
-  removeCartHandler,
-  quantityIncreaseHandler,
-  quantityDecreaseHandler,
-}) => {
-  const { image, name, price, quantity, id } = el;
+import { useAuth, useData } from "../../../../contexts";
+import {
+  ActionType,
+  CartListActionType,
+} from "../../../../DataReducer/constants";
+import { DeleteCart, IncDecCart } from "../../../../Services/services";
+
+const CartCard = ({ el }) => {
+  const { image, title, price, qty, _id, id } = el;
+  const { token } = useAuth();
+  const { dispatch } = useData();
+  const DeleteCardHandler = async () => {
+    try {
+      const res = await DeleteCart({ productId: _id, encodedToken: token });
+      if (res.status === 200 || res.status === 201) {
+        dispatch({
+          type: ActionType.SetCartList,
+          payload: { cartlist: res.data.cart },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const IncrementHandler = async () => {
+    try {
+      const res = await IncDecCart({
+        productId: _id,
+        encodedToken: token,
+        type: CartListActionType.Increment,
+      });
+      if (res.status === 200 || res.status === 201) {
+        dispatch({
+          type: ActionType.SetCartList,
+          payload: { cartlist: res.data.cart },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const DecrementHandler = async () => {
+    if (qty === 1) {
+      DeleteCardHandler();
+      return;
+    }
+    try {
+      const res = await IncDecCart({
+        productId: _id,
+        encodedToken: token,
+        type: CartListActionType.Decrement,
+      });
+      if (res.status === 200 || res.status === 201) {
+        dispatch({
+          type: ActionType.SetCartList,
+          payload: { cartlist: res.data.cart },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="card-container card-container-hz brd-rd-semi-sq">
       <div className="card-img-container-hz">
@@ -13,10 +68,10 @@ const Cart = ({
       <div className="card-content">
         <div className="cart_mngmt-card-container">
           <div className="cart_mngmt-card-item">
-            <h4>{name}</h4>
+            <h4>{title}</h4>
           </div>
           <div className="cart_mngmt-card-item">
-            <p className="font-wt-semibold">₹{price}</p>
+            <p className="font-wt-semibold">₹ {price}</p>
             <p className="text-secondary-color">
               <del>₹3999</del>
             </p>
@@ -28,15 +83,15 @@ const Cart = ({
             <p>Quantity:</p>
             <p
               style={{ cursor: "pointer" }}
-              onClick={() => quantityDecreaseHandler(el)}
+              onClick={DecrementHandler}
               className="text-secondary-color"
             >
               <i className="fas fa-minus-circle"></i>
             </p>
-            <p className="cart-quantity-number">{quantity}</p>
+            <p className="cart-quantity-number">{qty}</p>
             <p
               style={{ cursor: "pointer" }}
-              onClick={() => quantityIncreaseHandler(el)}
+              onClick={IncrementHandler}
               className="text-secondary-color"
             >
               <i className="fas fa-plus-circle"></i>
@@ -45,7 +100,7 @@ const Cart = ({
         </div>
         <div className="card-footer-elements cart_mngmt-card-footer">
           <button
-            onClick={() => removeCartHandler(id)}
+            onClick={DeleteCardHandler}
             className="btn btn-secondary outlined-secondary hover-danger brd-rd-semi-sq"
           >
             Remove from cart
@@ -55,4 +110,4 @@ const Cart = ({
     </div>
   );
 };
-export default Cart;
+export default CartCard;

@@ -69,18 +69,19 @@ export const Nav = () => {
               </div>
             </li>
             <li className="nav-link-item">
-              <a href="./pages/cart_mngmt/cart_mngmt.html">
-                <div className="badge-container">
-                  <div className="badge-icon">
-                    <span className="material-icons-outlined">
-                      shopping_cart
-                    </span>
-                  </div>
-                  {token && (
-                    <div className="badge-number background-online">12</div>
-                  )}
+              <div
+                className="badge-container"
+                onClick={() => navigate("/cartlist")}
+              >
+                <div className="badge-icon">
+                  <span className="material-icons-outlined">shopping_cart</span>
                 </div>
-              </a>
+                {token && (
+                  <div className="badge-number background-online">
+                    {state.cartlist.length}
+                  </div>
+                )}
+              </div>
             </li>
           </ul>
         </div>
