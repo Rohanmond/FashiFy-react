@@ -19,9 +19,9 @@ import { useAuth } from "./auth-context";
 
 const DataContext = createContext();
 export const DataProvider = ({ children }) => {
-
   const [state, dispatch] = useReducer(DataReducer, initialState);
   const [loader, setLoader] = useState(false);
+  const {token}=useAuth();
   useEffect(() => {
     setLoader(true);
     (async () => {
@@ -45,6 +45,21 @@ export const DataProvider = ({ children }) => {
           type: ActionType.InitialDataFetch,
           payload: { sizes: sizeRes.data.sizes },
         });
+
+      if(token){
+        const wishlistRes=await GetWishList({encodedToken:token});
+        if(wishlistRes.status===200 || wishlistRes.status===201)
+        dispatch({
+          type: ActionType.SetWishList,
+          payload: { wishlist: wishlistRes.data.wishlist },
+        });
+        const cartRes=await GetCartList({encodedToken:token});
+        if(cartRes.status===200 || cartRes.status===201)
+        dispatch({
+          type:ActionType.SetCartList,
+          payload:{cartlist:cartRes.data.cart}
+        })
+      }  
      
     })();
   }, []);

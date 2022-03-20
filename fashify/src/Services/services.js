@@ -5,6 +5,13 @@ export const LoginService = async ({ email, password }) =>
     email,
     password,
   });
+
+export const SignUpService=async ({email,password,name})=>{
+  return axios.post("/api/auth/signup",{
+    email,password,name
+  });
+}  
+
 export const GetAllProducts = async () => axios.get("/api/products");
 
 export const GetAllCategories = async () => axios.get("/api/categories");

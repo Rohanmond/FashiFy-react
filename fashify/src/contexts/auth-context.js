@@ -5,9 +5,9 @@ import { LoginService } from "../Services";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const localStorageToken = JSON.parse(localStorage.getItem("login"));
+  const localStorageToken = JSON.parse(localStorage.getItem("loginItems"));
   const [token, setToken] = useState(localStorageToken?.token);
-  const [currUser, setCurrUser] = useState(null);
+  const [currUser, setCurrUser] = useState(localStorageToken?.user);
 
   const loginHandler = async (email, password) => {
     try {
@@ -16,9 +16,8 @@ const AuthProvider = ({ children }) => {
         status,
       } = await LoginService({ email, password });
       if (status === 200 || status === 201) {
-        localStorage.setItem("login", JSON.stringify({ token: encodedToken }));
+        localStorage.setItem("loginItems",JSON.stringify({token:encodedToken,user:foundUser}))
         setCurrUser(foundUser);
-
         setToken(encodedToken);
       }
     } catch (err) {

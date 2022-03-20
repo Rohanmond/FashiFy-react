@@ -12,21 +12,16 @@ const Login = () => {
     email: "johndoe@gmail.com",
     password: "johnDoe123",
   });
+
   useEffect(() => {
+    let id;
     if (token) {
-      dispatch({
-        type: ActionType.SetWishList,
-        payload: { wishlist: currUser?.wishlist },
-      });
-      dispatch({
-        type:ActionType.SetCartList,
-        payload:{cartlist:currUser?.cart}
-      })
-      setTimeout(() => {
+      id=setTimeout(() => {
         navigate("/");
-      }, 500);
+      },500);
     }
-  }, [token]);
+    return ()=>clearTimeout(id)
+  },[token]);
 
   return (
     <div class="login-container">
@@ -77,6 +72,12 @@ const Login = () => {
               class="btn btn-link-primary background-primary text-align-center brd-rd-semi-sq"
             >
               Login
+            </button>
+            <button
+              
+              class="btn btn-link-primary background-primary text-align-center brd-rd-semi-sq"
+            >
+              Create New Account
             </button>
           </div>
         </div>
