@@ -1,0 +1,64 @@
+/* login.css*/
+.login-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin-top: 3rem;
+  }
+  .login-main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .login-card {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    padding-bottom: 1rem;
+    background-color: var(--white-color);
+    gap: 1rem;
+    width: 26rem;
+  }
+  .login-card-item {
+    display: flex;
+    gap: 1rem;
+  }
+  .login-card-item:last-of-type {
+    padding-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* logout */
+  .logout-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .logout-main-container {
+    margin-top: 3rem;
+    flex-grow: 1;
+    display: flex;
+    height: 100%;
+    justify-content: space-evenly;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .logout-img-container {
+    padding: 1rem;
+    max-width: 20rem;
+  }
+  .logout-text {
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  .logout-text h1 {
+    color: var(--primary-color);
+  }

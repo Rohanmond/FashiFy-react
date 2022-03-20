@@ -1,28 +1,29 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-
 import Mockman from "mockman-js";
 import { Nav } from "./components";
-import { Home, ProductDetails, ProductList, WishList } from "./pages";
+import { Home, MockApi, ProductDetails, ProductList, WishList } from "./pages";
 import Login from "./pages/Auth/Login/Login";
 import { useAuth } from "./contexts/auth-context";
 import Loader from "./components/Loader/Loader";
 import { useData } from "./contexts/data-context";
 import CartList from "./pages/Cart/CartList";
+import SignUp from "./pages/Auth/Signup/Signup";
+import Logout from "./pages/Auth/Logout/Logout";
 
 function App() {
-  const location = useLocation();
   const { token } = useAuth();
   const { loader } = useData();
   return (
     <>
       {loader && <Loader />}
-      {location.pathname !== "/mock-man" && <Nav />}
+      <Nav />
       <Routes>
-        <Route path="/mock-man" element={<Mockman />} />
+        <Route path="/mock-man" element={<MockApi />} />
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductList />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/logout" element={<Logout/>}/>
         <Route path="/product/:productId" element={<ProductDetails />} />
         <Route
           path="/wishlist"

@@ -7,7 +7,7 @@ import { ActionType, Filters } from "../../DataReducer/constants";
 import { useEffect, useState } from "react";
 
 export const Nav = () => {
-  const { token } = useAuth();
+  const { token,logoutHandler } = useAuth();
   const { state, dispatch } = useData();
   const [input,setInput]=useState("");
   const navigate = useNavigate();
@@ -52,7 +52,6 @@ export const Nav = () => {
                 
                })
                navigate("/products") ;
-             
               } 
              }}
             className="nav-search brd-rd-semi-sq nav-text-input"
@@ -70,6 +69,16 @@ export const Nav = () => {
                 >
                   Login
                 </button>
+              )}
+              {token && (
+                <button
+                onClick={() =>{
+                  logoutHandler();
+                  navigate("/logout")
+                }}
+                className="btn btn-secondary outlined-primary brd-rd-semi-sq">
+                  Logout
+                 </button> 
               )}
             </li>
             <li className="nav-link-item">

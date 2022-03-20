@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/auth-context";
-import { useData } from "../../../contexts/data-context";
-import { ActionType } from "../../../DataReducer/constants";
-import "./Login.css";
+import "../Auth.css";
+
 const Login = () => {
-  const { loginHandler, token, currUser } = useAuth();
-  const { state, dispatch } = useData();
+  const { loginHandler, token } = useAuth();
   const navigate = useNavigate();
   const [loginForm, setLoginForm] = useState({
     email: "johndoe@gmail.com",
@@ -17,7 +15,7 @@ const Login = () => {
     let id;
     if (token) {
       id=setTimeout(() => {
-        navigate("/");
+        navigate("/products");
       },500);
     }
     return ()=>clearTimeout(id)
@@ -74,8 +72,8 @@ const Login = () => {
               Login
             </button>
             <button
-              
-              class="btn btn-link-primary background-primary text-align-center brd-rd-semi-sq"
+              onClick={()=>navigate("/signup")}
+              class="btn btn-link-primary outlined-secondary text-align-center brd-rd-semi-sq"
             >
               Create New Account
             </button>

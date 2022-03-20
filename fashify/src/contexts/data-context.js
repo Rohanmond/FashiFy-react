@@ -19,10 +19,12 @@ import { useAuth } from "./auth-context";
 
 const DataContext = createContext();
 export const DataProvider = ({ children }) => {
+  console.log("data context")
   const [state, dispatch] = useReducer(DataReducer, initialState);
   const [loader, setLoader] = useState(false);
   const {token}=useAuth();
   useEffect(() => {
+    let id;
     setLoader(true);
     (async () => {
       const prodRes = await GetAllProducts();
@@ -32,7 +34,6 @@ export const DataProvider = ({ children }) => {
           type: ActionType.InitialDataFetch,
           payload: { products: prodRes.data.products },
         });
-      setLoader(false);
       const catRes = await GetAllCategories();
       if (catRes.status === 200 || catRes.status === 201)
         dispatch({
@@ -60,9 +61,11 @@ export const DataProvider = ({ children }) => {
           payload:{cartlist:cartRes.data.cart}
         })
       }  
-     
+      id=setTimeout(()=>{
+        setLoader(false)
+      },2000)
     })();
-  }, []);
+  }, [token]);
   return (
     <DataContext.Provider value={{ state, dispatch, loader, setLoader }}>
       {children}

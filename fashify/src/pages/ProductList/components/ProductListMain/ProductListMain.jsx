@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { useData } from "../../../../contexts/data-context";
 import { useFilterHook } from "../../../../Hooks/FilterHook";
 import { ProductCard } from "../ProductCard/ProductCard";
 import "./ProductListMain.css";

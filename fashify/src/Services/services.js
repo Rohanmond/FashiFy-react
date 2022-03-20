@@ -19,14 +19,14 @@ export const GetAllCategories = async () => axios.get("/api/categories");
 export const GetAllSizes = async () => await axios.get("/api/sizes");
 
 export const GetWishList = async ({ encodedToken }) =>
-  await axios.get("/api/user/wishlist", {
+  axios.get("/api/user/wishlist", {
     headers: {
       authorization: encodedToken,
     },
   });
 
 export const PostWishList = async ({ product, encodedToken }) => {
-  return await axios.post(
+  return axios.post(
     "/api/user/wishlist",
     { product },
     {
@@ -38,7 +38,7 @@ export const PostWishList = async ({ product, encodedToken }) => {
 };
 
 export const DeleteWish = async ({ productId, encodedToken }) => {
-  return await axios.delete(`/api/user/wishlist/${productId}`, {
+  return axios.delete(`/api/user/wishlist/${productId}`, {
     headers: {
       authorization: encodedToken,
     },
@@ -46,14 +46,14 @@ export const DeleteWish = async ({ productId, encodedToken }) => {
 };
 
 export const GetCartList = async ({ encodedToken }) =>
-  await axios.get("/api/user/cart", {
+  axios.get("/api/user/cart", {
     headers: {
       authorization: encodedToken,
     },
   });
 
 export const PostCart = async ({ product, encodedToken }) => {
-  return await axios.post(
+  return axios.post(
     "/api/user/cart",
     { product },
     {
@@ -65,7 +65,7 @@ export const PostCart = async ({ product, encodedToken }) => {
 };
 
 export const IncDecCart = async ({ productId, encodedToken, type }) => {
-  return await axios.post(
+  return  axios.post(
     `/api/user/cart/${productId}`,
     {
       action: { type },
@@ -78,7 +78,7 @@ export const IncDecCart = async ({ productId, encodedToken, type }) => {
   );
 };
 export const DeleteCart = async ({ productId, encodedToken }) => {
-  return await axios.delete(`/api/user/cart/${productId}`, {
+  return axios.delete(`/api/user/cart/${productId}`, {
     headers: {
       authorization: encodedToken,
     },
