@@ -10,6 +10,11 @@ const SignUp=()=>{
         password:"",
         email:""
     })
+    const [formError,setFormError]=useState({
+      nameError:"",
+      passwordError:"",
+      emailError:""
+    })
 
     useEffect(() => {
         let id;
@@ -28,16 +33,18 @@ const SignUp=()=>{
             <h3 class="text-align-center">Signup</h3>
           </div>
           <div class="login-card-item">
-            <div class="input-container">
+            <div class={`input-container ${signupForm.nameError && "error"}`}>
               <label>Name</label>
               <input placeholder="Mr. FashiFy" class="text-input" type="text"
               value={signupForm.name}
               required
               onChange={(e)=>setSignupForm({...signupForm,name:e.target.value})} />
+             {formError.nameError && <div class="err-msg">Name shouldn't be number</div>}
             </div>
           </div>
+
           <div class="login-card-item">
-            <div class="input-container">
+            <div class="input-container error">
               <label>Email address</label>
               <input
                 placeholder="abc@fashiFy.com"
@@ -47,16 +54,20 @@ const SignUp=()=>{
                 value={signupForm.email}
                 onChange={(e)=>setSignupForm({...signupForm,email:e.target.value})}
               />
+             {formError.emailError && <div class="err-msg">Email should be in proper format</div>}
+
             </div>
           </div>
           <div class="login-card-item">
-            <div class="input-container">
+            <div class="input-container error">
               <label>Password</label>
               <input placeholder="" class="text-input" type="password"
               value={signupForm.password}
               required
               onChange={(e)=>setSignupForm({...signupForm,password:e.target.value})} />
             </div>
+           {formError.passwordError && <div class="err-msg">Password should contain atleast one digit and should be equal or more than 8 chars long</div>}
+
           </div>
           <div class="login-card-item">
             <div class="input-container">
@@ -81,6 +92,7 @@ const SignUp=()=>{
             <button
             onClick={()=>signupHandler(signupForm.email,signupForm.password,signupForm.name)}
               class="btn btn-link-primary background-primary text-align-center brd-rd-semi-sq"
+              disabled={Object.keys(formError).reduce((acc,curr)=>formError[curr]?true:acc,false)}
               >Create New Account</button>
             <button
               class="btn btn-link-secondary outlined-secondary text-align-center brd-rd-semi-sq"

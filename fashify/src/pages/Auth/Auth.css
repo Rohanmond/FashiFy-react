@@ -1,9 +1,12 @@
+.input-container.error{
+  padding: 0;
+}
 /* login.css*/
 .login-container {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    margin-top: 3rem;
+    margin-top: 5rem;
   }
   .login-main {
     flex-grow: 1;
@@ -23,6 +26,7 @@
   .login-card-item {
     display: flex;
     gap: 1rem;
+    flex-direction: column;
   }
   .login-card-item:last-of-type {
     padding-top: 0.5rem;
