@@ -1,4 +1,5 @@
-import { SortBy } from "../DataReducer/constants";
+import { SortBy } from '../DataReducer/constants';
+import { toast } from 'react-toastify';
 
 const union = (...arr) => {
   const uni = arr.reduce((acc, curr) => {
@@ -40,12 +41,12 @@ const sizeFilter = (productData, sizes) => {
   return productData;
 };
 const ratingFilter = (data, rating) => {
-  if (rating === "") return data;
+  if (rating === '') return data;
   const rate = Number(rating);
   return data.filter((el) => Number(el.rating) >= rate);
 };
 const sortByPrice = (data, sortCat) => {
-  if (sortCat === "") return data;
+  if (sortCat === '') return data;
   if (sortCat === SortBy.HighToLow)
     return [...data].sort((a, b) => b.price - a.price);
   else if (sortCat === SortBy.LowToHigh)
@@ -55,7 +56,7 @@ const priceRangeFilter = (data, maxValue) => {
   return data.filter((el) => Number(el.price) <= maxValue);
 };
 const searchFilter = (data, keyword) => {
-  if (keyword === "") return data;
+  if (keyword === '') return data;
   return data.filter((el) =>
     el.title.toLowerCase().startsWith(keyword.toLowerCase())
   );
@@ -69,12 +70,53 @@ const validatePinCode = (input) => {
 const validateOnlyString = (input) => {
   return /^[a-z A-Z]+$/.test(input);
 };
-const validateEmail=(input)=>{
-  return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(input.toLowerCase())
-}
-const validatePassword=(input)=>{
-  return /^(?=.{8,20}$)\D*\d/.test(input)
-}
+const validateEmail = (input) => {
+  return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+    input.toLowerCase()
+  );
+};
+const validatePassword = (input) => {
+  return /^(?=.{8,20}$)\D*\d/.test(input);
+};
+const ToastHandler = (type, message) => {
+  if (type === 'error') {
+    toast.error(message, {
+      position: 'bottom-right',
+      autoClose: 1000,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  } else if (type === 'warn') {
+    toast.warn(message, {
+      position: 'bottom-right',
+      autoClose: 1000,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  } else if (type === 'success') {
+    toast.success(message, {
+      position: 'bottom-right',
+      autoClose: 1000,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  } else if (type === 'info') {
+    toast.info(message, {
+      position: 'bottom-right',
+      autoClose: 1000,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+};
 export {
   categoryFilter,
   sizeFilter,
@@ -85,5 +127,6 @@ export {
   validateMobileNo,
   validatePinCode,
   validateOnlyString,
-  validateEmail
+  validateEmail,
+  ToastHandler,
 };
