@@ -8,9 +8,13 @@ import '../Auth.css';
 const Login = () => {
   const { loginHandler, token } = useAuth();
   const navigate = useNavigate();
-  const [loginForm, setLoginForm] = useState({
+  const fixedLoginForm = {
     email: 'johndoe@gmail.com',
     password: 'johnDoe123',
+  };
+  const [loginForm, setLoginForm] = useState({
+    email: '',
+    password: '',
   });
 
   useEffect(() => {
@@ -38,6 +42,9 @@ const Login = () => {
                 class='text-input'
                 type='text'
                 value={loginForm.email}
+                onChange={(e) =>
+                  setLoginForm({ ...loginForm, email: e.target.value })
+                }
               />
             </div>
           </div>
@@ -49,6 +56,9 @@ const Login = () => {
                 value={loginForm.password}
                 class='text-input'
                 type='password'
+                onChange={(e) =>
+                  setLoginForm({ ...loginForm, password: e.target.value })
+                }
               />
             </div>
           </div>
@@ -72,6 +82,14 @@ const Login = () => {
               class='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
             >
               Login
+            </button>
+            <button
+              onClick={() =>
+                loginHandler(fixedLoginForm.email, fixedLoginForm.password)
+              }
+              class='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
+            >
+              Login As a Guest
             </button>
             <button
               onClick={() => navigate('/signup')}
