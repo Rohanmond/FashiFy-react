@@ -1,28 +1,27 @@
-import axios from "axios";
+import axios from 'axios';
 import {
   createContext,
   useContext,
   useEffect,
   useReducer,
   useState,
-} from "react";
-import { ActionType } from "../DataReducer/constants";
-import { DataReducer, initialState } from "../DataReducer/DataReducer";
+} from 'react';
+import { ActionType } from '../DataReducer/constants';
+import { DataReducer, initialState } from '../DataReducer/DataReducer';
 import {
   GetAllCategories,
   GetAllProducts,
   GetAllSizes,
   GetCartList,
   GetWishList,
-} from "../Services/services";
-import { useAuth } from "./auth-context";
+} from '../Services/services';
+import { useAuth } from './auth-context';
 
 const DataContext = createContext();
 export const DataProvider = ({ children }) => {
-  console.log("data context")
   const [state, dispatch] = useReducer(DataReducer, initialState);
   const [loader, setLoader] = useState(false);
-  const {token}=useAuth();
+  const { token } = useAuth();
   useEffect(() => {
     let id;
     setLoader(true);
@@ -47,24 +46,26 @@ export const DataProvider = ({ children }) => {
           payload: { sizes: sizeRes.data.sizes },
         });
 
-      if(token){
-        const wishlistRes=await GetWishList({encodedToken:token});
-        if(wishlistRes.status===200 || wishlistRes.status===201)
-        dispatch({
-          type: ActionType.SetWishList,
-          payload: { wishlist: wishlistRes.data.wishlist },
-        });
-        const cartRes=await GetCartList({encodedToken:token});
-        if(cartRes.status===200 || cartRes.status===201)
-        dispatch({
-          type:ActionType.SetCartList,
-          payload:{cartlist:cartRes.data.cart}
-        })
-      }  
-      id=setTimeout(()=>{
-        setLoader(false)
-      },2000)
+      if (token) {
+        const wishlistRes = await GetWishList({ encodedToken: token });
+        if (wishlistRes.status === 200 || wishlistRes.status === 201)
+          dispatch({
+            type: ActionType.SetWishList,
+            payload: { wishlist: wishlistRes.data.wishlist },
+          });
+        const cartRes = await GetCartList({ encodedToken: token });
+        if (cartRes.status === 200 || cartRes.status === 201)
+          dispatch({
+            type: ActionType.SetCartList,
+            payload: { cartlist: cartRes.data.cart },
+          });
+      }
+      setLoader(false);
+      id = setTimeout(() => {
+        setLoader(false);
+      }, 1000);
     })();
+    return () => clearTimeout(id);
   }, [token]);
   return (
     <DataContext.Provider value={{ state, dispatch, loader, setLoader }}>

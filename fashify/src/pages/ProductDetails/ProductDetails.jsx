@@ -22,6 +22,7 @@ export const ProductDetails = () => {
   const navigate = useNavigate();
 
   const wishlistHandler = async () => {
+    setWishDisable(true);
     try {
       if (!token) {
         navigate('/login');
@@ -29,7 +30,6 @@ export const ProductDetails = () => {
       }
 
       let res = null;
-      setWishDisable(true);
       if (wished)
         res = await DeleteWish({ productId: _id, encodedToken: token });
       else res = await PostWishList({ product, encodedToken: token });
@@ -47,10 +47,13 @@ export const ProductDetails = () => {
       else ToastHandler(ToastType.Success, 'Successfully added to wishlist');
     } catch (err) {
       console.log(err);
+    } finally {
+      setWishDisable(false);
     }
-    setWishDisable();
   };
   const cartHandler = async () => {
+    setcartDisable(true);
+
     try {
       if (!token) {
         navigate('/login');
@@ -60,7 +63,6 @@ export const ProductDetails = () => {
         navigate('/cartlist');
         return;
       }
-      setcartDisable(true);
       const res = await PostCart({
         product: { ...product, qty: 1 },
         encodedToken: token,
@@ -72,9 +74,10 @@ export const ProductDetails = () => {
         });
       }
       ToastHandler(ToastType.Success, 'Successfully added to cart');
-      setcartDisable(false);
     } catch (err) {
       console.log(err);
+    } finally {
+      setcartDisable(false);
     }
   };
   return (

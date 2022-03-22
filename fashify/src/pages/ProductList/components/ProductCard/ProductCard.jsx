@@ -31,13 +31,13 @@ export const ProductCard = ({ product }) => {
   const { token } = useAuth();
 
   const wishlistHandler = async () => {
+    setWishDisable(true);
     try {
       if (!token) {
         navigate('/login');
         return;
       }
       let res = null;
-      setWishDisable(true);
       if (wished)
         res = await DeleteWish({ productId: _id, encodedToken: token });
       else res = await PostWishList({ product, encodedToken: token });
@@ -47,17 +47,19 @@ export const ProductCard = ({ product }) => {
           payload: { wishlist: res.data.wishlist },
         });
         if (wished) {
-          ToastHandler(ToastType.Error, 'Deleted from wishlist');
+          ToastHandler(ToastType.Warn, 'Deleted from wishlist');
         } else {
           ToastHandler(ToastType.Success, 'Added to wishlist');
         }
       }
-      setWishDisable(false);
     } catch (err) {
       console.log(err);
+    } finally {
+      setWishDisable(false);
     }
   };
   const cartHandler = async () => {
+    setcartDisable(true);
     try {
       if (!token) {
         navigate('/login');
@@ -67,7 +69,6 @@ export const ProductCard = ({ product }) => {
         navigate('/cartlist');
         return;
       }
-      setcartDisable(true);
       const res = await PostCart({
         product: { ...product, qty: 1 },
         encodedToken: token,
@@ -79,9 +80,10 @@ export const ProductCard = ({ product }) => {
         });
         ToastHandler(ToastType.Success, 'Successfully added to cart');
       }
-      setcartDisable(false);
     } catch (err) {
       console.log(err);
+    } finally {
+      setcartDisable(false);
     }
   };
 
