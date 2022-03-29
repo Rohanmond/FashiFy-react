@@ -26,40 +26,45 @@ export const DataProvider = ({ children }) => {
     let id;
     setLoader(true);
     (async () => {
-      const prodRes = await GetAllProducts();
+      try {
+        const prodRes = await GetAllProducts();
 
-      if (prodRes.status === 200 || prodRes.status === 201)
-        dispatch({
-          type: ActionType.InitialDataFetch,
-          payload: { products: prodRes.data.products },
-        });
-      const catRes = await GetAllCategories();
-      if (catRes.status === 200 || catRes.status === 201)
-        dispatch({
-          type: ActionType.InitialDataFetch,
-          payload: { categories: catRes.data.categories },
-        });
-      const sizeRes = await GetAllSizes();
-      if (sizeRes.status === 200 || sizeRes.status === 201)
-        dispatch({
-          type: ActionType.InitialDataFetch,
-          payload: { sizes: sizeRes.data.sizes },
-        });
+        if (prodRes.status === 200 || prodRes.status === 201)
+          dispatch({
+            type: ActionType.InitialDataFetch,
+            payload: { products: prodRes.data.products },
+          });
+        const catRes = await GetAllCategories();
+        if (catRes.status === 200 || catRes.status === 201)
+          dispatch({
+            type: ActionType.InitialDataFetch,
+            payload: { categories: catRes.data.categories },
+          });
+        const sizeRes = await GetAllSizes();
+        if (sizeRes.status === 200 || sizeRes.status === 201)
+          dispatch({
+            type: ActionType.InitialDataFetch,
+            payload: { sizes: sizeRes.data.sizes },
+          });
 
-      if (token) {
-        const wishlistRes = await GetWishList({ encodedToken: token });
-        if (wishlistRes.status === 200 || wishlistRes.status === 201)
-          dispatch({
-            type: ActionType.SetWishList,
-            payload: { wishlist: wishlistRes.data.wishlist },
-          });
-        const cartRes = await GetCartList({ encodedToken: token });
-        if (cartRes.status === 200 || cartRes.status === 201)
-          dispatch({
-            type: ActionType.SetCartList,
-            payload: { cartlist: cartRes.data.cart },
-          });
+        if (token) {
+          const wishlistRes = await GetWishList({ encodedToken: token });
+          if (wishlistRes.status === 200 || wishlistRes.status === 201)
+            dispatch({
+              type: ActionType.SetWishList,
+              payload: { wishlist: wishlistRes.data.wishlist },
+            });
+          const cartRes = await GetCartList({ encodedToken: token });
+          if (cartRes.status === 200 || cartRes.status === 201)
+            dispatch({
+              type: ActionType.SetCartList,
+              payload: { cartlist: cartRes.data.cart },
+            });
+        }
+      } catch (err) {
+        console.log(err);
       }
+
       setLoader(false);
       id = setTimeout(() => {
         setLoader(false);

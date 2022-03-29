@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const union = (...arr) => {
   const uni = arr.reduce((acc, curr) => {
     return acc.concat(
-      curr.filter((el) => !acc.some((ele) => ele.id === el.id))
+      curr.filter((el) => !acc.some((ele) => ele._id === el._id))
     );
   }, []);
 
