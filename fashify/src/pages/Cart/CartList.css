@@ -53,6 +53,7 @@
 .cart_mngmt-price-card {
   padding: 1rem;
   flex-direction: column;
+  max-width: none;
 }
 .mngmt_cart-price-item:nth-last-of-type(1) {
   border-top: 2px solid var(--grey-200);

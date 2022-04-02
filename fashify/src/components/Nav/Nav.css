@@ -33,7 +33,7 @@
 }
 .nav-links {
   padding: 0;
-  padding-right: 0.275rem;
+  padding-right: 0.5rem;
 }
 .nav-text-input {
   font-size: 1rem;
@@ -52,6 +52,7 @@
 }
 .nav-badge-icon span {
   padding: 0.75rem;
+  padding-left: 0.25rem;
 }
 
 @media screen and (max-width: 1000px) {

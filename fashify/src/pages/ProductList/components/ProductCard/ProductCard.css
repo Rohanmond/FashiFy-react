@@ -7,7 +7,7 @@
   height: 16rem;
   grid-row: 1/2;
   grid-column: 1/2;
-  object-fit: fill;
+  object-fit: cover;
   object-position: top center;
 }
 .productlist-card-img-tag-btn {
