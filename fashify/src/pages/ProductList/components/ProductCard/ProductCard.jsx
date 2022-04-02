@@ -101,21 +101,30 @@ export const ProductCard = ({ product }) => {
             wishlistHandler();
           }}
           disabled={wishButtonDisabled}
-          className='card-img-tag-btn productlist-card-img-tag-btn'
+          className='card-img-tag-btn productlist-card-img-tag-btn-container'
         >
           {!wished ? (
-            <span className='material-icons'>favorite_border</span>
+            <span className='material-icons productlist-card-img-tag-btn'>
+              favorite_border
+            </span>
           ) : (
             <span className='material-icons wishlist-icon-filled'>
               favorite
             </span>
           )}
         </button>
+        <div className='productlist-card-new-item-container'>
+          <p className='productlist-card-new-item'>Trending</p>
+        </div>
+        <div className='productlist-card-rating-container'>
+          <i class='fas fa-star'></i>
+          <p>{rating}</p>
+        </div>
       </div>
       <div className='card-content product-card-content'>
         <div className='product-card-text'>
           <div className='product-card-title'>{title}</div>
-          <div>₹ {price}</div>
+          <div className='product-card-price'>₹{price}</div>
         </div>
 
         <div className='card-footer-elements'>
@@ -126,6 +135,7 @@ export const ProductCard = ({ product }) => {
               !carted ? 'background-primary' : 'background-success'
             }`}
           >
+            <i class='fas fa-shopping-cart'></i>{' '}
             {!carted ? 'Add to cart' : 'Go to cart'}
           </button>
         </div>
