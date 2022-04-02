@@ -114,12 +114,6 @@ export const ProductCard = ({ product }) => {
       </div>
       <div className='card-content'>
         <div className='product-card-text'>
-          <div className='card-sub-text'>
-            <div>{rating}</div>
-            <div>{category}</div>
-            <div>{size}</div>
-          </div>
-
           <div className='product-card-title'>{title}</div>
           <div>Rs.{price}</div>
         </div>

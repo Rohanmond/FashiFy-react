@@ -1,6 +1,5 @@
 .productlist-main {
   flex-grow: 1;
-  padding: 1rem;
   display: flex;
   flex-direction: column;
 
@@ -19,4 +18,11 @@
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1.5rem;
   padding: 1rem;
+}
+
+@media screen and (max-width: 750px) {
+  .productlist-main-card-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    padding: 0.5rem;
+  }
 }

@@ -22,7 +22,8 @@
 }
 
 .home-hero-img {
-  object-fit: cover;
+  object-fit: fill;
+  min-height: 15rem;
 }
 .home-subheading-image {
   padding: 2rem 0;
@@ -44,7 +45,7 @@
   max-width: 50rem;
 }
 .index-card-img {
-  object-fit: cover;
+  object-fit: contain;
   object-position: top center;
 }
 .home-card-img-container {

@@ -9,7 +9,7 @@
   display: none;
 }
 .dd_menu::before {
-  content: "";
+  content: '';
   position: absolute;
   top: -20px;
   right: 55px;
@@ -35,6 +35,6 @@
 
 @media screen and (max-width: 750px) {
   .productlist-content {
-    margin-top: 9rem;
+    margin-top: 7.2rem;
   }
 }

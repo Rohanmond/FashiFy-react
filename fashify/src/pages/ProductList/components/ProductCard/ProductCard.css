@@ -34,3 +34,9 @@
 .wishlist-icon-filled {
   color: var(--red-600);
 }
+
+@media screen and (max-width: 750px) {
+  .productlist-card-img {
+    height: 12.5rem;
+  }
+}

@@ -23,11 +23,14 @@ export const Home = () => {
           />
         </div>
         <div className='home-cards'>
-          <div className='card-container card-container-hz home-card-container card-container-shadow brd-rd-semi-sq'>
+          <div
+            onClick={() => navigate('/products')}
+            className='card-container card-container-hz home-card-container card-container-shadow brd-rd-semi-sq'
+          >
             <div className='card-img-container-hz home-card-img-container'>
               <img
                 className='card-img index-card-img brd-rd-semi-sq'
-                src='https://res.cloudinary.com/donqbxlnc/image/upload/v1647264510/myntra_photo1_hcu9qe.webp'
+                src='https://res.cloudinary.com/donqbxlnc/image/upload/v1648896074/fashify/e3220043-d4db-4c8a-9a5e-80459db0aae31648190230381-Roadster-_HL_fan7lo.webp'
                 alt='card image'
               />
             </div>
@@ -38,21 +41,21 @@ export const Home = () => {
               <div className='card-footer-elements'>
                 <div className='card-footer-elements'>
                   <div className='home-card-footer-title'>
-                    <h3>Winter Collection</h3>
+                    <h3>Men Collection</h3>
                   </div>
-                  <p>
-                    Check out our best winter collection to stay warm in style
-                    this season
-                  </p>
+                  <p>Check out our best men collection</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className='card-container card-container-hz home-card-container card-container-shadow brd-rd-semi-sq'>
+          <div
+            onClick={() => navigate('/products')}
+            className='card-container card-container-hz home-card-container card-container-shadow brd-rd-semi-sq'
+          >
             <div className='card-img-container-hz home-card-img-container'>
               <img
                 className='card-img index-card-img brd-rd-semi-sq'
-                src='https://res.cloudinary.com/donqbxlnc/image/upload/v1647264549/myntra_photo_2_rtagrf.webp'
+                src='https://res.cloudinary.com/donqbxlnc/image/upload/v1648896554/fashify/4f54b81d-51ca-4526-bab3-04066d977f5a1648368745195-Levis_keqmez.webp'
                 alt='card image'
               />
             </div>
@@ -62,20 +65,20 @@ export const Home = () => {
               </div>
               <div className='card-footer-elements'>
                 <div className='home-card-footer-title'>
-                  <h3>Winter Collection</h3>
+                  <h3>Women Collection</h3>
                 </div>
-                <p>
-                  Check out our best winter collection to stay warm in style
-                  this season
-                </p>
+                <p>Check out our best women collection</p>
               </div>
             </div>
           </div>
-          <div className='card-container card-container-hz home-card-container card-container-shadow brd-rd-semi-sq'>
+          <div
+            onClick={() => navigate('/products')}
+            className='card-container card-container-hz home-card-container card-container-shadow brd-rd-semi-sq'
+          >
             <div className='card-img-container-hz home-card-img-container'>
               <img
                 className='card-img index-card-img brd-rd-semi-sq'
-                src='https://res.cloudinary.com/donqbxlnc/image/upload/v1647264610/myntra_photo_3_xms4by.webp'
+                src='https://res.cloudinary.com/donqbxlnc/image/upload/v1648896676/fashify/0f9ec937-304a-433a-9433-5409c556831c1604906586152-24-IconicBrands-TommyHilfiger_hulqft.webp'
                 alt='card image'
               />
             </div>
@@ -87,12 +90,9 @@ export const Home = () => {
               <div className='card-footer-elements'>
                 <div className='card-footer-elements'>
                   <div className='home-card-footer-title'>
-                    <h3>Winter Collection</h3>
+                    <h3>Kids Collection</h3>
                   </div>
-                  <p>
-                    Check out our best winter collection to stay warm in style
-                    this season
-                  </p>
+                  <p>Check out our best kids collection</p>
                 </div>
               </div>
             </div>

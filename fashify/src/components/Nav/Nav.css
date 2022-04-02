@@ -45,9 +45,7 @@
 .nav-text-input::placeholder {
   color: var(--text-secondary-color);
 }
-.nav-links {
-  /* padding-right: 1rem; */
-}
+
 .nav-link-item {
   cursor: pointer;
 }
@@ -60,7 +58,8 @@
   .home-nav {
     display: flex;
     flex-direction: column;
-    padding-bottom: 0.75rem;
+    padding: 0.5rem 0rem;
+    padding-top: 0.25rem;
   }
 }
 @media screen and (max-width: 500px) {
