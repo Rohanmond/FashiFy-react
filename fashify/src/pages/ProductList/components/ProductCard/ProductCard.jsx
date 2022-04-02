@@ -112,10 +112,10 @@ export const ProductCard = ({ product }) => {
           )}
         </button>
       </div>
-      <div className='card-content'>
+      <div className='card-content product-card-content'>
         <div className='product-card-text'>
           <div className='product-card-title'>{title}</div>
-          <div>Rs.{price}</div>
+          <div>₹ {price}</div>
         </div>
 
         <div className='card-footer-elements'>
