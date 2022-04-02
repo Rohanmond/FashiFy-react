@@ -1,82 +1,43 @@
-import "./Home.css";
-import { useNavigate } from "react-router-dom";
+import './Home.css';
+import { useNavigate } from 'react-router-dom';
+import { ImageSlider } from './ImageSlider';
 
 export const Home = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="home-container">
-        <div className="home-subheader">
-          <div className="home-subheader-item">
-            <button
-              className="btn btn-secondary outlined-secondary brd-rd-semi-sq"
-              onClick={() => navigate("/products")}
-            >
-              MEN
-            </button>
-          </div>
-          <div className="home-subheader-item">
-            <button
-              className="btn btn-link-secondary outlined-secondary brd-rd-semi-sq"
-              onClick={() => navigate("/products")}
-            >
-              WOMEN
-            </button>
-          </div>
-          <div className="home-subheader-item">
-            <button
-              className="btn btn-link-secondary outlined-secondary brd-rd-semi-sq"
-              onClick={() => navigate("/products")}
-            >
-              KIDS
-            </button>
-          </div>
-          <div className="home-subheader-item">
-            <button
-              className="btn btn-secondary outlined-secondary brd-rd-semi-sq"
-              onClick={() => navigate("/products")}
-            >
-              HOME & LIVING
-            </button>
-          </div>
-          <div className="home-subheader-item">
-            <button
-              className="btn btn-secondary outlined-secondary brd-rd-semi-sq"
-              onClick={() => navigate("/products")}
-            >
-              BEAUTY
-            </button>
-          </div>
-        </div>
-
-        <div className="home-hero-img-container">
+      <div className='home-container'>
+        <div className='home-hero-img-container'>
           <img
-            onClick={() => navigate("/products")}
-            className="img-responsive home-hero-img"
-            src="https://res.cloudinary.com/donqbxlnc/image/upload/v1647264442/heroimage_vrvxcz.gif"
-            alt="home-image"
+            onClick={() => navigate('/products')}
+            className='img-responsive home-hero-img'
+            src='https://res.cloudinary.com/donqbxlnc/image/upload/v1648837512/fashify/01042022-D-Unisex-topbannercarousel-p3-brands-4090_bwk2pu.jpg'
+            alt='home-image'
           />
         </div>
 
-        <div className="home-subheading-text text-align-center">
-          <h2>DEALS OF THE DAY</h2>
+        <div className='home-subheading-image'>
+          <img
+            src='https://res.cloudinary.com/donqbxlnc/image/upload/v1648895557/fashify/0b21bba9-e1e2-4dd9-ac99-4a759abe68801648705771876-Shop-By-Category_w2adx7.webp'
+            alt=''
+          />
         </div>
-        <div className="home-cards">
-          <div className="card-container card-container-hz home-card-container card-container-shadow brd-rd-semi-sq">
-            <div className="card-img-container-hz home-card-img-container">
+        <div className='home-cards'>
+          <div className='card-container card-container-hz home-card-container card-container-shadow brd-rd-semi-sq'>
+            <div className='card-img-container-hz home-card-img-container'>
               <img
-                className="card-img index-card-img brd-rd-semi-sq"
-                src="https://res.cloudinary.com/donqbxlnc/image/upload/v1647264510/myntra_photo1_hcu9qe.webp"
-                alt="card image"
+                className='card-img index-card-img brd-rd-semi-sq'
+                src='https://res.cloudinary.com/donqbxlnc/image/upload/v1647264510/myntra_photo1_hcu9qe.webp'
+                alt='card image'
               />
             </div>
-            <div className="card-content">
-              <div className="card-text">
+            <div className='card-content'>
+              <div className='card-text'>
                 <div>NEW ARRIVAL</div>
               </div>
-              <div className="card-footer-elements">
-                <div className="card-footer-elements">
-                  <div className="home-card-footer-title">
+              <div className='card-footer-elements'>
+                <div className='card-footer-elements'>
+                  <div className='home-card-footer-title'>
                     <h3>Winter Collection</h3>
                   </div>
                   <p>
@@ -87,20 +48,20 @@ export const Home = () => {
               </div>
             </div>
           </div>
-          <div className="card-container card-container-hz home-card-container card-container-shadow brd-rd-semi-sq">
-            <div className="card-img-container-hz home-card-img-container">
+          <div className='card-container card-container-hz home-card-container card-container-shadow brd-rd-semi-sq'>
+            <div className='card-img-container-hz home-card-img-container'>
               <img
-                className="card-img index-card-img brd-rd-semi-sq"
-                src="https://res.cloudinary.com/donqbxlnc/image/upload/v1647264549/myntra_photo_2_rtagrf.webp"
-                alt="card image"
+                className='card-img index-card-img brd-rd-semi-sq'
+                src='https://res.cloudinary.com/donqbxlnc/image/upload/v1647264549/myntra_photo_2_rtagrf.webp'
+                alt='card image'
               />
             </div>
-            <div className="card-content">
-              <div className="card-text">
+            <div className='card-content'>
+              <div className='card-text'>
                 <div>NEW ARRIVAL</div>
               </div>
-              <div className="card-footer-elements">
-                <div className="home-card-footer-title">
+              <div className='card-footer-elements'>
+                <div className='home-card-footer-title'>
                   <h3>Winter Collection</h3>
                 </div>
                 <p>
@@ -110,21 +71,22 @@ export const Home = () => {
               </div>
             </div>
           </div>
-          <div className="card-container card-container-hz home-card-container card-container-shadow brd-rd-semi-sq">
-            <div className="card-img-container-hz home-card-img-container">
+          <div className='card-container card-container-hz home-card-container card-container-shadow brd-rd-semi-sq'>
+            <div className='card-img-container-hz home-card-img-container'>
               <img
-                className="card-img index-card-img brd-rd-semi-sq"
-                src="https://res.cloudinary.com/donqbxlnc/image/upload/v1647264610/myntra_photo_3_xms4by.webp"
-                alt="card image"
+                className='card-img index-card-img brd-rd-semi-sq'
+                src='https://res.cloudinary.com/donqbxlnc/image/upload/v1647264610/myntra_photo_3_xms4by.webp'
+                alt='card image'
               />
             </div>
-            <div className="card-content">
-              <div className="card-text">
+
+            <div className='card-content'>
+              <div className='card-text'>
                 <div>NEW ARRIVAL</div>
               </div>
-              <div className="card-footer-elements">
-                <div className="card-footer-elements">
-                  <div className="home-card-footer-title">
+              <div className='card-footer-elements'>
+                <div className='card-footer-elements'>
+                  <div className='home-card-footer-title'>
                     <h3>Winter Collection</h3>
                   </div>
                   <p>
