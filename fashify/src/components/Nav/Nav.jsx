@@ -84,7 +84,7 @@ export const Nav = () => {
                 className='badge-container'
                 onClick={() => navigate('/wishlist')}
               >
-                <div className='badge-icon'>
+                <div className='badge-icon nav-badge-icon'>
                   <span className='material-icons-outlined'>
                     favorite_border
                   </span>
@@ -104,7 +104,7 @@ export const Nav = () => {
                 className='badge-container'
                 onClick={() => navigate('/cartlist')}
               >
-                <div className='badge-icon'>
+                <div className='badge-icon nav-badge-icon'>
                   <span className='material-icons-outlined'>shopping_cart</span>
                 </div>
                 {token && state.cartlist.length > 0 && (

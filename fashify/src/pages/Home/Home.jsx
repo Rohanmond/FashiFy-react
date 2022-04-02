@@ -78,7 +78,7 @@ export const Home = () => {
             <div className='card-img-container-hz home-card-img-container'>
               <img
                 className='card-img index-card-img brd-rd-semi-sq'
-                src='https://res.cloudinary.com/donqbxlnc/image/upload/v1648896676/fashify/0f9ec937-304a-433a-9433-5409c556831c1604906586152-24-IconicBrands-TommyHilfiger_hulqft.webp'
+                src='https://res.cloudinary.com/donqbxlnc/image/upload/v1648516936/fashify/67b2f5d2-3064-4389-98e4-8ce05b4c354f1647513608806-Allen-Solly-Junior-Boys-Navy-Blue-Slim-Fit-Geometric-Print-P-1_ecyumj.webp'
                 alt='card image'
               />
             </div>

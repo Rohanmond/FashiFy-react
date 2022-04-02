@@ -23,18 +23,21 @@ const CartList = () => {
           <div className='cart_mngmt-price-details'>
             <div className='card-container cart_mngmt-price-card brd-rd-semi-sq'>
               <div className='mngmt_cart-price-header'>
-                <h3>CART PRICE DETAILS</h3>
-                <button className='btn btn-secondary outlined-secondary brd-rd-semi-sq'>
+                <p className='font-wt-bold'>CART PRICE DETAILS</p>
+                {/* <button className='btn btn-secondary outlined-secondary brd-rd-semi-sq'>
                   <i className='fas fa-share'></i>
-                </button>
+                </button> */}
               </div>
+              <hr className='hr' />
               {cartData.map((el) => {
                 const { _id, title, qty, price } = el;
                 return (
                   <div className='mngmt_cart-price-item' key={_id}>
-                    <p>{title}</p>
-                    <p>Q:{qty}</p>
-                    <p>₹{price * qty}</p>
+                    <p>
+                      {title} ({qty})
+                    </p>
+
+                    <p>{`₹ ${price * qty}`}</p>
                   </div>
                 );
               })}
@@ -42,6 +45,7 @@ const CartList = () => {
               <div className='mngmt_cart-price-item'>
                 <p className='font-wt-bold'>Total price:</p>
                 <p className='font-wt-bold'>
+                  ₹{' '}
                   {cartData.reduce((acc, curr) => {
                     return acc + curr.price * curr.qty;
                   }, 0)}

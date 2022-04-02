@@ -1,16 +1,17 @@
 .product-list-drawar {
   position: fixed;
-  top: 7.2rem;
+  top: 7rem;
   left: 0;
-  width: 250px;
+  width: 100vw;
   padding: 1rem;
   overflow-y: scroll;
+  border-top: 1px solid var(--black-color);
   height: calc(100vh - 7rem);
   background-color: var(--background-color);
   z-index: 9999;
-  transform: translateX(-100%);
+  transform: translateY(100%);
 }
 
 .product-list-drawar-active {
-  transform: translateX(0);
+  transform: translateY(0);
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuth, useData } from '../../../../contexts';
+import './CartCard.css';
 import {
   ActionType,
   CartListActionType,
@@ -69,7 +70,7 @@ const CartCard = ({ el }) => {
     }
   };
   return (
-    <div className='card-container card-container-hz brd-rd-semi-sq'>
+    <div className='card-container card-container-hz brd-rd-semi-sq cart-card-container'>
       <div className='card-img-container-hz'>
         <img className='card-img brd-rd-semi-sq' src={image} alt='card' />
       </div>
