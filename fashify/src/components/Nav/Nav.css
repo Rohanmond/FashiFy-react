@@ -46,7 +46,9 @@
 .nav-text-input::placeholder {
   color: var(--text-secondary-color);
 }
-
+.nav-link-item-btn {
+  padding-right: 0.75rem;
+}
 .nav-link-item {
   cursor: pointer;
 }
@@ -54,7 +56,17 @@
   padding: 0.75rem;
   padding-left: 0.25rem;
 }
-
+.productlist-nav-left {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+.nav-explore-container {
+  font-size: 1.2rem;
+  padding: 0 1rem;
+  text-decoration: underline;
+  font-weight: 600;
+}
 @media screen and (max-width: 1000px) {
   .nav-search {
     width: 25rem;
