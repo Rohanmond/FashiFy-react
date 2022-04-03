@@ -135,7 +135,7 @@ export const ProductCard = ({ product }) => {
               !carted ? 'background-primary' : 'background-success'
             }`}
           >
-            <i class='fas fa-shopping-cart'></i>{' '}
+            <i className='fas fa-shopping-cart'></i>{' '}
             {!carted ? 'Add to cart' : 'Go to cart'}
           </button>
         </div>

@@ -17,7 +17,10 @@ export const ProductListDrawar = ({ open, setOpen }) => {
     <div
       className={`product-list-drawar ${open && 'product-list-drawar-active'}`}
     >
-      <i onClick={() => setOpen(false)} class='fas fa-angle-down text-lg'></i>
+      <i
+        onClick={() => setOpen(false)}
+        className='fas fa-angle-down text-lg'
+      ></i>
 
       <div className='productlist-aside-header'>
         <p className='font-wt-bold'>Filters</p>

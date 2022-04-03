@@ -28,18 +28,18 @@ const Login = () => {
   }, [token]);
 
   return (
-    <div class='login-container'>
-      <main class='login-main'>
-        <div class='login-card brd-rd-semi-sq'>
-          <div class='login-card-header'>
-            <h3 class='text-align-center'>Login</h3>
+    <div className='login-container'>
+      <main className='login-main'>
+        <div className='login-card brd-rd-semi-sq'>
+          <div className='login-card-header'>
+            <h3 className='text-align-center'>Login</h3>
           </div>
-          <div class='login-card-item'>
-            <div class='input-container'>
+          <div className='login-card-item'>
+            <div className='input-container'>
               <label>Email address</label>
               <input
                 placeholder='abc@fashiFy.com'
-                class='text-input'
+                className='text-input'
                 type='text'
                 value={loginForm.email}
                 onChange={(e) =>
@@ -48,13 +48,13 @@ const Login = () => {
               />
             </div>
           </div>
-          <div class='login-card-item'>
-            <div class='input-container'>
+          <div className='login-card-item'>
+            <div className='input-container'>
               <label>Password</label>
               <input
                 placeholder=''
                 value={loginForm.password}
-                class='text-input'
+                className='text-input'
                 type='password'
                 onChange={(e) =>
                   setLoginForm({ ...loginForm, password: e.target.value })
@@ -62,8 +62,8 @@ const Login = () => {
               />
             </div>
           </div>
-          <div class='login-card-item'>
-            <div class='input-container-hz'>
+          <div className='login-card-item'>
+            <div className='input-container-hz'>
               <input
                 type='checkbox'
                 name='remember-me-checkbox'
@@ -72,14 +72,14 @@ const Login = () => {
               />
               <label for='remember-me-checkbox'>Remember me</label>
             </div>
-            <a class='' href='./forgetpassword.html'>
+            <a className='' href='./forgetpassword.html'>
               Forgot your password?
             </a>
           </div>
-          <div class='login-card-item'>
+          <div className='login-card-item'>
             <button
               onClick={() => loginHandler(loginForm.email, loginForm.password)}
-              class='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
+              className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
             >
               Login
             </button>
@@ -87,13 +87,13 @@ const Login = () => {
               onClick={() =>
                 loginHandler(fixedLoginForm.email, fixedLoginForm.password)
               }
-              class='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
+              className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
             >
               Login As a Guest
             </button>
             <button
               onClick={() => navigate('/signup')}
-              class='btn btn-link-primary outlined-secondary text-align-center brd-rd-semi-sq'
+              className='btn btn-link-primary outlined-secondary text-align-center brd-rd-semi-sq'
             >
               Create New Account
             </button>

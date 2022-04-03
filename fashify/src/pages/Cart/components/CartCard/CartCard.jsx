@@ -6,13 +6,19 @@ import {
   CartListActionType,
   ToastType,
 } from '../../../../DataReducer/constants';
-import { DeleteCart, IncDecCart } from '../../../../Services/services';
+import {
+  DeleteCart,
+  DeleteWish,
+  IncDecCart,
+  PostWishList,
+} from '../../../../Services/services';
 import { ToastHandler } from '../../../../utils/utils';
 
 const CartCard = ({ el }) => {
   const [cartDisableButton, setDisable] = useState(false);
   const [negativeDisableButton, setNegativeDisableButton] = useState(false);
-  const { image, title, price, qty, _id, id } = el;
+  const [wishButtonDisabled, setWishDisable] = useState(false);
+  const { image, title, price, qty, _id, id, wished } = el;
   const { token } = useAuth();
   const { dispatch } = useData();
   const DeleteCartHandler = async () => {
@@ -72,10 +78,56 @@ const CartCard = ({ el }) => {
       console.log(err);
     }
   };
+
+  const wishlistHandler = async () => {
+    setWishDisable(true);
+    try {
+      if (!token) {
+        navigate('/login');
+        return;
+      }
+      let res = null;
+      if (wished)
+        res = await DeleteWish({ productId: _id, encodedToken: token });
+      else res = await PostWishList({ product: el, encodedToken: token });
+      if (res.status === 200 || res.status === 201) {
+        dispatch({
+          type: ActionType.SetWishList,
+          payload: { wishlist: res.data.wishlist },
+        });
+        if (wished) {
+          ToastHandler(ToastType.Warn, 'Deleted from wishlist');
+        } else {
+          ToastHandler(ToastType.Success, 'Added to wishlist');
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setWishDisable(false);
+    }
+  };
   return (
     <div className='card-container card-container-hz brd-rd-semi-sq cart-card-container'>
       <div className='card-img-container-hz'>
         <img className='card-img brd-rd-semi-sq' src={image} alt='card' />
+        <button
+          onClick={() => {
+            wishlistHandler();
+          }}
+          disabled={wishButtonDisabled}
+          className='card-img-tag-btn productlist-card-img-tag-btn-container'
+        >
+          {!wished ? (
+            <span className='material-icons productlist-card-img-tag-btn'>
+              favorite_border
+            </span>
+          ) : (
+            <span className='material-icons wishlist-icon-filled'>
+              favorite
+            </span>
+          )}
+        </button>
       </div>
       <div className='card-content'>
         <div className='cart_mngmt-card-container'>
