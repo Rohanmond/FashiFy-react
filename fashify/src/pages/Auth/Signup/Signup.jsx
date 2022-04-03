@@ -26,18 +26,20 @@ const SignUp = () => {
     return () => clearTimeout(id);
   }, [token]);
   return (
-    <div class='login-container'>
-      <main class='login-main'>
-        <div class='login-card brd-rd-semi-sq'>
-          <div class='login-card-header'>
-            <h3 class='text-align-center'>Signup</h3>
+    <div className='login-container'>
+      <main className='login-main'>
+        <div className='login-card brd-rd-semi-sq'>
+          <div className='login-card-header'>
+            <h3 className='text-align-center'>Signup</h3>
           </div>
-          <div class='login-card-item'>
-            <div class={`input-container ${signupForm.nameError && 'error'}`}>
+          <div className='login-card-item'>
+            <div
+              className={`input-container ${signupForm.nameError && 'error'}`}
+            >
               <label>Name</label>
               <input
                 placeholder='Mr. FashiFy'
-                class='text-input'
+                className='text-input'
                 type='text'
                 value={signupForm.name}
                 required
@@ -46,17 +48,17 @@ const SignUp = () => {
                 }
               />
               {formError.nameError && (
-                <div class='err-msg'>Name shouldn't be number</div>
+                <div className='err-msg'>Name shouldn't be number</div>
               )}
             </div>
           </div>
 
-          <div class='login-card-item'>
-            <div class='input-container'>
+          <div className='login-card-item'>
+            <div className='input-container'>
               <label>Email address</label>
               <input
                 placeholder='abc@fashiFy.com'
-                class='text-input'
+                className='text-input'
                 type='email'
                 required
                 value={signupForm.email}
@@ -65,16 +67,16 @@ const SignUp = () => {
                 }
               />
               {formError.emailError && (
-                <div class='err-msg'>Email should be in proper format</div>
+                <div className='err-msg'>Email should be in proper format</div>
               )}
             </div>
           </div>
-          <div class='login-card-item'>
-            <div class='input-container'>
+          <div className='login-card-item'>
+            <div className='input-container'>
               <label>Password</label>
               <input
                 placeholder=''
-                class='text-input'
+                className='text-input'
                 type='password'
                 value={signupForm.password}
                 required
@@ -84,32 +86,32 @@ const SignUp = () => {
               />
             </div>
             {formError.passwordError && (
-              <div class='err-msg'>
+              <div className='err-msg'>
                 Password should contain atleast one digit and should be equal or
                 more than 8 chars long
               </div>
             )}
           </div>
-          <div class='login-card-item'>
-            <div class='input-container'>
+          <div className='login-card-item'>
+            <div className='input-container'>
               <label>Confirm password</label>
-              <input placeholder='' class='text-input' type='password' />
+              <input placeholder='' className='text-input' type='password' />
             </div>
           </div>
-          <div class='login-card-item'>
-            <div class='input-container-hz'>
+          <div className='login-card-item'>
+            <div className='input-container-hz'>
               <input
                 type='checkbox'
                 name='terms-conditions-checkbox'
                 value='accepted terms conditions'
                 id='terms-conditions-checkbox'
               />
-              <label for='terms-conditions-checkbox'>
+              <label htmlFor='terms-conditions-checkbox'>
                 I accept all Terms &#38; Conditions
               </label>
             </div>
           </div>
-          <div class='login-card-item'>
+          <div className='login-card-item'>
             <button
               onClick={() =>
                 signupHandler(
@@ -118,7 +120,7 @@ const SignUp = () => {
                   signupForm.name
                 )
               }
-              class='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
+              className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
               disabled={Object.keys(formError).reduce(
                 (acc, curr) => (formError[curr] ? true : acc),
                 false
@@ -127,7 +129,7 @@ const SignUp = () => {
               Create New Account
             </button>
             <button
-              class='btn btn-link-secondary outlined-secondary text-align-center brd-rd-semi-sq'
+              className='btn btn-link-secondary outlined-secondary text-align-center brd-rd-semi-sq'
               onClick={() => navigate('/login')}
             >
               Already have an account

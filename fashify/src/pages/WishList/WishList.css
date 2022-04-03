@@ -4,14 +4,14 @@
   height: 100vh;
 }
 .wishlist-main-heading {
-  padding: 1.75rem;
+  padding: 1rem;
 }
 .wishlist-main-container {
   margin-top: 6rem;
 }
 @media screen and (max-width: 750px) {
   .wishlist-main-container {
-    margin-top: 9rem;
+    margin-top: 7rem;
   }
 }
 .wishlist-main-cart-container {

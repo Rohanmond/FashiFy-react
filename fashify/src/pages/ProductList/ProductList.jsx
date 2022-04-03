@@ -1,10 +1,16 @@
-import "./ProductList.css";
-import { ProductListAside, ProductListMain } from "./components";
-import { useData } from "../../contexts/data-context";
-import { useEffect } from "react";
+import './ProductList.css';
+import {
+  ProductListAside,
+  ProductListDrawar,
+  ProductListMain,
+} from './components';
+import { useData } from '../../contexts/data-context';
+import { useEffect, useState } from 'react';
+import { ProductlistFooter } from './components/ProductlistFooter/ProductlistFooter';
 
 export const ProductList = () => {
   const { setLoader } = useData();
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     setLoader(true);
     const id = setTimeout(() => {
@@ -12,10 +18,13 @@ export const ProductList = () => {
     }, 500);
     return () => clearTimeout(id);
   }, []);
+
   return (
-    <div className="productlist-content">
+    <div className='productlist-content'>
       <ProductListAside />
+      <ProductListDrawar open={open} setOpen={setOpen} />
       <ProductListMain />
+      <ProductlistFooter setOpen={setOpen} />
     </div>
   );
 };

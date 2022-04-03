@@ -1,6 +1,6 @@
 import './Nav.css';
 import logo from '../../logos/hero-logo.png';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/auth-context';
 import { useData } from '../../contexts/data-context';
 import { ActionType, Filters } from '../../DataReducer/constants';
@@ -25,7 +25,7 @@ export const Nav = () => {
   return (
     <nav className='navigation home-nav'>
       <div className='nav-mobile-up'>
-        <div className='nav-left'>
+        <div className='nav-left productlist-nav-left'>
           <div className='nav-logo-container'>
             <div onClick={() => navigate('/')} className='nav-logo-link'>
               <img className='hero-logo' src={logo} alt='nav logo' />
@@ -79,12 +79,13 @@ export const Nav = () => {
                 </button>
               )}
             </li>
+
             <li className='nav-link-item'>
               <div
                 className='badge-container'
                 onClick={() => navigate('/wishlist')}
               >
-                <div className='badge-icon'>
+                <div className='badge-icon nav-badge-icon'>
                   <span className='material-icons-outlined'>
                     favorite_border
                   </span>
@@ -104,7 +105,7 @@ export const Nav = () => {
                 className='badge-container'
                 onClick={() => navigate('/cartlist')}
               >
-                <div className='badge-icon'>
+                <div className='badge-icon nav-badge-icon'>
                   <span className='material-icons-outlined'>shopping_cart</span>
                 </div>
                 {token && state.cartlist.length > 0 && (

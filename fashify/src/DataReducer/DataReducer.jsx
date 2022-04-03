@@ -1,12 +1,12 @@
-import { ActionType, Filters } from "./constants";
+import { ActionType, Filters } from './constants';
 
 export const initialState = {
   filters: {
-    sortBy: "",
+    sortBy: '',
     categories: {},
-    rating: "",
+    rating: '',
     sizes: {},
-    search:"",
+    search: '',
     priceRange: 0,
   },
   products: [],
@@ -16,7 +16,6 @@ export const initialState = {
 };
 
 export const DataReducer = (state, action) => {
-  
   switch (action.type) {
     case ActionType.InitialDataFetch: {
       if (action.payload.products) {
@@ -26,8 +25,8 @@ export const DataReducer = (state, action) => {
         );
         return {
           ...state,
-          products: action.payload.products.map((el)=>{
-            return {...el,wished:false,carted:false}
+          products: action.payload.products.map((el) => {
+            return { ...el, wished: false, carted: false, qty: 0 };
           }),
           filters: { ...state.filters, priceRange: maxValue },
         };
@@ -94,18 +93,28 @@ export const DataReducer = (state, action) => {
       return {
         ...state,
         wishlist: [...action.payload.wishlist],
-        products:state.products.map((el)=>{
-          return {...el,wished:action.payload.wishlist.some(item=>item._id===el._id)}
-        })
+        products: state.products.map((el) => {
+          return {
+            ...el,
+            wished: action.payload.wishlist.some((item) => item._id === el._id),
+          };
+        }),
       };
     }
     case ActionType.SetCartList: {
       return {
         ...state,
         cartlist: [...action.payload.cartlist],
-        products:state.products.map((el)=>{
-          return {...el,carted:action.payload.cartlist.some(item=>item._id===el._id)}
-        })
+        products: state.products.map((el) => {
+          const product = action.payload.cartlist.find(
+            (item) => item._id === el._id
+          );
+          return {
+            ...el,
+            carted: product ? true : false,
+            qty: product ? product.qty : 0,
+          };
+        }),
       };
     }
     default:
