@@ -39,9 +39,9 @@
 
   color: var(--white-color);
   background-color: var(--blue-400);
-  padding: 0.2rem;
+  padding: 0.2rem 0.4rem;
   border-radius: 0.25rem;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 700;
 }
 .productlist-card-new-item {

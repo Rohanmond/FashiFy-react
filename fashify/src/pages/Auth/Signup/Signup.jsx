@@ -106,7 +106,7 @@ const SignUp = () => {
                 value='accepted terms conditions'
                 id='terms-conditions-checkbox'
               />
-              <label for='terms-conditions-checkbox'>
+              <label htmlFor='terms-conditions-checkbox'>
                 I accept all Terms &#38; Conditions
               </label>
             </div>

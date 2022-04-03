@@ -117,7 +117,7 @@ export const ProductCard = ({ product }) => {
           <p className='productlist-card-new-item'>Trending</p>
         </div>
         <div className='productlist-card-rating-container'>
-          <i class='fas fa-star'></i>
+          <i className='fas fa-star'></i>
           <p>{rating}</p>
         </div>
       </div>
