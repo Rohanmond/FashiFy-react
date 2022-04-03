@@ -24,9 +24,6 @@ const CartList = () => {
             <div className='card-container cart_mngmt-price-card brd-rd-semi-sq'>
               <div className='mngmt_cart-price-header'>
                 <p className='font-wt-bold'>CART PRICE DETAILS</p>
-                {/* <button className='btn btn-secondary outlined-secondary brd-rd-semi-sq'>
-                  <i className='fas fa-share'></i>
-                </button> */}
               </div>
               <hr className='hr' />
               {cartData.map((el) => {
