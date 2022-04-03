@@ -11,11 +11,13 @@ import { ToastHandler } from '../../../../utils/utils';
 
 const CartCard = ({ el }) => {
   const [cartDisableButton, setDisable] = useState(false);
+  const [negativeDisableButton, setNegativeDisableButton] = useState(false);
   const { image, title, price, qty, _id, id } = el;
   const { token } = useAuth();
   const { dispatch } = useData();
-  const DeleteCardHandler = async () => {
+  const DeleteCartHandler = async () => {
     setDisable(true);
+    setNegativeDisableButton(true);
     try {
       const res = await DeleteCart({ productId: _id, encodedToken: token });
       if (res.status === 200 || res.status === 201) {
@@ -29,6 +31,7 @@ const CartCard = ({ el }) => {
       console.log(err);
     } finally {
       setDisable(false);
+      setNegativeDisableButton(false);
     }
   };
   const IncrementHandler = async () => {
@@ -49,8 +52,8 @@ const CartCard = ({ el }) => {
     }
   };
   const DecrementHandler = async () => {
-    if (qty === 1) {
-      DeleteCardHandler();
+    if (qty <= 1) {
+      DeleteCartHandler();
       return;
     }
     try {
@@ -93,11 +96,13 @@ const CartCard = ({ el }) => {
             <p
               style={{ cursor: 'pointer' }}
               onClick={DecrementHandler}
+              role='button'
+              disabled={negativeDisableButton}
               className='text-secondary-color'
             >
               <i className='fas fa-minus-circle'></i>
             </p>
-            <p className='cart-quantity-number'>{qty}</p>
+            <p className='cart-quantity-number'>{qty > 0 ? qty : 0}</p>
             <p
               style={{ cursor: 'pointer' }}
               onClick={IncrementHandler}
@@ -109,7 +114,7 @@ const CartCard = ({ el }) => {
         </div>
         <div className='card-footer-elements cart_mngmt-card-footer'>
           <button
-            onClick={DeleteCardHandler}
+            onClick={DeleteCartHandler}
             disabled={cartDisableButton}
             className='btn btn-secondary outlined-secondary hover-danger brd-rd-semi-sq'
           >

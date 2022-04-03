@@ -3,7 +3,7 @@ import './CartList.css';
 import CartCard from './components/CartCard/CartCard';
 const CartList = () => {
   const { state } = useData();
-  const cartData = [...state.cartlist];
+  const cartData = state.products.filter((el) => el.carted);
   return (
     <main className='cart_mngmt-main'>
       <div className='cart_mngmt-main-heading text-align-center'>
