@@ -129,8 +129,8 @@ export const ProductListDrawar = ({ open, setOpen }) => {
               <div className='productlist-input-item-hz' key={el}>
                 <input
                   type='radio'
-                  name='rating-radio'
-                  id={`${el}star-radio`}
+                  name='rating-radio-aside'
+                  id={`${el}-star-radio`}
                   value={el}
                   checked={state.filters.rating === el ? true : false}
                   onChange={() =>
@@ -140,7 +140,7 @@ export const ProductListDrawar = ({ open, setOpen }) => {
                     })
                   }
                 />
-                <label htmlFor={`${el}star-radio`}>
+                <label htmlFor={`${el}-star-radio`}>
                   {el} stars {'&'} above
                 </label>
               </div>
@@ -156,8 +156,8 @@ export const ProductListDrawar = ({ open, setOpen }) => {
               <div className='productlist-input-item-hz' key={el}>
                 <input
                   type='radio'
-                  name='sortby-radio'
-                  id={`${el}-radio`}
+                  name='sortby-radio-aside'
+                  id={`${el}radio`}
                   value={el}
                   checked={state.filters.sortBy === el ? true : false}
                   onChange={() =>
@@ -167,7 +167,7 @@ export const ProductListDrawar = ({ open, setOpen }) => {
                     })
                   }
                 />
-                <label htmlFor={`${el}-radio`}>price - {el}</label>
+                <label htmlFor={`${el}radio`}>price - {el}</label>
               </div>
             );
           })}

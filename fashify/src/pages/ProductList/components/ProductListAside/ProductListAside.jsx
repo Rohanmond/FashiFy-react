@@ -1,8 +1,8 @@
-import { useData } from "../../../../contexts/data-context";
-import { ActionType, SortBy } from "../../../../DataReducer/constants";
-import { Filters } from "../../../../DataReducer/constants";
-import "./ProductListAside.css";
-const Rating = ["4", "3", "2", "1"];
+import { useData } from '../../../../contexts/data-context';
+import { ActionType, SortBy } from '../../../../DataReducer/constants';
+import { Filters } from '../../../../DataReducer/constants';
+import './ProductListAside.css';
+const Rating = ['4', '3', '2', '1'];
 
 export const ProductListAside = () => {
   const { state, dispatch } = useData();
@@ -12,11 +12,11 @@ export const ProductListAside = () => {
   );
 
   return (
-    <aside className="productlist-aside nav-desktop">
-      <div className="productlist-aside-header">
-        <p className="font-wt-bold">Filters</p>
+    <aside className='productlist-aside nav-desktop'>
+      <div className='productlist-aside-header'>
+        <p className='font-wt-bold'>Filters</p>
         <p
-          style={{ cursor: "pointer" }}
+          style={{ cursor: 'pointer' }}
           onClick={() => {
             dispatch({ type: ActionType.ClearFilter });
           }}
@@ -24,19 +24,19 @@ export const ProductListAside = () => {
           Clear
         </p>
       </div>
-      <div className="productlist-aside-item">
-        <p className="font-wt-bold">Price</p>
-        <div className="productlist-slider-label">
-          <p className="text-secondary-color">0</p>
-          <p className="text-secondary-color">{maxValue / 2}</p>
-          <p className="text-secondary-color">{maxValue}</p>
+      <div className='productlist-aside-item'>
+        <p className='font-wt-bold'>Price</p>
+        <div className='productlist-slider-label'>
+          <p className='text-secondary-color'>0</p>
+          <p className='text-secondary-color'>{maxValue / 2}</p>
+          <p className='text-secondary-color'>{maxValue}</p>
         </div>
-        <div className="productlist-input-container">
+        <div className='productlist-input-container'>
           <input
-            type="range"
-            name="rangeInput"
-            className="slider"
-            min="0"
+            type='range'
+            name='rangeInput'
+            className='slider'
+            min='0'
             max={maxValue}
             value={state.filters.priceRange}
             onChange={(e) => {
@@ -51,15 +51,15 @@ export const ProductListAside = () => {
           />
         </div>
       </div>
-      <div className="productlist-aside-item">
-        <p className="font-wt-bold">Categories</p>
-        <div className="productlist-input-container">
+      <div className='productlist-aside-item'>
+        <p className='font-wt-bold'>Categories</p>
+        <div className='productlist-input-container'>
           {Object.keys(state.filters.categories).map((cat) => {
             return (
-              <div className="productlist-input-item-hz" key={cat}>
+              <div className='productlist-input-item-hz' key={cat}>
                 <input
-                  type="checkbox"
-                  name="category-checkbox"
+                  type='checkbox'
+                  name='category-checkbox'
                   id={`${cat}-checkbox`}
                   checked={state.filters.categories[cat]}
                   onChange={() =>
@@ -81,15 +81,15 @@ export const ProductListAside = () => {
           })}
         </div>
       </div>
-      <div className="productlist-aside-item">
-        <p className="font-wt-bold">Sizes</p>
-        <div className="productlist-input-container">
+      <div className='productlist-aside-item'>
+        <p className='font-wt-bold'>Sizes</p>
+        <div className='productlist-input-container'>
           {Object.keys(state.filters.sizes).map((size) => {
             return (
-              <div className="productlist-input-item-hz" key={size}>
+              <div className='productlist-input-item-hz' key={size}>
                 <input
-                  type="checkbox"
-                  name="category-checkbox"
+                  type='checkbox'
+                  name='category-checkbox'
                   id={`${size}-checkbox`}
                   checked={state.filters.sizes[size]}
                   onChange={() =>
@@ -112,15 +112,15 @@ export const ProductListAside = () => {
         </div>
       </div>
 
-      <div className="productlist-aside-item">
-        <p className="font-wt-bold">Rating</p>
-        <div className="productlist-input-container">
+      <div className='productlist-aside-item'>
+        <p className='font-wt-bold'>Rating</p>
+        <div className='productlist-input-container'>
           {Rating.map((el) => {
             return (
-              <div className="productlist-input-item-hz" key={el}>
+              <div className='productlist-input-item-hz' key={el}>
                 <input
-                  type="radio"
-                  name="rating-radio"
+                  type='radio'
+                  name='rating-radio'
                   id={`${el}star-radio`}
                   value={el}
                   checked={state.filters.rating === el ? true : false}
@@ -132,22 +132,22 @@ export const ProductListAside = () => {
                   }
                 />
                 <label htmlFor={`${el}star-radio`}>
-                  {el} stars {"&"} above
+                  {el} stars {'&'} above
                 </label>
               </div>
             );
           })}
         </div>
       </div>
-      <div className="productlist-aside-item">
-        <p className="font-wt-bold">Sort by Price</p>
-        <div className="productlist-input-container">
+      <div className='productlist-aside-item'>
+        <p className='font-wt-bold'>Sort by Price</p>
+        <div className='productlist-input-container'>
           {Object.values(SortBy).map((el) => {
             return (
-              <div className="productlist-input-item-hz" key={el}>
+              <div className='productlist-input-item-hz' key={el}>
                 <input
-                  type="radio"
-                  name="sortby-radio"
+                  type='radio'
+                  name='sortby-radio'
                   id={`${el}-radio`}
                   value={el}
                   checked={state.filters.sortBy === el ? true : false}

@@ -1,4 +1,4 @@
-import { useData } from "../contexts/data-context";
+import { useData } from '../contexts/data-context';
 import {
   categoryFilter,
   priceRangeFilter,
@@ -6,10 +6,11 @@ import {
   searchFilter,
   sizeFilter,
   sortByPrice,
-} from "../utils/utils";
+} from '../utils/utils';
 
 export const useFilterHook = () => {
   const { state } = useData();
+  console.log(state);
   const { filters, products } = state;
   const { sortBy, categories, rating, sizes, priceRange, search } = filters;
   let newData = [...products];
