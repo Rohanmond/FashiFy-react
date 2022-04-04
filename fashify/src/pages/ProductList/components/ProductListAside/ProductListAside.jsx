@@ -12,158 +12,166 @@ export const ProductListAside = () => {
   );
 
   return (
-    <aside className='productlist-aside nav-desktop'>
-      <div className='productlist-aside-header'>
-        <p className='font-wt-bold'>Filters</p>
-        <p
-          style={{ cursor: 'pointer' }}
-          onClick={() => {
-            dispatch({ type: ActionType.ClearFilter });
-          }}
-        >
-          Clear
-        </p>
-      </div>
-      <div className='productlist-aside-item'>
-        <p className='font-wt-bold'>Price</p>
-        <div className='productlist-slider-label'>
-          <p className='text-secondary-color'>0</p>
-          <p className='text-secondary-color'>{maxValue / 2}</p>
-          <p className='text-secondary-color'>{maxValue}</p>
-        </div>
-        <div className='productlist-input-container'>
-          <input
-            type='range'
-            name='rangeInput'
-            className='slider'
-            min='0'
-            max={maxValue}
-            value={state.filters.priceRange}
-            onChange={(e) => {
-              dispatch({
-                type: ActionType.ChangeFilter,
-                payload: {
-                  filterType: Filters.PriceRange,
-                  filterValue: e.target.value,
-                },
-              });
+    <div className='productlist-aside-outer-container'>
+      <aside className='productlist-aside nav-desktop'>
+        <div className='productlist-aside-header'>
+          <p className='font-wt-bold'>Filters</p>
+          <p
+            style={{ cursor: 'pointer' }}
+            onClick={() => {
+              dispatch({ type: ActionType.ClearFilter });
             }}
-          />
+          >
+            Clear
+          </p>
         </div>
-      </div>
-      <div className='productlist-aside-item'>
-        <p className='font-wt-bold'>Categories</p>
-        <div className='productlist-input-container'>
-          {Object.keys(state.filters.categories).map((cat) => {
-            return (
-              <div className='productlist-input-item-hz' key={cat}>
-                <input
-                  type='checkbox'
-                  name='category-checkbox'
-                  id={`${cat}-checkbox`}
-                  checked={state.filters.categories[cat]}
-                  onChange={() =>
-                    dispatch({
-                      type: ActionType.ChangeFilter,
-                      payload: {
-                        filterType: Filters.Categories,
-                        filterValue: {
-                          ...state.filters.categories,
-                          [cat]: !state.filters.categories[cat],
+        <div className='productlist-aside-item'>
+          <p className='font-wt-bold'>Price</p>
+          <div className='productlist-slider-label'>
+            <p className='text-secondary-color'>0</p>
+            <p className='text-secondary-color'>{maxValue / 2}</p>
+            <p className='text-secondary-color'>{maxValue}</p>
+          </div>
+          <div className='productlist-input-container'>
+            <input
+              type='range'
+              name='rangeInput'
+              className='slider'
+              min='0'
+              max={maxValue}
+              value={state.filters.priceRange}
+              onChange={(e) => {
+                dispatch({
+                  type: ActionType.ChangeFilter,
+                  payload: {
+                    filterType: Filters.PriceRange,
+                    filterValue: e.target.value,
+                  },
+                });
+              }}
+            />
+          </div>
+        </div>
+        <div className='productlist-aside-item'>
+          <p className='font-wt-bold'>Categories</p>
+          <div className='productlist-input-container'>
+            {Object.keys(state.filters.categories).map((cat) => {
+              return (
+                <div className='productlist-input-item-hz' key={cat}>
+                  <input
+                    type='checkbox'
+                    name='category-checkbox'
+                    id={`${cat}-checkbox`}
+                    checked={state.filters.categories[cat]}
+                    onChange={() =>
+                      dispatch({
+                        type: ActionType.ChangeFilter,
+                        payload: {
+                          filterType: Filters.Categories,
+                          filterValue: {
+                            ...state.filters.categories,
+                            [cat]: !state.filters.categories[cat],
+                          },
                         },
-                      },
-                    })
-                  }
-                />
-                <label htmlFor={`${cat}-checkbox`}>{cat}</label>
-              </div>
-            );
-          })}
+                      })
+                    }
+                  />
+                  <label htmlFor={`${cat}-checkbox`}>{cat}</label>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-      <div className='productlist-aside-item'>
-        <p className='font-wt-bold'>Sizes</p>
-        <div className='productlist-input-container'>
-          {Object.keys(state.filters.sizes).map((size) => {
-            return (
-              <div className='productlist-input-item-hz' key={size}>
-                <input
-                  type='checkbox'
-                  name='category-checkbox'
-                  id={`${size}-checkbox`}
-                  checked={state.filters.sizes[size]}
-                  onChange={() =>
-                    dispatch({
-                      type: ActionType.ChangeFilter,
-                      payload: {
-                        filterType: Filters.Sizes,
-                        filterValue: {
-                          ...state.filters.sizes,
-                          [size]: !state.filters.sizes[size],
+        <div className='productlist-aside-item'>
+          <p className='font-wt-bold'>Sizes</p>
+          <div className='productlist-input-container'>
+            {Object.keys(state.filters.sizes).map((size) => {
+              return (
+                <div className='productlist-input-item-hz' key={size}>
+                  <input
+                    type='checkbox'
+                    name='category-checkbox'
+                    id={`${size}-checkbox`}
+                    checked={state.filters.sizes[size]}
+                    onChange={() =>
+                      dispatch({
+                        type: ActionType.ChangeFilter,
+                        payload: {
+                          filterType: Filters.Sizes,
+                          filterValue: {
+                            ...state.filters.sizes,
+                            [size]: !state.filters.sizes[size],
+                          },
                         },
-                      },
-                    })
-                  }
-                />
-                <label htmlFor={`${size}-checkbox`}>{size}</label>
-              </div>
-            );
-          })}
+                      })
+                    }
+                  />
+                  <label htmlFor={`${size}-checkbox`}>{size}</label>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
 
-      <div className='productlist-aside-item'>
-        <p className='font-wt-bold'>Rating</p>
-        <div className='productlist-input-container'>
-          {Rating.map((el) => {
-            return (
-              <div className='productlist-input-item-hz' key={el}>
-                <input
-                  type='radio'
-                  name='rating-radio'
-                  id={`${el}star-radio`}
-                  value={el}
-                  checked={state.filters.rating === el ? true : false}
-                  onChange={() =>
-                    dispatch({
-                      type: ActionType.ChangeFilter,
-                      payload: { filterType: Filters.Rating, filterValue: el },
-                    })
-                  }
-                />
-                <label htmlFor={`${el}star-radio`}>
-                  {el} stars {'&'} above
-                </label>
-              </div>
-            );
-          })}
+        <div className='productlist-aside-item'>
+          <p className='font-wt-bold'>Rating</p>
+          <div className='productlist-input-container'>
+            {Rating.map((el) => {
+              return (
+                <div className='productlist-input-item-hz' key={el}>
+                  <input
+                    type='radio'
+                    name='rating-radio'
+                    id={`${el}star-radio`}
+                    value={el}
+                    checked={state.filters.rating === el ? true : false}
+                    onChange={() =>
+                      dispatch({
+                        type: ActionType.ChangeFilter,
+                        payload: {
+                          filterType: Filters.Rating,
+                          filterValue: el,
+                        },
+                      })
+                    }
+                  />
+                  <label htmlFor={`${el}star-radio`}>
+                    {el} stars {'&'} above
+                  </label>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-      <div className='productlist-aside-item'>
-        <p className='font-wt-bold'>Sort by Price</p>
-        <div className='productlist-input-container'>
-          {Object.values(SortBy).map((el) => {
-            return (
-              <div className='productlist-input-item-hz' key={el}>
-                <input
-                  type='radio'
-                  name='sortby-radio'
-                  id={`${el}-radio`}
-                  value={el}
-                  checked={state.filters.sortBy === el ? true : false}
-                  onChange={() =>
-                    dispatch({
-                      type: ActionType.ChangeFilter,
-                      payload: { filterType: Filters.SortBy, filterValue: el },
-                    })
-                  }
-                />
-                <label htmlFor={`${el}-radio`}>price - {el}</label>
-              </div>
-            );
-          })}
+        <div className='productlist-aside-item'>
+          <p className='font-wt-bold'>Sort by Price</p>
+          <div className='productlist-input-container'>
+            {Object.values(SortBy).map((el) => {
+              return (
+                <div className='productlist-input-item-hz' key={el}>
+                  <input
+                    type='radio'
+                    name='sortby-radio'
+                    id={`${el}-radio`}
+                    value={el}
+                    checked={state.filters.sortBy === el ? true : false}
+                    onChange={() =>
+                      dispatch({
+                        type: ActionType.ChangeFilter,
+                        payload: {
+                          filterType: Filters.SortBy,
+                          filterValue: el,
+                        },
+                      })
+                    }
+                  />
+                  <label htmlFor={`${el}-radio`}>price - {el}</label>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    </div>
   );
 };

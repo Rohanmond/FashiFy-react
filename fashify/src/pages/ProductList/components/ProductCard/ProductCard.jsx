@@ -27,6 +27,9 @@ export const ProductCard = ({ product }) => {
     price,
     wished,
     carted,
+    trending,
+    reviews,
+    original_price,
   } = product;
   const { token } = useAuth();
 
@@ -113,18 +116,26 @@ export const ProductCard = ({ product }) => {
             </span>
           )}
         </button>
-        <div className='productlist-card-new-item-container'>
-          <p className='productlist-card-new-item'>Trending</p>
-        </div>
+        {trending && (
+          <div className='productlist-card-new-item-container'>
+            <p className='productlist-card-new-item'>Trending</p>
+          </div>
+        )}
         <div className='productlist-card-rating-container'>
           <i className='fas fa-star'></i>
-          <p>{rating}</p>
+          <p>{rating}</p> | <p>{reviews}</p>
+        </div>
+        <div className='productlist-card-size-container'>
+          <p>{size}</p>
         </div>
       </div>
       <div className='card-content product-card-content'>
         <div className='product-card-text'>
           <div className='product-card-title'>{title}</div>
-          <div className='product-card-price'>₹{price}</div>
+          <div className='product-card-price-container'>
+            <p>{price}</p>
+            <p className='product-card-original-price'>{original_price}</p>
+          </div>
         </div>
 
         <div className='card-footer-elements'>

@@ -1,12 +1,14 @@
-.productlist-aside {
+.productlist-aside-outer-container {
   flex-basis: 250px;
   padding: 1rem;
   flex-shrink: 0;
   position: sticky;
-  left: 0;
   top: 6rem;
+  left: 0;
+  height: calc(100vh - 6rem);
+  overflow-y: scroll;
+  padding-top: 0.25rem;
 }
-
 .productlist-aside-header {
   display: flex;
   padding: 1rem 0;
