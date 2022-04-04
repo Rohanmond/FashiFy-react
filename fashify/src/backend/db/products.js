@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
  * */
 export const products = [
   {
-    _id: uuid(),
+    _id: '75e79f27-b6fa-4f10-8829-b4d003e77b43',
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516456/fashify/f48fa8e4-ee70-4118-8a1d-a898037036bc1527767035968-Roadster-Men-Tshirts-1311527767034405-1_brfgzm.webp',
     category: 'Men',
@@ -22,7 +22,7 @@ export const products = [
     in_stock: true,
   },
   {
-    _id: uuid(),
+    _id: 'a26b3142-af90-4b65-a4dc-2a145b921d3e',
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516472/fashify/0ecfa52f-1888-49c7-a2da-30e9ef12847a1645512118048Tshirts1_unq0kb.webp',
     category: 'Men',
@@ -38,7 +38,7 @@ export const products = [
     in_stock: true,
   },
   {
-    _id: uuid(),
+    _id: 'a014a62a-ffb2-4507-a6a4-5a6848729b53',
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516493/fashify/11522134275641-Mast--Harbour-Men-Navy-Blue-Striped-Round-Neck-T-shirt-4401522134275464-1_uxmjnr.webp',
     category: 'Men',
@@ -54,7 +54,7 @@ export const products = [
     in_stock: false,
   },
   {
-    _id: uuid(),
+    _id: 'd2fc9ea9-a7ad-4b5d-94ea-69a806aa734e',
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516510/fashify/4d2f609d-4ea2-4d5e-a26a-80cd5eb9e4181592396326747-Nautica-Men-Tshirts-8971592396324879-1_zb8w62.webp',
     category: 'Men',
@@ -71,7 +71,7 @@ export const products = [
     in_stock: true,
   },
   {
-    _id: uuid(),
+    _id: '556603b0-2c56-4462-848e-448dfc69bc3d',
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516528/fashify/11524206887991-Roadster-Men-Tshirts-9291524206887825-1_djqh04.webp',
     category: 'Men',
@@ -87,7 +87,7 @@ export const products = [
     in_stock: true,
   },
   {
-    _id: uuid(),
+    _id: '7ef09383-3ef3-4eeb-ba05-23b2aa4d0553',
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516553/fashify/1cfd3a7b-1864-4225-b56b-7c129071f4d41635325540976-Nautica-Men-Tshirts-5421635325540510-1_fjgoo2.webp',
     category: 'Men',
@@ -104,7 +104,7 @@ export const products = [
     in_stock: false,
   },
   {
-    _id: uuid(),
+    _id: 'be51624b-c4a5-44f2-9c16-69b284e5fd5c',
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516571/fashify/25d7ff1d-6680-4629-b7f8-dda51fb89dc61592396707535-Nautica-Men-Tshirts-3811592396706267-4_hxanis.webp',
     category: 'Men',
@@ -120,7 +120,7 @@ export const products = [
     in_stock: true,
   },
   {
-    _id: uuid(),
+    _id: '4b56b4ef-c361-4c72-b39e-97dee6711bb9',
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516584/fashify/494a0494-2127-485d-8324-28aafe60ca0f1646647959983-one8-x-PUMA-Men-Orange-Brand-Logo-One8Core-Pure-Cotton-Virat-1_vdlx2v.webp',
     category: 'Men',
@@ -136,7 +136,7 @@ export const products = [
     in_stock: true,
   },
   {
-    _id: uuid(),
+    _id: '1f302642-447a-4694-bb27-9703d6524aa4',
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516630/fashify/f8e99b19-1b04-4968-828b-5add2713cd541602749203648-W-Women-Kurtas-9021602749202693-1_fglu21.webp',
     category: 'Women',
@@ -153,7 +153,7 @@ export const products = [
     in_stock: true,
   },
   {
-    _id: uuid(),
+    _id: 'ff06eaed-9a9c-4f42-a525-e233baaaa294',
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516630/fashify/f8e99b19-1b04-4968-828b-5add2713cd541602749203648-W-Women-Kurtas-9021602749202693-1_fglu21.webp',
     category: 'Women',
@@ -170,7 +170,7 @@ export const products = [
     in_stock: true,
   },
   {
-    _id: uuid(),
+    _id: 'c1dd7db4-0830-4e01-a968-bdbcce36d4de',
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516630/fashify/f8e99b19-1b04-4968-828b-5add2713cd541602749203648-W-Women-Kurtas-9021602749202693-1_fglu21.webp',
     category: 'Women',
@@ -186,7 +186,7 @@ export const products = [
     in_stock: true,
   },
   {
-    _id: uuid(),
+    _id: '1bb27d9f-1720-449e-ada1-7fad574344d7',
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516665/fashify/7eca68f0-f33e-4b2c-8543-2123d23b76611608026100620-W-Women-Lavender-Pure-Cotton-Yoke-Design-Straight-Kurta-1041-1_blvm0n.webp',
     category: 'Women',
@@ -202,7 +202,7 @@ export const products = [
     in_stock: true,
   },
   {
-    _id: uuid(),
+    _id: '4694797c-e044-4464-97f0-102c18a48142',
     image:
       'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516665/fashify/7eca68f0-f33e-4b2c-8543-2123d23b76611608026100620-W-Women-Lavender-Pure-Cotton-Yoke-Design-Straight-Kurta-1041-1_blvm0n.webp',
     category: 'Women',
@@ -218,7 +218,7 @@ export const products = [
     in_stock: true,
   },
   {
-    _id: uuid(),
+    _id: 'f17f6d0b-3bf0-4dbd-ad8b-24801572c7a0',
     title: 'Roadster',
     description: 'Men Blue Printed Casual Sustainable Shirt',
     original_price: '1499',
@@ -234,7 +234,7 @@ export const products = [
     in_stock: false,
   },
   {
-    _id: uuid(),
+    _id: '1a11dd3c-a8a8-4d66-acff-9c5015673c2b',
     title: 'KALINI',
     description: 'Women Teal Yoke Design Kurta with Palazzos & With Dupatta',
     original_price: '3699',
@@ -250,7 +250,7 @@ export const products = [
     category: 'Women',
   },
   {
-    _id: uuid(),
+    _id: '8e7d52e2-75e7-489c-9e43-74875ebbc187',
     title: 'AHIKA',
     description:
       'Women Lavender Embroidered Mirror Work Kurta with Palazzos & With Dupatta',
@@ -267,7 +267,7 @@ export const products = [
     delivery_time: '9',
   },
   {
-    _id: uuid(),
+    _id: '5391f145-f5b5-4ec3-93d3-e15ee2e3e115',
     title: 'Mast & Harbour',
     description: 'Men Blue & White Slim Fit Striped Casual Shirt',
     original_price: '2099',
@@ -283,7 +283,7 @@ export const products = [
     delivery_time: '3',
   },
   {
-    _id: uuid(),
+    _id: '76a8c6ea-9bcb-463b-93b8-e5cc65e6c668',
     title: 'Nautica',
     description: 'Men Navy Blue Solid T-shirt',
     original_price: '2399',
@@ -299,7 +299,7 @@ export const products = [
     delivery_time: '5',
   },
   {
-    _id: uuid(),
+    _id: '81d1fb3a-8052-4e6b-b4c6-4070302f04bd',
     title: 'BonOrganik',
     description: 'Boys White Graphic Printed Round-Neck T-shirt',
     original_price: '499',
@@ -315,7 +315,7 @@ export const products = [
     delivery_time: '7',
   },
   {
-    _id: uuid(),
+    _id: '7116b8e1-5b68-4b8f-a616-425762e97d7d',
     title: 'H&M',
     original_price: '799',
     description: 'Boys White & Blue Printed Cotton Round Neck T-Shirt',
@@ -331,7 +331,7 @@ export const products = [
     delivery_time: '3',
   },
   {
-    _id: uuid(),
+    _id: '2cc7f69b-f49b-4008-bb7b-8be37e160657',
     title: 'Dennis Lingo',
     description: 'Men Pink Slim Fit Casual Shirt',
     original_price: '1849',

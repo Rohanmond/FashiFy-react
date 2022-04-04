@@ -12,8 +12,8 @@ export const ProductListAside = () => {
   );
 
   return (
-    <div className='productlist-aside-outer-container'>
-      <aside className='productlist-aside nav-desktop'>
+    <div className='productlist-aside-outer-container nav-desktop'>
+      <aside className='productlist-aside'>
         <div className='productlist-aside-header'>
           <p className='font-wt-bold'>Filters</p>
           <p
@@ -29,7 +29,7 @@ export const ProductListAside = () => {
           <p className='font-wt-bold'>Price</p>
           <div className='productlist-slider-label'>
             <p className='text-secondary-color'>0</p>
-            <p className='text-secondary-color'>{maxValue / 2}</p>
+            <p className='text-secondary-color'>{Math.ceil(maxValue / 2)}</p>
             <p className='text-secondary-color'>{maxValue}</p>
           </div>
           <div className='productlist-input-container'>

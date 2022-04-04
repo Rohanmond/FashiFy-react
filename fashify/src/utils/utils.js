@@ -58,7 +58,7 @@ const priceRangeFilter = (data, maxValue) => {
 const searchFilter = (data, keyword) => {
   if (keyword === '') return data;
   return data.filter((el) =>
-    el.title.toLowerCase().startsWith(keyword.toLowerCase())
+    el.title.toLowerCase().includes(keyword.toLowerCase())
   );
 };
 const validateMobileNo = (input) => {
