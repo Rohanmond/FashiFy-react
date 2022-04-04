@@ -28,8 +28,6 @@ export const Categories = {
   men: 'Men',
   women: 'Women',
   kids: 'Kids',
-  home_n_living: 'Home & Living',
-  beauty: 'Beauty',
 };
 export const Sizes = {
   s: 'S',

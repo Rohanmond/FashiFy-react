@@ -1,9 +1,29 @@
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
 import { ImageSlider } from './ImageSlider';
+import { categoryFilter } from '../../utils/utils';
+import { useData } from '../../contexts/data-context';
+import { ActionType, Filters } from '../../DataReducer/constants';
 
 export const Home = () => {
   const navigate = useNavigate();
+  const { state, dispatch } = useData();
+
+  const categoryFilter = (cat) => {
+    dispatch({
+      type: ActionType.ChangeFilter,
+      payload: {
+        filterType: Filters.Categories,
+        filterValue: {
+          ...Object.keys(state.filters.categories).reduce((acc, curr) => {
+            return { ...acc, [curr]: false };
+          }, {}),
+          [cat]: true,
+        },
+      },
+    });
+    navigate('/products');
+  };
   return (
     <>
       <div className='home-container'>
@@ -24,7 +44,7 @@ export const Home = () => {
         </div>
         <div className='home-cards'>
           <div
-            onClick={() => navigate('/products')}
+            onClick={() => categoryFilter('Men')}
             className='card-container card-container-hz home-card-container card-container-shadow brd-rd-semi-sq'
           >
             <div className='card-img-container-hz home-card-img-container'>
@@ -49,7 +69,7 @@ export const Home = () => {
             </div>
           </div>
           <div
-            onClick={() => navigate('/products')}
+            onClick={() => categoryFilter('Women')}
             className='card-container card-container-hz home-card-container card-container-shadow brd-rd-semi-sq'
           >
             <div className='card-img-container-hz home-card-img-container'>
@@ -72,7 +92,7 @@ export const Home = () => {
             </div>
           </div>
           <div
-            onClick={() => navigate('/products')}
+            onClick={() => categoryFilter('Kids')}
             className='card-container card-container-hz home-card-container card-container-shadow brd-rd-semi-sq'
           >
             <div className='card-img-container-hz home-card-img-container'>
