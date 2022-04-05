@@ -18,7 +18,22 @@ export const ProductDetails = () => {
   } = useData();
 
   const product = products.find((el) => el._id === productId) || {};
-  const { _id, image, price, wished, carted } = product;
+  const {
+    _id,
+    image,
+    price,
+    wished,
+    carted,
+    reviews,
+    description,
+    in_stock,
+    trending,
+    delivery_time,
+    title,
+    rating,
+    original_price,
+    size,
+  } = product;
   const navigate = useNavigate();
 
   const wishlistHandler = async () => {
@@ -82,7 +97,7 @@ export const ProductDetails = () => {
   };
   return (
     <>
-      {product && (
+      {_id && (
         <div className='productlist-container'>
           <main className='product-details-main'>
             <div className='product-details-img-container brd-rd-semi-sq'>
@@ -93,7 +108,7 @@ export const ProductDetails = () => {
               />
               <button
                 onClick={() => wishlistHandler()}
-                className='card-img-tag-btn prod-details-img-tag'
+                className='card-img-tag-btn productlist-card-img-tag-btn-container prod-details-img-tag'
                 disabled={wishButtonDisabled}
               >
                 {!wished ? (
@@ -104,29 +119,58 @@ export const ProductDetails = () => {
                   </span>
                 )}
               </button>
+              {trending && (
+                <div className='productlist-card-new-item-container'>
+                  <p className='productlist-card-new-item text-lg'>Trending</p>
+                </div>
+              )}
+              <div className='productlist-card-rating-container'>
+                <i className='fas fa-star'></i>
+                <p className='text-lg'>{rating}</p>
+              </div>
+              <div className='productlist-card-size-container'>
+                <p className='text-lg'>{size}</p>
+              </div>
             </div>
             <div className='product-details-text-container'>
-              <h2 className='product-details-header'>{product.title}</h2>
-              <small className='product-reviews'>4 review</small>
-              <p className='text-xl font-wt-semibold product-price'>
-                ₹{price} /-
-              </p>
+              <h2 className='product-details-header'>{title}</h2>
+              <small className='product-reviews'>{reviews} reviews</small>
+              <div className='product-price-container'>
+                <p className='text-xl font-wt-semibold product-price'>
+                  ₹{price}
+                </p>
+                <p className='text-xl font-wt-semibold product-original-price'>
+                  ₹{original_price}
+                </p>
+                <p className='product-card-discount text-lg font-wt-semibold'>
+                  {Math.floor(
+                    ((original_price - price) / original_price) * 100
+                  )}
+                  % OFF
+                </p>
+              </div>
+
               <hr />
+
               <p>
-                <span className='font-wt-bold'>Brand :</span>
-                <span className='product-brand'>Lorem</span>
+                <span className='font-wt-bold'>Availability : </span>
+                <span className='prduct-availability'>
+                  {in_stock ? 'In Stock' : 'Out of Stock'}
+                </span>
               </p>
               <p>
-                <span className='font-wt-bold'>Availability :</span>
-                <span className='prduct-availability'>In Stock</span>
+                <span className='font-wt-bold'>Description : </span>
+                <span>{description}</span>
               </p>
-              <p className='font-wt-bold'>Description:</p>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repellat quae officiis dolorem amet aliquid, doloribus in vitae
-                ipsa, autem soluta est nostrum ex aspernatur, reiciendis
-                dignissimos architecto voluptate assumenda consectetur.
+                <span className='font-wt-bold'>Size : </span>
+                <span>{size}</span>
               </p>
+              <p>
+                <span className='font-wt-bold'>Delivery : </span>
+                <span>in {delivery_time} days </span>
+              </p>
+
               <div className='product-details-footer'>
                 <button
                   className='btn btn-link-primary background-primary brd-rd-semi-sq'

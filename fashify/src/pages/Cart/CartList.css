@@ -54,6 +54,7 @@
   padding: 1rem;
   flex-direction: column;
   max-width: none;
+  min-width: 18rem;
 }
 .mngmt_cart-price-item:nth-last-of-type(1) {
   border-top: 2px solid var(--grey-200);

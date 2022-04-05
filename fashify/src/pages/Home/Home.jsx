@@ -1,14 +1,18 @@
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
-import { ImageSlider } from './ImageSlider';
+
 import { categoryFilter } from '../../utils/utils';
 import { useData } from '../../contexts/data-context';
 import { ActionType, Filters } from '../../DataReducer/constants';
+import { useEffect } from 'react';
 
 export const Home = () => {
   const navigate = useNavigate();
   const { state, dispatch } = useData();
 
+  useEffect(() => {
+    dispatch({ type: ActionType.ClearFilter });
+  }, []);
   const categoryFilter = (cat) => {
     dispatch({
       type: ActionType.ChangeFilter,

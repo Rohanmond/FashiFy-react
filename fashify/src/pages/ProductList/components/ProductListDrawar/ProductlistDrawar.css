@@ -15,3 +15,14 @@
 .product-list-drawar-active {
   transform: translateY(0);
 }
+
+@media screen and (min-width: 751px) {
+  .product-list-drawar {
+    display: none;
+  }
+}
+@media screen and (min-width: 501px) {
+  .product-list-drawar {
+    top: 8rem;
+  }
+}

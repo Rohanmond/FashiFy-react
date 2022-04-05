@@ -1,3 +1,6 @@
 .cart-card-container {
   max-width: 25rem;
 }
+.cart-card-img-container {
+  cursor: pointer;
+}
