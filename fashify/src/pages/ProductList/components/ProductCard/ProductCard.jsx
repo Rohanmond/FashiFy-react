@@ -30,6 +30,7 @@ export const ProductCard = ({ product }) => {
     trending,
     reviews,
     original_price,
+    in_stock,
   } = product;
   const { token } = useAuth();
 
@@ -91,7 +92,11 @@ export const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className='card-container card-container-shadow productlist-card brd-rd-semi-sq'>
+    <div
+      className={`card-container card-container-shadow productlist-card brd-rd-semi-sq ${
+        !in_stock && 'product-card-out-of-stock'
+      }`}
+    >
       <div className='card-img-container'>
         <img
           onClick={() => navigate(`/product/${_id}`)}
@@ -99,6 +104,7 @@ export const ProductCard = ({ product }) => {
           src={image}
           alt='card '
         />
+
         <button
           onClick={() => {
             wishlistHandler();
@@ -133,8 +139,12 @@ export const ProductCard = ({ product }) => {
         <div className='product-card-text'>
           <div className='product-card-title'>{title}</div>
           <div className='product-card-price-container'>
-            <p>{price}</p>
-            <p className='product-card-original-price'>{original_price}</p>
+            <p>₹{price}</p>
+            <p className='product-card-original-price'>₹{original_price}</p>
+            <p className='product-card-discount'>
+              {Math.floor(((original_price - price) / original_price) * 100)}%
+              OFF
+            </p>
           </div>
         </div>
 

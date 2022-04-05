@@ -13,12 +13,14 @@ import {
   PostWishList,
 } from '../../../../Services/services';
 import { ToastHandler } from '../../../../utils/utils';
+import { useNavigate } from 'react-router-dom';
 
 const CartCard = ({ el }) => {
   const [cartDisableButton, setDisable] = useState(false);
   const [negativeDisableButton, setNegativeDisableButton] = useState(false);
   const [wishButtonDisabled, setWishDisable] = useState(false);
-  const { image, title, price, qty, _id, id, wished } = el;
+  const navigate = useNavigate();
+  const { image, title, price, qty, _id, id, wished, original_price } = el;
   const { token } = useAuth();
   const { dispatch } = useData();
   const DeleteCartHandler = async () => {
@@ -109,8 +111,13 @@ const CartCard = ({ el }) => {
   };
   return (
     <div className='card-container card-container-hz brd-rd-semi-sq cart-card-container'>
-      <div className='card-img-container-hz'>
-        <img className='card-img brd-rd-semi-sq' src={image} alt='card' />
+      <div className='card-img-container-hz cart-card-img-container'>
+        <img
+          className='card-img brd-rd-semi-sq'
+          src={image}
+          alt='card'
+          onClick={() => navigate(`/product/${_id}`)}
+        />
         <button
           onClick={() => {
             wishlistHandler();
@@ -137,11 +144,14 @@ const CartCard = ({ el }) => {
           <div className='cart_mngmt-card-item'>
             <p className='font-wt-semibold'>₹ {price}</p>
             <p className='text-secondary-color'>
-              <del>₹3999</del>
+              <del>{original_price}</del>
             </p>
           </div>
           <div className='cart_mngmt-card-item'>
-            <div className='text-secondary-color font-wt-bold'>50% off</div>
+            <div className='text-secondary-color font-wt-bold'>
+              {Math.floor(((original_price - price) / original_price) * 100)}%
+              OFF
+            </div>
           </div>
           <div className='cart_mngmt-card-item'>
             <p>Quantity:</p>

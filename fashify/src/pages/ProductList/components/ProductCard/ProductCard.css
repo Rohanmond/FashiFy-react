@@ -3,6 +3,36 @@
   align-self: stretch;
   justify-self: center;
 }
+
+.product-card-out-of-stock::before {
+  content: '';
+  position: absolute;
+  cursor: not-allowed;
+  background-color: var(--black-color);
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.25rem;
+}
+.product-card-out-of-stock::after {
+  content: 'Out Of Stock';
+  display: flex;
+  position: absolute;
+  cursor: not-allowed;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  color: var(--white-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  z-index: 10;
+}
+
 .productlist-card-img {
   height: 16rem;
   grid-row: 1/2;
@@ -75,7 +105,9 @@
   display: flex;
   gap: 0.5rem;
 }
-
+.product-card-discount {
+  margin-left: auto;
+}
 .product-card-original-price {
   text-decoration: line-through;
   font-weight: 500;
