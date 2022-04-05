@@ -6,6 +6,7 @@
   display: none;
   padding: 0.35rem;
   color: var(--primary-color);
+  z-index: 11;
 }
 .filters {
   font-size: 1.375rem;
