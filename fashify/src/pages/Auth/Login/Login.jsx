@@ -16,13 +16,9 @@ const Login = () => {
   });
 
   useEffect(() => {
-    let id;
     if (token) {
-      id = setTimeout(() => {
-        navigate('/products');
-      }, 500);
+      navigate('/products');
     }
-    return () => clearTimeout(id);
   }, [token]);
 
   return (
