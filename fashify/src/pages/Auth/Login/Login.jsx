@@ -39,7 +39,7 @@ const Login = () => {
               <label>Email address</label>
               <input
                 placeholder='abc@fashiFy.com'
-                className='text-input'
+                className='text-input auth-input'
                 type='text'
                 value={loginForm.email}
                 onChange={(e) =>
