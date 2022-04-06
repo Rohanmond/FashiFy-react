@@ -67,3 +67,9 @@
 .logout-text h1 {
   color: var(--primary-color);
 }
+.auth-signup {
+  color: var(--blue-800);
+  cursor: pointer;
+  font-weight: 550;
+  text-decoration: underline;
+}
