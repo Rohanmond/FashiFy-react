@@ -63,14 +63,12 @@ export const Nav = () => {
             </li>
             {!token && (
               <li className='nav-link-item nav-link-item-btn'>
-                (
                 <button
                   onClick={() => navigate('/login')}
                   className='btn btn-secondary outlined-primary brd-rd-semi-sq'
                 >
                   Login
                 </button>
-                )
               </li>
             )}
             {token && (
