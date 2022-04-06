@@ -1,8 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../../contexts';
 import './Details.css';
 
 export const Details = () => {
-  const { currUser: user } = useAuth();
+  const { currUser: user, logoutHandler } = useAuth();
+  const navigate = useNavigate();
+  const ProfileLogoutHandler = () => {
+    logoutHandler();
+    navigate('/logout');
+  };
   console.log(user);
   return (
     <div className='profile-details-container'>
@@ -15,7 +21,10 @@ export const Details = () => {
         <p>{user.email}</p>
       </div>
       <div className='profile-details-footer'>
-        <button className='btn btn-primary background-danger brd-rd-semi-sq'>
+        <button
+          onClick={ProfileLogoutHandler}
+          className='btn btn-primary background-danger brd-rd-semi-sq'
+        >
           Logout
         </button>
       </div>

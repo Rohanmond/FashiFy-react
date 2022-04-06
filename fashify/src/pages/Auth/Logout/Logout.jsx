@@ -6,7 +6,7 @@ const Logout = () => {
     <div className='logout-container'>
       <main className='logout-main-container'>
         <div className='logout-text'>
-          <h1>You are currently logged Out</h1>
+          <h2>You are currently logged Out</h2>
           <p>Don't miss out on latest deals.</p>
           <button
             className='btn btn-link-primary background-primary brd-rd-semi-sq'
