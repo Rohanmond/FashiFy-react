@@ -173,12 +173,6 @@ export const ProductDetails = () => {
 
               <div className='product-details-footer'>
                 <button
-                  className='btn btn-link-primary background-primary brd-rd-semi-sq'
-                  href='../cart_mngmt/cart_mngmt.html'
-                >
-                  Buy Now
-                </button>
-                <button
                   disabled={cartbuttonDisabled}
                   onClick={() => cartHandler()}
                   className={`btn btn-primary brd-rd-semi-sq ${

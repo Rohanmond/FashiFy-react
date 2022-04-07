@@ -134,6 +134,9 @@ export const DataReducer = (state, action) => {
       return {
         ...state,
         cartlist: [],
+        products: state.products.map((el) => {
+          return { ...el, carted: false, qty: 0 };
+        }),
       };
     }
     default:
