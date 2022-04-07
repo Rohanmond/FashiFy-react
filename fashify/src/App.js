@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Mockman from 'mockman-js';
-import { Nav } from './components';
+import { Nav, PrivateRoute } from './components';
 import './App.css';
 
 import {
@@ -50,19 +50,35 @@ function App() {
         <Route path='/product/:productId' element={<ProductDetails />} />
         <Route
           path='/wishlist'
-          element={token ? <WishList /> : <Navigate to='/login' />}
+          element={
+            <PrivateRoute>
+              <WishList />
+            </PrivateRoute>
+          }
         />
         <Route
           path='/checkout'
-          element={token ? <Checkout /> : <Navigate to={'/login'} />}
+          element={
+            <PrivateRoute>
+              <Checkout />
+            </PrivateRoute>
+          }
         />
         <Route
           path='/cartlist'
-          element={token ? <CartList /> : <Navigate to={'/login'} />}
+          element={
+            <PrivateRoute>
+              <CartList />
+            </PrivateRoute>
+          }
         />
         <Route
           path='/profile'
-          element={token ? <Profile /> : <Navigate to={'/login'} />}
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
         >
           <Route path='details' element={<Details />} />
           <Route path='addresses' element={<Addresses />} />
