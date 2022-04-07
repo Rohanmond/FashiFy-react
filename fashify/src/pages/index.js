@@ -6,3 +6,4 @@ export { MockApi } from './MockApi/MockApi';
 export { Profile } from './Profile/Profile';
 export { Checkout } from './Checkout/Checkout';
 export { CartList } from './Cart/CartList';
+export { ErrorPage } from './ErrorPage/ErrorPage';

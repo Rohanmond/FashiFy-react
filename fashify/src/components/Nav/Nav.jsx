@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 
 export const Nav = () => {
   const { token } = useAuth();
+  const location = useLocation();
   const { state, dispatch } = useData();
   const [input, setInput] = useState('');
   const navigate = useNavigate();
@@ -22,6 +23,10 @@ export const Nav = () => {
       },
     });
   }, [navigate]);
+
+  if (location.pathname === '/404') {
+    return null;
+  }
   return (
     <nav className='navigation home-nav'>
       <div className='nav-mobile-up'>

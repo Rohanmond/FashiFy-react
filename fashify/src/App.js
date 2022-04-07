@@ -4,6 +4,7 @@ import './App.css';
 import {
   CartList,
   Checkout,
+  ErrorPage,
   Home,
   MockApi,
   ProductDetails,
@@ -45,6 +46,8 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/logout' element={<Logout />} />
+        <Route path='/404' element={<ErrorPage />} />
+        <Route path='*' element={<Navigate to={'/404'} />} />
         <Route path='/product/:productId' element={<ProductDetails />} />
         <Route
           path='/wishlist'
