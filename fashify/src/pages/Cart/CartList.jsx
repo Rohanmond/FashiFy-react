@@ -12,13 +12,14 @@ const CartList = () => {
           {cartData.length})
         </h4>
       </div>
+      {cartData.length === 0 && <h4>Your cart is empty</h4>}
       <div className='cart_mngmt-content'>
         <div className='cart_mngmt-carts'>
           {cartData.map((el) => {
             return <CartCard el={el} key={el.id} />;
           })}
         </div>
-        {cartData.length === 0 && <h4>Your cart is empty</h4>}
+
         {cartData.length !== 0 && (
           <div className='cart_mngmt-price-details'>
             <div className='card-container cart_mngmt-price-card brd-rd-semi-sq'>
