@@ -80,7 +80,6 @@ export const IncDecCart = async ({ productId, encodedToken, type }) => {
   );
 };
 export const DeleteCart = async ({ productId, encodedToken }) => {
-  console.log('inservei delete');
   return axios.delete(`/api/user/cart/${productId}`, {
     headers: {
       authorization: encodedToken,
