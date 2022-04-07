@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useAuth, useData } from '../../contexts';
-import { ActionType } from '../../DataReducer/constants';
+import { ActionType, ToastType } from '../../DataReducer/constants';
 import { DeleteCart } from '../../Services/services';
+import { ToastHandler } from '../../utils/utils';
 import './Checkout.css';
 export const Checkout = () => {
   const { state, dispatch } = useData();
   const { currUser, token } = useAuth();
+  const [address, setAddress] = useState(false);
   const { name, email } = currUser;
   const [responseSummary, setResponseSummary] = useState({
     msg: false,
@@ -57,7 +59,9 @@ export const Checkout = () => {
     });
   };
   const razorpayHandler = () => {
-    displayRazorpay();
+    address
+      ? displayRazorpay()
+      : ToastHandler(ToastType.Info, 'Please select address');
   };
   const loadScript = async (url) => {
     return new Promise((resolve) => {
@@ -125,7 +129,12 @@ export const Checkout = () => {
           <div className='checkout-address-container'>
             <h3>Address Details</h3>
             <div className='checkout-address-box'>
-              <input type='checkbox' id='address' />
+              <input
+                type='checkbox'
+                value={address}
+                onChange={() => setAddress((add) => !add)}
+                id='address'
+              />
               <label className='address-label' htmlFor='address'>
                 <h3>Rohan Mondal</h3>
                 <p>Yehlahanka, President Leon , Bengaluru, 560064</p>
