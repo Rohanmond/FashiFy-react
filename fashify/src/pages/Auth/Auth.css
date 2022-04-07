@@ -5,7 +5,7 @@
 .login-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: calc(100vh - 6rem);
   margin-top: 6rem;
   padding: 0.75rem;
 }
@@ -66,4 +66,10 @@
 }
 .logout-text h1 {
   color: var(--primary-color);
+}
+.auth-signup {
+  color: var(--blue-800);
+  cursor: pointer;
+  font-weight: 550;
+  text-decoration: underline;
 }

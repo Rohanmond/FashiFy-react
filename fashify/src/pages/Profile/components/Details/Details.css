@@ -1,0 +1,26 @@
+.profile-details-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+.profile-details-item {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  gap: 1rem;
+}
+.profile-details-item-label {
+  color: var(--text-secondary-color);
+}
+.profile-details-footer {
+  margin-top: 2rem;
+  margin-left: auto;
+}
+@media screen and (max-width: 750px) {
+  .profile-details-item {
+    font-size: 1.25rem;
+  }
+}

@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 4rem);
+  min-height: calc(100vh - 4rem);
   margin-top: 4rem;
 }
 .product-details-main {
@@ -55,6 +55,7 @@
 }
 @media screen and (max-width: 750px) {
   .productlist-container {
+    min-height: calc(100vh - 9rem);
     margin-top: 9rem;
   }
   .product-details-main {

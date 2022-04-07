@@ -1,7 +1,14 @@
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Mockman from 'mockman-js';
 import { Nav } from './components';
-import { Home, MockApi, ProductDetails, ProductList, WishList } from './pages';
+import {
+  Home,
+  MockApi,
+  ProductDetails,
+  ProductList,
+  Profile,
+  WishList,
+} from './pages';
 import Login from './pages/Auth/Login/Login';
 import { useAuth } from './contexts/auth-context';
 import Loader from './components/Loader/Loader';
@@ -11,6 +18,7 @@ import SignUp from './pages/Auth/Signup/Signup';
 import Logout from './pages/Auth/Logout/Logout';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Addresses, Details, Orders } from './pages/Profile/components';
 function App() {
   const { token } = useAuth();
   const { loader } = useData();
@@ -44,6 +52,14 @@ function App() {
           path='/cartlist'
           element={token ? <CartList /> : <Navigate to={'/login'} />}
         />
+        <Route
+          path='/profile'
+          element={token ? <Profile /> : <Navigate to={'/login'} />}
+        >
+          <Route path='details' element={<Details />} />
+          <Route path='addresses' element={<Addresses />} />
+          <Route path='orders' element={<Orders />} />
+        </Route>
       </Routes>
     </>
   );

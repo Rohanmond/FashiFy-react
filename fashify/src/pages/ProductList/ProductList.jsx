@@ -16,6 +16,7 @@ export const ProductList = () => {
     const id = setTimeout(() => {
       setLoader(false);
     }, 500);
+    window.scrollTo(0, 0);
     return () => clearTimeout(id);
   }, []);
 

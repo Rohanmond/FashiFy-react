@@ -61,28 +61,28 @@ export const Nav = () => {
             <li className='nav-link-item nav-explore-link'>
               <Link to='/products'>Explore</Link>
             </li>
-            <li className='nav-link-item nav-link-item-btn'>
-              {!token && (
+            {!token && (
+              <li className='nav-link-item nav-link-item-btn'>
                 <button
                   onClick={() => navigate('/login')}
                   className='btn btn-secondary outlined-primary brd-rd-semi-sq'
                 >
                   Login
                 </button>
-              )}
-              {token && (
-                <button
-                  onClick={() => {
-                    logoutHandler();
-                    navigate('/logout');
-                  }}
-                  className='btn btn-secondary outlined-primary brd-rd-semi-sq'
-                >
-                  Logout
-                </button>
-              )}
-            </li>
-
+              </li>
+            )}
+            {token && (
+              <li
+                className='nav-link-item'
+                onClick={() => navigate('/profile/details')}
+              >
+                <div className='badge-icon nav-badge-icon'>
+                  <span className='material-icons-outlined'>
+                    account_circle
+                  </span>
+                </div>
+              </li>
+            )}
             <li className='nav-link-item'>
               <div
                 className='badge-container'

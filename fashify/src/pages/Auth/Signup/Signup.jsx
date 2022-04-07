@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../contexts';
 import '../Auth.css';
 const SignUp = () => {
@@ -98,19 +98,7 @@ const SignUp = () => {
               <input placeholder='' className='text-input' type='password' />
             </div>
           </div>
-          <div className='login-card-item'>
-            <div className='input-container-hz'>
-              <input
-                type='checkbox'
-                name='terms-conditions-checkbox'
-                value='accepted terms conditions'
-                id='terms-conditions-checkbox'
-              />
-              <label htmlFor='terms-conditions-checkbox'>
-                I accept all Terms &#38; Conditions
-              </label>
-            </div>
-          </div>
+
           <div className='login-card-item'>
             <button
               onClick={() =>
@@ -128,12 +116,15 @@ const SignUp = () => {
             >
               Create New Account
             </button>
-            <button
-              className='btn btn-link-secondary outlined-secondary text-align-center brd-rd-semi-sq'
-              onClick={() => navigate('/login')}
-            >
-              Already have an account
-            </button>
+            <div className='auth-footer'>
+              <p>
+                <span>Already have an account?</span>
+                <Link className='auth-signup' to={'/login'}>
+                  {' '}
+                  sign in
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </main>
