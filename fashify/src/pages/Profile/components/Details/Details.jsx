@@ -9,7 +9,7 @@ export const Details = () => {
     logoutHandler();
     navigate('/logout');
   };
-  console.log(user);
+
   return (
     <div className='profile-details-container'>
       <div className='profile-details-item'>

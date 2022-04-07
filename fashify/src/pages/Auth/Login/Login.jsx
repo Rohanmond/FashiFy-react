@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../contexts/auth-context';
 import '../Auth.css';
 
@@ -75,13 +75,10 @@ const Login = () => {
             <div className='auth-footer'>
               <p>
                 <span>Don't have an account?</span>
-                <span
-                  className='auth-signup'
-                  onClick={() => navigate('/signup')}
-                >
+                <Link className='auth-signup' to={'/signup'}>
                   {' '}
                   sign up
-                </span>
+                </Link>
               </p>
             </div>
           </div>
