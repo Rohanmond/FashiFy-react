@@ -1,21 +1,53 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../../contexts';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth, useData } from '../../../contexts';
+import {
+  validateEmail,
+  validateOnlyString,
+  validatePassword,
+} from '../../../utils/utils';
 import '../Auth.css';
 const SignUp = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const { token, signupHandler } = useAuth();
   const [signupForm, setSignupForm] = useState({
     name: '',
     password: '',
     email: '',
   });
-  const [formError, setFormError] = useState({
-    nameError: '',
-    passwordError: '',
-    emailError: '',
-  });
+  const resetFormError = {
+    name: '',
+    email: '',
+    password: '',
+    'confirm-password': '',
+  };
+  const [formError, setFormError] = useState(resetFormError);
 
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    let flagErr = false;
+    let newFormError = {};
+    Object.keys(formError).forEach((key) => {
+      newFormError[key] = '';
+      if (signupForm[key] === '' && key !== 'confirm-password') {
+        newFormError[key] = `${key} shouldn't be empty`;
+        flagErr = true;
+      }
+    });
+    if (signupForm.password !== signupForm.confirm_password) {
+      flagErr = true;
+      newFormError['confirm-password'] =
+        "Password and confirm password didn't matched";
+    }
+    if (flagErr) {
+      setFormError(newFormError);
+      return;
+    }
+
+    signupHandler(signupForm.email, signupForm.password, signupForm.name);
+  };
   useEffect(() => {
     let id;
     if (token) {
@@ -43,9 +75,17 @@ const SignUp = () => {
                 type='text'
                 value={signupForm.name}
                 required
-                onChange={(e) =>
-                  setSignupForm({ ...signupForm, name: e.target.value })
-                }
+                onChange={(e) => {
+                  setSignupForm({ ...signupForm, name: e.target.value });
+                  if (!validateOnlyString(e.target.value)) {
+                    setFormError({
+                      ...formError,
+                      name: 'Name should be in strings',
+                    });
+                  } else {
+                    setFormError({ ...formError, name: '' });
+                  }
+                }}
               />
               {formError.nameError && (
                 <div className='err-msg'>Name shouldn't be number</div>
@@ -62,12 +102,22 @@ const SignUp = () => {
                 type='email'
                 required
                 value={signupForm.email}
-                onChange={(e) =>
-                  setSignupForm({ ...signupForm, email: e.target.value })
-                }
+                onChange={(e) => {
+                  setSignupForm({ ...signupForm, email: e.target.value });
+                  if (!validateEmail(e.target.value)) {
+                    setFormError({
+                      ...formError,
+                      email: 'Email should be in correct format',
+                    });
+                  } else {
+                    setFormError({ ...formError, email: '' });
+                  }
+                }}
               />
-              {formError.emailError && (
-                <div className='err-msg'>Email should be in proper format</div>
+              {formError.email && (
+                <div className='err-msg font-wt-semibold'>
+                  {formError.email}
+                </div>
               )}
             </div>
           </div>
@@ -80,39 +130,55 @@ const SignUp = () => {
                 type='password'
                 value={signupForm.password}
                 required
-                onChange={(e) =>
-                  setSignupForm({ ...signupForm, password: e.target.value })
-                }
+                onChange={(e) => {
+                  setSignupForm({ ...signupForm, password: e.target.value });
+                  if (!validatePassword(e.target.value)) {
+                    setFormError({
+                      ...formError,
+                      password:
+                        'Password should be in 8 to 20 chars and should have one digit',
+                    });
+                  } else {
+                    setFormError({ ...formError, password: '' });
+                  }
+                }}
               />
             </div>
-            {formError.passwordError && (
-              <div className='err-msg'>
-                Password should contain atleast one digit and should be equal or
-                more than 8 chars long
+            {formError.password && (
+              <div className='err-msg font-wt-semibold'>
+                {formError.password}
               </div>
             )}
           </div>
           <div className='login-card-item'>
             <div className='input-container'>
               <label>Confirm password</label>
-              <input placeholder='' className='text-input' type='password' />
+              <input
+                placeholder=''
+                className='text-input'
+                type='password'
+                onChange={(e) =>
+                  setSignupForm({
+                    ...signupForm,
+                    confirm_password: e.target.value,
+                  })
+                }
+                onFocus={() =>
+                  setFormError({ ...formError, 'confirm-password': '' })
+                }
+              />
+              {formError['confirm-password'] && (
+                <div className='err-msg font-wt-semibold'>
+                  {formError['confirm-password']}
+                </div>
+              )}
             </div>
           </div>
 
           <div className='login-card-item'>
             <button
-              onClick={() =>
-                signupHandler(
-                  signupForm.email,
-                  signupForm.password,
-                  signupForm.name
-                )
-              }
+              onClick={onSubmitHandler}
               className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
-              disabled={Object.keys(formError).reduce(
-                (acc, curr) => (formError[curr] ? true : acc),
-                false
-              )}
             >
               Create New Account
             </button>
