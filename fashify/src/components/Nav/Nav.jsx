@@ -46,7 +46,11 @@ export const Nav = () => {
               setInput(e.target.value);
             }}
             onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.target.value === '') {
+              if (
+                e.key === 'Enter' ||
+                e.target.value === '' ||
+                e.keyCode === 8
+              ) {
                 dispatch({
                   type: ActionType.ChangeFilter,
                   payload: {
