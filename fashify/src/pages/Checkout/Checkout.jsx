@@ -55,8 +55,6 @@ export const Checkout = () => {
   const totalPrice = price - discount - 100;
 
   const clearCart = async (el, token) => {
-    console.log('delete', el);
-
     try {
       const res = await DeleteCart({ productId: el._id, encodedToken: token });
     } catch (err) {
@@ -65,7 +63,6 @@ export const Checkout = () => {
     }
   };
   const clearCarts = () => {
-    console.log('Hello');
     let err = null;
     console.log(state);
     state.cartlist.forEach((el) => {
