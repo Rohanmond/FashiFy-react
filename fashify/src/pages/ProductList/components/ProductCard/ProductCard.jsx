@@ -1,6 +1,6 @@
 import './ProductCard.css';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useData } from '../../../../contexts/data-context';
 import {
   DeleteWish,
@@ -33,12 +33,13 @@ export const ProductCard = ({ product }) => {
     in_stock,
   } = product;
   const { token } = useAuth();
+  const location = useLocation();
 
   const wishlistHandler = async () => {
     setWishDisable(true);
     try {
       if (!token) {
-        navigate('/login');
+        navigate('/login', { state: { from: location } });
         return;
       }
       let res = null;
@@ -66,7 +67,7 @@ export const ProductCard = ({ product }) => {
     setcartDisable(true);
     try {
       if (!token) {
-        navigate('/login');
+        navigate('/login', { state: { from: location } });
         return;
       }
       if (carted) {

@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../contexts/auth-context';
 import '../Auth.css';
 
 const Login = () => {
   const { loginHandler, token } = useAuth();
+  const location = useLocation();
   const navigate = useNavigate();
   const fixedLoginForm = {
     email: 'johndoe@gmail.com',
@@ -21,7 +22,7 @@ const Login = () => {
   };
   useEffect(() => {
     if (token) {
-      navigate('/products');
+      navigate(location?.state?.from.pathname || '/', { replace: true });
     }
   }, [token]);
 

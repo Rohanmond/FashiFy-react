@@ -49,13 +49,9 @@ const SignUp = () => {
     signupHandler(signupForm.email, signupForm.password, signupForm.name);
   };
   useEffect(() => {
-    let id;
     if (token) {
-      id = setTimeout(() => {
-        navigate('/products');
-      }, 500);
+      navigate(location?.state?.from.pathname || '/', { replace: true });
     }
-    return () => clearTimeout(id);
   }, [token]);
   return (
     <div className='login-container'>
