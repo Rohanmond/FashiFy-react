@@ -15,6 +15,10 @@ const Login = () => {
     password: '',
   });
 
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    loginHandler(loginForm.email, loginForm.password);
+  };
   useEffect(() => {
     if (token) {
       navigate('/products');
@@ -24,7 +28,7 @@ const Login = () => {
   return (
     <div className='login-container'>
       <main className='login-main'>
-        <div className='login-card brd-rd-semi-sq'>
+        <form className='login-card brd-rd-semi-sq' onSubmit={onSubmitHandler}>
           <div className='login-card-header'>
             <h3 className='text-align-center'>Sign In</h3>
           </div>
@@ -35,6 +39,7 @@ const Login = () => {
                 placeholder='abc@fashiFy.com'
                 className='text-input auth-input'
                 type='text'
+                required={true}
                 value={loginForm.email}
                 onChange={(e) =>
                   setLoginForm({ ...loginForm, email: e.target.value })
@@ -48,6 +53,7 @@ const Login = () => {
               <input
                 placeholder='abcd1234'
                 value={loginForm.password}
+                required={true}
                 className='text-input'
                 type='password'
                 onChange={(e) =>
@@ -59,15 +65,19 @@ const Login = () => {
 
           <div className='login-card-item'>
             <button
-              onClick={() => loginHandler(loginForm.email, loginForm.password)}
+              type='submit'
               className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
             >
               Login
             </button>
             <button
               onClick={() =>
-                loginHandler(fixedLoginForm.email, fixedLoginForm.password)
+                setLoginForm({
+                  email: fixedLoginForm.email,
+                  password: fixedLoginForm.password,
+                })
               }
+              type='submit'
               className='btn btn-link-primary background-primary text-align-center brd-rd-semi-sq'
             >
               Login As a Guest
@@ -82,7 +92,7 @@ const Login = () => {
               </p>
             </div>
           </div>
-        </div>
+        </form>
       </main>
     </div>
   );

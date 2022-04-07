@@ -11,6 +11,7 @@ export const Checkout = () => {
   const navigate = useNavigate();
   const [address, setAddress] = useState(false);
   const { name, email } = currUser;
+
   const [responseSummary, setResponseSummary] = useState({
     msg: false,
     id: null,
@@ -20,10 +21,17 @@ export const Checkout = () => {
     let id = null;
     if (responseSummary.msg) {
       id = setTimeout(() => {
+        dispatch({
+          type: ActionType.ResetCartPriceDetails,
+        });
         navigate('/products');
       }, 3000);
     }
   }, [responseSummary]);
+
+  useEffect(() => {
+    if (Object.keys(state.cartPriceDetails).length === 0) navigate('/products');
+  }, []);
   const calculateDiscount = (price) => {
     const discount = {
       500: 50,
@@ -111,9 +119,6 @@ export const Checkout = () => {
         console.log(response.razorpay_payment_id);
         setResponseSummary({ msg: true, id: response.razorpay_payment_id });
         clearCarts();
-        dispatch({
-          type: ActionType.ResetCartPriceDetails,
-        });
       },
       prefill: {
         name: name,

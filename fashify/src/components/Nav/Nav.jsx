@@ -7,7 +7,8 @@ import { ActionType, Filters } from '../../DataReducer/constants';
 import { useEffect, useState } from 'react';
 
 export const Nav = () => {
-  const { token, logoutHandler } = useAuth();
+  const { token } = useAuth();
+  const location = useLocation();
   const { state, dispatch } = useData();
   const [input, setInput] = useState('');
   const navigate = useNavigate();
@@ -22,6 +23,10 @@ export const Nav = () => {
       },
     });
   }, [navigate]);
+
+  if (location.pathname === '/404') {
+    return null;
+  }
   return (
     <nav className='navigation home-nav'>
       <div className='nav-mobile-up'>
@@ -41,7 +46,11 @@ export const Nav = () => {
               setInput(e.target.value);
             }}
             onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.target.value === '') {
+              if (
+                e.key === 'Enter' ||
+                e.target.value === '' ||
+                e.keyCode === 8
+              ) {
                 dispatch({
                   type: ActionType.ChangeFilter,
                   payload: {
