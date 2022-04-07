@@ -126,7 +126,7 @@ export const Checkout = () => {
         contact: '9876543210',
       },
       theme: {
-        color: '#007bb5',
+        color: '#2B51E1',
       },
     };
     const paymentObject = new window.Razorpay(options);
@@ -135,9 +135,7 @@ export const Checkout = () => {
 
   return (
     <>
-      {responseSummary.msg && (
-        <div className='checkout-msg'>Your order has successfully placed</div>
-      )}
+      {responseSummary.msg && <div className='checkout-msg'>Y</div>}
       {!responseSummary.msg && (
         <div className='checkout-outer-container'>
           {responseSummary.msg && <div>Your order has successfully placed</div>}
