@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth, useData } from '../../contexts';
 import { ActionType, ToastType } from '../../DataReducer/constants';
 import { DeleteCart } from '../../Services/services';
@@ -7,6 +8,7 @@ import './Checkout.css';
 export const Checkout = () => {
   const { state, dispatch } = useData();
   const { currUser, token } = useAuth();
+  const navigate = useNavigate();
   const [address, setAddress] = useState(false);
   const { name, email } = currUser;
   const [responseSummary, setResponseSummary] = useState({
@@ -14,6 +16,14 @@ export const Checkout = () => {
     id: null,
   });
 
+  useEffect(() => {
+    let id = null;
+    if (responseSummary.msg) {
+      id = setTimeout(() => {
+        navigate('/products');
+      }, 3000);
+    }
+  }, [responseSummary]);
   const calculateDiscount = (price) => {
     const discount = {
       500: 50,
