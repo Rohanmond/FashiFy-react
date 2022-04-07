@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
         );
         setCurrUser(foundUser);
         setToken(encodedToken);
-        ToastHandler(ToastType.Info, 'Successfully logged in');
+        ToastHandler(ToastType.Success, 'Successfully logged in');
       }
     } catch (err) {
       console.log(err);
