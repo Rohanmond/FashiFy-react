@@ -7,10 +7,12 @@ const CartList = () => {
   return (
     <main className='cart_mngmt-main'>
       <div className='cart_mngmt-main-heading text-align-center'>
-        <h4>
-          MY CART(
-          {cartData.length})
-        </h4>
+        {cartData.length > 0 && (
+          <h4>
+            MY CART(
+            {cartData.length})
+          </h4>
+        )}
       </div>
       {cartData.length === 0 && <h4>Your cart is empty</h4>}
       <div className='cart_mngmt-content'>
