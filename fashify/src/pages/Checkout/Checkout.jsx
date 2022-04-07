@@ -132,15 +132,18 @@ export const Checkout = () => {
 
   return (
     <>
-      {responseSummary.msg && <div className='checkout-msg'>Y</div>}
+      {responseSummary.msg && (
+        <div className='checkout-msg font-wt-semibold'>
+          Your order has succssfully placed
+        </div>
+      )}
       {!responseSummary.msg && (
         <div className='checkout-outer-container'>
-          {responseSummary.msg && <div>Your order has successfully placed</div>}
           <div className='checkout-address-container'>
             <h3>Address Details</h3>
             <div className='checkout-address-box'>
               <input
-                type='checkbox'
+                type='radio'
                 value={address}
                 onChange={() => setAddress((add) => !add)}
                 id='address'
