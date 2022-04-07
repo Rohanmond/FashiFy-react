@@ -42,7 +42,7 @@
 .prod-details-img-tag {
   grid-row: 1/2;
   grid-column: 1/2;
-  background-color: var(--yellow-200);
+  background-color: var(--blue-400);
 }
 .product-price-container {
   display: flex;
