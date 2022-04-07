@@ -1,7 +1,11 @@
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Mockman from 'mockman-js';
 import { Nav } from './components';
+import './App.css';
+
 import {
+  CartList,
+  Checkout,
   Home,
   MockApi,
   ProductDetails,
@@ -13,7 +17,7 @@ import Login from './pages/Auth/Login/Login';
 import { useAuth } from './contexts/auth-context';
 import Loader from './components/Loader/Loader';
 import { useData } from './contexts/data-context';
-import CartList from './pages/Cart/CartList';
+
 import SignUp from './pages/Auth/Signup/Signup';
 import Logout from './pages/Auth/Logout/Logout';
 import { ToastContainer } from 'react-toastify';
@@ -23,7 +27,7 @@ function App() {
   const { token } = useAuth();
   const { loader } = useData();
   return (
-    <>
+    <div className='app'>
       {loader && <Loader />}
       <ToastContainer
         position='bottom-right'
@@ -49,6 +53,10 @@ function App() {
           element={token ? <WishList /> : <Navigate to='/login' />}
         />
         <Route
+          path='/checkout'
+          element={token ? <Checkout /> : <Navigate to={'/login'} />}
+        />
+        <Route
           path='/cartlist'
           element={token ? <CartList /> : <Navigate to={'/login'} />}
         />
@@ -61,7 +69,7 @@ function App() {
           <Route path='orders' element={<Orders />} />
         </Route>
       </Routes>
-    </>
+    </div>
   );
 }
 

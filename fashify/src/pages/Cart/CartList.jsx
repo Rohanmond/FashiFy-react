@@ -1,9 +1,26 @@
+import { useNavigate } from 'react-router-dom';
 import { useData } from '../../contexts';
+import { ActionType } from '../../DataReducer/constants';
 import './CartList.css';
 import CartCard from './components/CartCard/CartCard';
-const CartList = () => {
-  const { state } = useData();
+export const CartList = () => {
+  const { state, dispatch } = useData();
   const cartData = state.products.filter((el) => el.carted);
+  const navigate = useNavigate();
+
+  const checkoutHandler = () => {
+    const totalQty = cartData.reduce((acc, curr) => {
+      return acc + curr.qty;
+    }, 0);
+    const totalPrice = cartData.reduce((acc, curr) => {
+      return acc + Number(curr.price) * curr.qty;
+    }, 0);
+    dispatch({
+      type: ActionType.SetCartPriceDetails,
+      payload: { cartPriceDetails: { price: totalPrice, qty: totalQty } },
+    });
+    navigate('/checkout');
+  };
   return (
     <main className='cart_mngmt-main'>
       <div className='cart_mngmt-main-heading text-align-center'>
@@ -51,12 +68,12 @@ const CartList = () => {
                   }, 0)}
                 </p>
               </div>
-              <a
+              <button
                 className='btn btn-link-primary background-primary brd-rd-semi-sq text-align-center'
-                href='../checkout/checkout.html'
+                onClick={checkoutHandler}
               >
                 CHECKOUT
-              </a>
+              </button>
             </div>
           </div>
         )}
@@ -64,4 +81,3 @@ const CartList = () => {
     </main>
   );
 };
-export default CartList;
