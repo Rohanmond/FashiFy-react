@@ -19,3 +19,8 @@
   margin-top: 2rem;
   margin-left: auto;
 }
+@media screen and (max-width: 750px) {
+  .profile-details-item {
+    font-size: 1.25rem;
+  }
+}
