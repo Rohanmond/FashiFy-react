@@ -7,7 +7,7 @@ import { ActionType, Filters } from '../../DataReducer/constants';
 import { useEffect, useState } from 'react';
 
 export const Nav = () => {
-  const { token, logoutHandler } = useAuth();
+  const { token } = useAuth();
   const { state, dispatch } = useData();
   const [input, setInput] = useState('');
   const navigate = useNavigate();
