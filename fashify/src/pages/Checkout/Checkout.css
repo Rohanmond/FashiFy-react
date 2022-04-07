@@ -55,3 +55,10 @@
   display: flex;
   flex-direction: column;
 }
+@media screen and (max-width: 750px) {
+  .checkout-outer-container {
+    flex-direction: column;
+    overflow: hidden;
+    padding: 2rem;
+  }
+}
