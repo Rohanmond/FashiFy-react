@@ -2,6 +2,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Mockman from 'mockman-js';
 import { Nav } from './components';
 import './App.css';
+
 import {
   CartList,
   Checkout,
