@@ -7,7 +7,6 @@ export const WishList = () => {
   return (
     <main className='wishlist-main-container'>
       <div className='wishlist-main-heading text-align-center'>
-        {state.wishlist.length > 0 && <h4>MY WISHLIST</h4>}
         {state.wishlist.length === 0 && (
           <h4>You don't have any product inside your wishlist</h4>
         )}

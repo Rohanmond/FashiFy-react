@@ -5,6 +5,9 @@ export const ActionType = {
   ClearFilter: 'CLEAR_FILTER',
   SetWishList: 'SET_WISHLIST',
   SetCartList: 'SET_CARTLIST',
+  SetCartPriceDetails: 'SET_CART_PRICE_DETAILS',
+  ResetCartPriceDetails: 'RESET_CART_PRICE_DETAILS',
+  ClearCart: 'CLEAR_CART',
 };
 export const ToastType = {
   Warn: 'warn',

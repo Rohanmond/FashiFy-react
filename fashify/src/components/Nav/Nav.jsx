@@ -75,6 +75,7 @@ export const Nav = () => {
               <li
                 className='nav-link-item'
                 onClick={() => navigate('/profile/details')}
+                title='profile'
               >
                 <div className='badge-icon nav-badge-icon'>
                   <span className='material-icons-outlined'>
@@ -87,6 +88,7 @@ export const Nav = () => {
               <div
                 className='badge-container'
                 onClick={() => navigate('/wishlist')}
+                title={'wishlist'}
               >
                 <div className='badge-icon nav-badge-icon'>
                   <span className='material-icons-outlined'>
@@ -107,6 +109,7 @@ export const Nav = () => {
               <div
                 className='badge-container'
                 onClick={() => navigate('/cartlist')}
+                title='cartlist'
               >
                 <div className='badge-icon nav-badge-icon'>
                   <span className='material-icons-outlined'>shopping_cart</span>

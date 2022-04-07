@@ -12,6 +12,7 @@ export const initialState = {
   products: [],
   wishlist: [],
   cartlist: [],
+  cartPriceDetails: {},
   showNav: true,
 };
 
@@ -115,6 +116,24 @@ export const DataReducer = (state, action) => {
             qty: product ? product.qty : 0,
           };
         }),
+      };
+    }
+    case ActionType.SetCartPriceDetails: {
+      return {
+        ...state,
+        cartPriceDetails: { ...action.payload.cartPriceDetails },
+      };
+    }
+    case ActionType.ResetCartPriceDetails: {
+      return {
+        ...state,
+        cartPriceDetails: {},
+      };
+    }
+    case ActionType.ClearCart: {
+      return {
+        ...state,
+        cartlist: [],
       };
     }
     default:
