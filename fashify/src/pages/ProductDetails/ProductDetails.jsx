@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../../contexts/auth-context';
 import { useData } from '../../contexts/data-context';
 import { ActionType, ToastType } from '../../DataReducer/constants';
@@ -9,6 +9,7 @@ import './ProductDetails.css';
 
 export const ProductDetails = () => {
   const { productId } = useParams();
+  const location = useLocation();
   const [cartbuttonDisabled, setcartDisable] = useState(false);
   const [wishButtonDisabled, setWishDisable] = useState(false);
   const { token } = useAuth();
@@ -40,7 +41,7 @@ export const ProductDetails = () => {
     setWishDisable(true);
     try {
       if (!token) {
-        navigate('/login');
+        navigate('/login', { state: { from: location } });
         return;
       }
 
@@ -71,7 +72,7 @@ export const ProductDetails = () => {
 
     try {
       if (!token) {
-        navigate('/login');
+        navigate('/login', { state: { from: location } });
         return;
       }
       if (carted) {
