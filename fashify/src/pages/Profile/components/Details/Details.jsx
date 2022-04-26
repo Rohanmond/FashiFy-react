@@ -14,11 +14,11 @@ export const Details = () => {
     <div className='profile-details-container'>
       <div className='profile-details-item'>
         <p className='profile-details-item-label'>Name</p>
-        <p>{user.name}</p>
+        <p>{user?.name}</p>
       </div>
       <div className='profile-details-item'>
         <p className='profile-details-item-label'>Email</p>
-        <p>{user.email}</p>
+        <p>{user?.email}</p>
       </div>
       <div className='profile-details-footer'>
         <button
