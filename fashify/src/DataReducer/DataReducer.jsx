@@ -14,6 +14,7 @@ export const initialState = {
   cartlist: [],
   cartPriceDetails: {},
   showNav: true,
+  addressList: [],
 };
 
 export const DataReducer = (state, action) => {
@@ -137,6 +138,30 @@ export const DataReducer = (state, action) => {
         products: state.products.map((el) => {
           return { ...el, carted: false, qty: 0 };
         }),
+      };
+    }
+    case ActionType.AddAddress: {
+      return {
+        ...state,
+        addressList: [...state.addressList, action.payload.address],
+      };
+    }
+    case ActionType.EditAddress: {
+      return {
+        ...state,
+        addressList: state.addressList.map((el) => {
+          return el.id === action.payload.address.id
+            ? action.payload.address
+            : el;
+        }),
+      };
+    }
+    case ActionType.DeleteAddress: {
+      return {
+        ...state,
+        addressList: state.addressList.filter(
+          (el) => el.id !== action.payload.address.id
+        ),
       };
     }
     default:

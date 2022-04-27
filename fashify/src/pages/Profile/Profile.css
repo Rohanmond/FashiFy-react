@@ -26,6 +26,15 @@
   align-items: center;
 }
 
+.nav-link-active {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+.nav-link {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
 @media screen and (max-width: 750px) {
   .profile-outer-container {
     margin-top: 9rem;
