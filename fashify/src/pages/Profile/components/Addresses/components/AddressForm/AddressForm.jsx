@@ -83,7 +83,6 @@ export const AddressForm = ({
 
   const generateRandomData = () => {
     setFormData({
-      ...formData,
       name: faker.name.findName(),
       mobile: faker.datatype.number({ min: 1000000000, max: 9999999999 }),
       pincode: faker.address.zipCode('######'),
@@ -93,6 +92,7 @@ export const AddressForm = ({
         min: 1000000000,
         max: 9999999999,
       }),
+      state: stateArr[Math.floor(Math.random() * (stateArr.length - 1))],
     });
   };
 
