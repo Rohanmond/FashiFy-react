@@ -10,10 +10,12 @@ export const Addresses = () => {
   console.log(state);
   return (
     <div className='address-outer-container'>
-      <div className='address-container'>
+      {state.addressList.length === 0 ? (
         <div className='header'>
-          <h3>Manage your addresses</h3>
+          <h3>No address to display</h3>
         </div>
+      ) : null}
+      <div className='address-container'>
         <AddressForm
           openAddressForm={openAddressForm}
           setOpenAddressForm={setOpenAddressForm}
