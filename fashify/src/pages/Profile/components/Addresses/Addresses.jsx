@@ -7,7 +7,7 @@ import { AddressList } from './components/AddressList/AddressList';
 export const Addresses = () => {
   const [openAddressForm, setOpenAddressForm] = useState(false);
   const { state } = useData();
-  console.log(state);
+
   return (
     <div className='address-outer-container'>
       {state.addressList.length === 0 ? (

@@ -10,7 +10,7 @@ import {
 
 export const useFilterHook = () => {
   const { state } = useData();
-  console.log(state);
+
   const { filters, products } = state;
   const { sortBy, categories, rating, sizes, priceRange, search } = filters;
   let newData = [...products];

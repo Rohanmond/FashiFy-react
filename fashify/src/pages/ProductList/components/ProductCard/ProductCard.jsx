@@ -98,7 +98,7 @@ export const ProductCard = ({ product }) => {
         !in_stock && 'product-card-out-of-stock'
       }`}
     >
-      <div className='card-img-container'>
+      <div className='card-img-container cursor-pointer'>
         <img
           onClick={() => navigate(`/product/${_id}`)}
           className='card-img productlist-card-img brd-rd-semi-sq'
@@ -138,7 +138,12 @@ export const ProductCard = ({ product }) => {
       </div>
       <div className='card-content product-card-content'>
         <div className='product-card-text'>
-          <div className='product-card-title'>{title}</div>
+          <div
+            onClick={() => navigate(`/product/${_id}`)}
+            className='product-card-title cursor-pointer'
+          >
+            {title}
+          </div>
           <div className='product-card-price-container'>
             <p>₹{price}</p>
             <p className='product-card-original-price'>₹{original_price}</p>

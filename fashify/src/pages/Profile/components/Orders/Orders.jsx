@@ -6,7 +6,6 @@ export const Orders = () => {
   const { state } = useData();
   const navigate = useNavigate();
 
-  console.log(state);
   return (
     <>
       {state.orderList.length === 0 ? (

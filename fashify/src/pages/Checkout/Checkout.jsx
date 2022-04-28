@@ -26,7 +26,6 @@ export const Checkout = () => {
     msg: false,
     id: null,
   });
-  console.log(responseSummary);
 
   useEffect(() => {
     if (resetMenu) setCouponModal(false);
@@ -103,7 +102,6 @@ export const Checkout = () => {
   };
   const clearCarts = () => {
     let err = null;
-    console.log(state);
     state.cartlist.forEach((el) => {
       err = clearCart(el, token);
     });
@@ -153,8 +151,6 @@ export const Checkout = () => {
       image:
         'https://res.cloudinary.com/donqbxlnc/image/upload/v1649318431/Fashify_Transparent_pr_2_qco1nk.png',
       handler: function (response) {
-        console.log(response.razorpay_payment_id);
-
         setResponseSummary({
           msg: true,
           cart: state.cartlist,
@@ -174,7 +170,7 @@ export const Checkout = () => {
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
   };
-  console.log(finalPrice);
+
   return (
     <>
       {responseSummary.msg && (
@@ -254,7 +250,6 @@ export const Checkout = () => {
                   />
                   <button
                     onClick={() => {
-                      console.log('click', couponInput);
                       if (couponInput === '') {
                         ToastHandler(
                           ToastType.Error,
@@ -277,7 +272,7 @@ export const Checkout = () => {
                         );
                         return;
                       }
-                      console.log(couponData[couponObj]);
+
                       setCoupon({
                         percentage: couponData[couponObj][0],
                         name: couponObj,

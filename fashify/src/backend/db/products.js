@@ -155,13 +155,13 @@ export const products = [
   {
     _id: 'ff06eaed-9a9c-4f42-a525-e233baaaa294',
     image:
-      'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516630/fashify/f8e99b19-1b04-4968-828b-5add2713cd541602749203648-W-Women-Kurtas-9021602749202693-1_fglu21.webp',
+      'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516714/fashify/9e755293-b463-4e4e-8d43-6bec0abbee901628664093230-W-Women-Green-Floral-Printed-Kurta-2771628664092654-1_rhjnye.webp',
     category: 'Women',
     rating: '4.3',
     size: 'L',
     description:
       'Women Off-White & Black Printed Kurta with Palazzos & Dupatta',
-    title: 'Biba',
+    title: 'Bibari',
     trending: true,
     original_price: '3599',
     price: '1799',
@@ -172,7 +172,7 @@ export const products = [
   {
     _id: 'c1dd7db4-0830-4e01-a968-bdbcce36d4de',
     image:
-      'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516630/fashify/f8e99b19-1b04-4968-828b-5add2713cd541602749203648-W-Women-Kurtas-9021602749202693-1_fglu21.webp',
+      'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516732/fashify/9f7ad33f-e553-4057-8d2a-b5290cf7f6e11608287542552-W-Women-Grey-Zari-Straight-Kurta-3991608287540676-1_fx3fzu.webp',
     category: 'Women',
     rating: '4.5',
     size: 'L',
@@ -204,12 +204,12 @@ export const products = [
   {
     _id: '4694797c-e044-4464-97f0-102c18a48142',
     image:
-      'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516665/fashify/7eca68f0-f33e-4b2c-8543-2123d23b76611608026100620-W-Women-Lavender-Pure-Cotton-Yoke-Design-Straight-Kurta-1041-1_blvm0n.webp',
+      'https://res.cloudinary.com/donqbxlnc/image/upload/v1648516643/fashify/251c6154-4a45-4afa-b700-267c47eb51741613020264788-3_maquog.webp',
     category: 'Women',
     rating: '3.5',
     size: 'S',
     description: 'Women Yellow Floral Printed Anarkali Kurta',
-    title: 'Soch',
+    title: 'Akira',
     trending: false,
     original_price: '1998',
     price: '998',
