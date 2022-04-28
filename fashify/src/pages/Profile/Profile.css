@@ -40,6 +40,11 @@
   .profile-outer-container {
     margin-top: 9rem;
   }
+  .profile-nav-item {
+    font-size: 1rem;
+    font-weight: 520;
+    text-align: center;
+  }
 }
 @media screen and (max-width: 500px) {
   .profile-outer-container {

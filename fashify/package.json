@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.6.0",
     "axios": "^0.21.4",
     "bcryptjs": "^2.4.3",
+    "canvas-confetti": "^1.5.1",
     "dayjs": "^1.10.7",
     "eslintrc-generator": "^1.1.1",
     "jsonwebtoken": "^8.5.1",

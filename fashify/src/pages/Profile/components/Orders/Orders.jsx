@@ -18,7 +18,7 @@ export const Orders = () => {
           <div className='order-container'>
             {state.orderList.map((el) => {
               return (
-                <div className='order-item-container'>
+                <div key={el.id} className='order-item-container'>
                   <div className='order-item-left'>
                     <p className='font-wt-semibold'>
                       payment id:{' '}
@@ -26,8 +26,12 @@ export const Orders = () => {
                     </p>
                     <p className='font-wt-semibold'>
                       Total amount:{' '}
+                      <span className='text-secondary-color'>₹{el.amount}</span>
+                    </p>
+                    <p className='font-wt-semibold'>
+                      Order date:{' '}
                       <span className='text-secondary-color'>
-                        ₹{el.amount.price}
+                        {el.date.toDateString()}
                       </span>
                     </p>
                     <p className='font-wt-semibold'>
@@ -40,7 +44,7 @@ export const Orders = () => {
                       days
                     </p>
                     <p className='font-wt-semibold'>Order address:</p>
-                    <p className='font-wt-semibold text-secondary-color'>
+                    <p className='font-wt-semibold text-secondary-color text-align-center'>
                       {el.address.address} {el.address.city} {el.address.state}
                     </p>
                     <p className='font-wt-semibold'>
@@ -57,7 +61,10 @@ export const Orders = () => {
                   <div className='order-item-right'>
                     {el.cart.map((item) => {
                       return (
-                        <div className='card-container card-container-hz brd-rd-semi-sq cart-card-container'>
+                        <div
+                          key={item._id}
+                          className='card-container card-container-hz brd-rd-semi-sq cart-card-container'
+                        >
                           <div className='card-img-container-hz cart-card-img-container'>
                             <img
                               className='card-img brd-rd-semi-sq'

@@ -1,6 +1,6 @@
 .checkout-outer-container {
   width: 100%;
-  margin-top: 6rem;
+  margin-top: 8rem;
   min-height: calc(100vh - 6rem);
   display: flex;
   justify-content: space-around;
@@ -28,7 +28,12 @@
   padding: 1rem;
   align-items: center;
   gap: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: 2px solid var(--blue-200);
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+.checkout-address-box-active {
+  background-color: var(--blue-200);
 }
 .checkout-address-container {
   display: flex;
@@ -38,8 +43,6 @@
 .checkout-box-container {
   display: flex;
   flex-direction: column;
-
-  margin-top: 3rem;
 }
 .checkout-controller-container {
   display: flex;
@@ -68,10 +71,14 @@
   display: flex;
   justify-content: space-between;
   padding: 0.5rem;
+  gap: 2rem;
 }
 .checkout-footer {
   display: flex;
   flex-direction: column;
+}
+.add-address-label {
+  font-size: 1.2rem;
 }
 .add-address-outer-container {
   position: fixed;
@@ -88,6 +95,58 @@
 .add-address-container {
   z-index: 999;
   min-width: 20rem;
+}
+.checkout-coupon-code {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+}
+.coupon-field {
+  padding: 0.2rem;
+}
+.coupon-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.coupon-details-container {
+  position: absolute;
+  margin-top: 2rem;
+  align-self: stretch;
+  width: 100%;
+  background-color: var(--white-color);
+}
+
+.coupon-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--blue-200);
+}
+.coupon-item-disabled {
+  background-color: var(--grey-200);
+  cursor: disabled;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  cursor: not-allowed;
+  border-bottom: 1px solid var(--blue-200);
+}
+.coupon-item:hover {
+  background-color: var(--blue-200);
+}
+.coupon-item:active {
+  background-color: var(--blue-400);
+}
+.coupon-text-design {
+  border: 2px dashed var(--primary-color);
+  color: var(--primary-color);
+}
+.color-warn {
+  color: var(--yellow-600);
 }
 @media screen and (max-width: 750px) {
   .checkout-outer-container {

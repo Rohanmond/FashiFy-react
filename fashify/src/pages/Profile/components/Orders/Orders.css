@@ -21,3 +21,15 @@
   flex-direction: column;
   gap: 1rem;
 }
+
+@media screen and (max-width: 750px) {
+  .order-item-container {
+    flex-direction: column;
+    gap: 1rem;
+    border: 1px solid var(--primary-color);
+    margin: 1rem;
+  }
+  .order-item-right {
+    height: 11rem;
+  }
+}
