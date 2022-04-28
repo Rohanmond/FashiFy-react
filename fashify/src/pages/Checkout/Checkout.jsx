@@ -179,7 +179,7 @@ export const Checkout = () => {
     <>
       {responseSummary.msg && (
         <div className='checkout-msg font-wt-semibold text-align-center'>
-          Your order has succssfully placed
+          Your order has successfully placed
         </div>
       )}
       {!responseSummary.msg && (

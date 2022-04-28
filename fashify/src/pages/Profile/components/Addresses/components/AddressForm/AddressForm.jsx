@@ -203,7 +203,7 @@ export const AddressForm = ({
             <div className='form-column'>
               <input
                 className='form-input-field btn btn-secondary outlined-primary'
-                type='reset'
+                type='Reset'
                 onClick={resetFormData}
               />
             </div>
@@ -212,7 +212,7 @@ export const AddressForm = ({
                 className='form-input-field btn btn-secondary outlined-primary'
                 type='button'
                 onClick={generateRandomData}
-                value='random data'
+                value='Random data'
               />
             </div>
             <div className='form-column'>
@@ -220,7 +220,7 @@ export const AddressForm = ({
                 className='form-input-field btn btn-primary background-danger'
                 type='button'
                 onClick={() => setOpenAddressForm(false)}
-                value='cancel'
+                value='Cancel'
               />
             </div>
           </div>
