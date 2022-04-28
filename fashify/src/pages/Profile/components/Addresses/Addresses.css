@@ -1,0 +1,9 @@
+.address-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+.header {
+  margin-top: 1rem;
+}

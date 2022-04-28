@@ -1,0 +1,16 @@
+.address-list {
+  width: 100%;
+  border: none;
+}
+.addresslist-empty-placeholder {
+  margin-bottom: 1.5rem;
+}
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+@media screen and (max-width: 750px) {
+  .address-list {
+    max-width: 95vw;
+  }
+}

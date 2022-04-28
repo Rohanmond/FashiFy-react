@@ -14,6 +14,19 @@ export const initialState = {
   cartlist: [],
   cartPriceDetails: {},
   showNav: true,
+  addressList: [
+    {
+      address: '8505 Christina Ridges',
+      alternatemobile: 4878794411,
+      city: 'West Cooper',
+      id: '2364c34d-7645-49cb-8b74-4bc5cb09711d',
+      mobile: 1293452481,
+      name: 'Vicki McDermott',
+      pincode: '820598',
+      state: 'Arunachal Pradesh',
+    },
+  ],
+  orderList: [],
 };
 
 export const DataReducer = (state, action) => {
@@ -137,6 +150,36 @@ export const DataReducer = (state, action) => {
         products: state.products.map((el) => {
           return { ...el, carted: false, qty: 0 };
         }),
+      };
+    }
+    case ActionType.AddAddress: {
+      return {
+        ...state,
+        addressList: [...state.addressList, action.payload.address],
+      };
+    }
+    case ActionType.EditAddress: {
+      return {
+        ...state,
+        addressList: state.addressList.map((el) => {
+          return el.id === action.payload.address.id
+            ? action.payload.address
+            : el;
+        }),
+      };
+    }
+    case ActionType.DeleteAddress: {
+      return {
+        ...state,
+        addressList: state.addressList.filter(
+          (el) => el.id !== action.payload.id
+        ),
+      };
+    }
+    case ActionType.ADD_ORDER: {
+      return {
+        ...state,
+        orderList: state.orderList.concat(action.payload.order),
       };
     }
     default:
