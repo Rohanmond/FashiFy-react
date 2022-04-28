@@ -41,3 +41,14 @@
   outline: none;
   border: 0.125rem solid var(--primary-color);
 }
+.controller-container {
+  display: flex;
+  gap: 2rem;
+  width: 95%;
+  align-items: center;
+  border: 2px solid var(--primary-color);
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}

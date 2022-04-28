@@ -10,6 +10,7 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 90%;
   min-height: 90%;
+  margin-bottom: 2rem;
 }
 .profile-nav {
   display: flex;
@@ -27,7 +28,7 @@
 }
 
 .nav-link-active {
-  background-color: var(--secondary-color);
+  background-color: var(--blue-200);
   color: var(--primary-color);
 }
 .nav-link {

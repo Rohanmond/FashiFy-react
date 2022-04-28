@@ -1,0 +1,30 @@
+.ph-no-section {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.address-list-stacked-item {
+  border: none;
+}
+.address-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.city-state-section {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.list-stacked-item {
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+.address-footer {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.address-footer button {
+  flex-grow: 1;
+}
