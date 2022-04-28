@@ -14,7 +14,19 @@ export const initialState = {
   cartlist: [],
   cartPriceDetails: {},
   showNav: true,
-  addressList: [],
+  addressList: [
+    {
+      address: '8505 Christina Ridges',
+      alternatemobile: 4878794411,
+      city: 'West Cooper',
+      id: '2364c34d-7645-49cb-8b74-4bc5cb09711d',
+      mobile: 1293452481,
+      name: 'Vicki McDermott',
+      pincode: '820598',
+      state: 'Arunachal Pradesh',
+    },
+  ],
+  orderList: [],
 };
 
 export const DataReducer = (state, action) => {
@@ -160,7 +172,7 @@ export const DataReducer = (state, action) => {
       return {
         ...state,
         addressList: state.addressList.filter(
-          (el) => el.id !== action.payload.address.id
+          (el) => el.id !== action.payload.id
         ),
       };
     }

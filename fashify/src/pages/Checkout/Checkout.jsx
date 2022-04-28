@@ -16,7 +16,7 @@ export const Checkout = () => {
     msg: false,
     id: null,
   });
-
+  console.log(responseSummary);
   useEffect(() => {
     let id = null;
     if (responseSummary.msg) {
@@ -114,7 +114,11 @@ export const Checkout = () => {
         'https://res.cloudinary.com/donqbxlnc/image/upload/v1649318431/Fashify_Transparent_pr_2_qco1nk.png',
       handler: function (response) {
         console.log(response.razorpay_payment_id);
-        setResponseSummary({ msg: true, id: response.razorpay_payment_id });
+        setResponseSummary({
+          msg: true,
+          cart: state.cartlist,
+          id: response.razorpay_payment_id,
+        });
         clearCarts();
       },
       prefill: {
