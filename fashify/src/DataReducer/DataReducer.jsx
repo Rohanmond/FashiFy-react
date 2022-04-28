@@ -176,6 +176,12 @@ export const DataReducer = (state, action) => {
         ),
       };
     }
+    case ActionType.ADD_ORDER: {
+      return {
+        ...state,
+        orderList: state.orderList.concat(action.payload.order),
+      };
+    }
     default:
       return state;
   }

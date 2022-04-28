@@ -11,6 +11,7 @@ export const ActionType = {
   AddAddress: 'ADD_ADDRESS',
   EditAddress: 'EDIT_ADDRESS',
   DeleteAddress: 'DELETE_ADDRESS',
+  ADD_ORDER: 'ADD_ORDER',
 };
 export const ToastType = {
   Warn: 'warn',

@@ -4,12 +4,14 @@ import { useAuth, useData } from '../../contexts';
 import { ActionType, ToastType } from '../../DataReducer/constants';
 import { DeleteCart } from '../../Services/services';
 import { ToastHandler } from '../../utils/utils';
+import { AddressForm } from '../Profile/components/Addresses/components/AddressForm/AddressForm';
 import './Checkout.css';
 export const Checkout = () => {
   const { state, dispatch } = useData();
   const { currUser, token } = useAuth();
   const navigate = useNavigate();
-  const [address, setAddress] = useState(false);
+  const [addAddress, setAddAddress] = useState(false);
+  const [address, setAddress] = useState(null);
   const { name, email } = currUser;
 
   const [responseSummary, setResponseSummary] = useState({
@@ -20,11 +22,22 @@ export const Checkout = () => {
   useEffect(() => {
     let id = null;
     if (responseSummary.msg) {
+      dispatch({
+        type: ActionType.ADD_ORDER,
+        payload: {
+          order: {
+            id: responseSummary.id,
+            cart: responseSummary.cart,
+            address: address,
+            amount: state.cartPriceDetails,
+          },
+        },
+      });
       id = setTimeout(() => {
         dispatch({
           type: ActionType.ResetCartPriceDetails,
         });
-        navigate('/products');
+        navigate('/profile/orders');
       }, 3000);
     }
   }, [responseSummary]);
@@ -144,19 +157,49 @@ export const Checkout = () => {
       {!responseSummary.msg && (
         <div className='checkout-outer-container'>
           <div className='checkout-address-container'>
-            <h3>Address Details</h3>
-            <div className='checkout-address-box'>
-              <input
-                type='radio'
-                value={address}
-                onChange={() => setAddress((add) => !add)}
-                id='address'
-              />
-              <label className='address-label' htmlFor='address'>
-                <h3>Rohan Mondal</h3>
-                <p>Yehlahanka, President Leon , Bengaluru, 560064</p>
-              </label>
+            <h3 className='text-align-center'>Address Details</h3>
+            {state.addressList.map((el) => {
+              return (
+                <div className='checkout-address-box'>
+                  <input
+                    type='radio'
+                    name='address-radio'
+                    value={el}
+                    onChange={() => setAddress(el)}
+                    id={`address ${el.address}`}
+                  />
+                  <label
+                    className='address-label'
+                    htmlFor={`address ${el.address}`}
+                  >
+                    <h3>{el.name}</h3>
+                    <p>{`${el.address} ${el.city} ${el.state} Pin:${el.pincode}`}</p>
+                    <h4>{`Mobile:${el.mobile}`}</h4>
+                  </label>
+                </div>
+              );
+            })}
+            <div
+              onClick={() => setAddAddress(true)}
+              className='checkout-controller-container'
+            >
+              <button className='btn btn-primary background-primary brd-rd-semi-sq'>
+                <i className='fas fa-plus'></i>
+              </button>
+              <p className='text-lg'>Add new address</p>
             </div>
+            {addAddress ? (
+              <div className='add-address-outer-container'>
+                <div className='add-address-container'>
+                  <AddressForm
+                    openAddressForm={addAddress}
+                    setOpenAddressForm={setAddAddress}
+                  />
+                </div>
+              </div>
+            ) : (
+              <></>
+            )}
           </div>
           <div className='checkout-box-container'>
             <div className='checkout-box'>
