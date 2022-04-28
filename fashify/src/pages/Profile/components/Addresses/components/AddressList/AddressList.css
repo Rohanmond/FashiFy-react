@@ -1,8 +1,6 @@
 .address-list {
   width: 100%;
   border: none;
-  gap: 1rem;
-  /* margin-bottom: 1rem; */
 }
 .addresslist-empty-placeholder {
   margin-bottom: 1.5rem;

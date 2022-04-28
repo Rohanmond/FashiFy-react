@@ -18,7 +18,12 @@
 }
 .list-stacked-item {
   gap: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.75rem;
+  border: 2px dashed var(--blue-400);
+  border-bottom: none;
+}
+.list-stacked-item:last-of-type {
+  border-bottom: 2px dashed var(--blue-400);
 }
 .address-footer {
   display: flex;
