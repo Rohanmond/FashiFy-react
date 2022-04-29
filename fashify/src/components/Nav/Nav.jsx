@@ -62,7 +62,7 @@ export const Nav = () => {
               }
             }}
             className='nav-search brd-rd-semi-sq nav-text-input'
-            type='search'
+            type='text'
           />
         </div>
         <div className='nav-right'>
@@ -140,7 +140,7 @@ export const Nav = () => {
         <input
           placeholder='search'
           className='nav-search brd-rd-semi-sq nav-text-input'
-          type='search'
+          type='text'
           value={input}
           onChange={(e) => {
             setInput(e.target.value);

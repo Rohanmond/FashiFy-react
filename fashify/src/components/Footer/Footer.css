@@ -16,3 +16,9 @@
 .footer-text {
   font-size: 0.9rem;
 }
+
+@media screen and (max-width: 750px) {
+  .main-footer {
+    display: none;
+  }
+}
