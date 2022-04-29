@@ -28,7 +28,7 @@
 .pagination-item {
   cursor: pointer;
   padding: 0.25rem 1rem;
-  /* font-size: 1.15rem; */
+
   font-weight: 510;
   color: var(--primary-color);
 }
