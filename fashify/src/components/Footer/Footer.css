@@ -1,0 +1,18 @@
+.main-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--blue-200);
+  align-items: center;
+  padding: 1rem 0;
+  gap: 0.5rem;
+  color: var(--primary-color);
+}
+.footer-links {
+  font-size: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+.footer-text {
+  font-size: 1.1rem;
+}

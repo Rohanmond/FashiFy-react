@@ -5,6 +5,7 @@ import { categoryFilter } from '../../utils/utils';
 import { useData } from '../../contexts/data-context';
 import { ActionType, Filters } from '../../DataReducer/constants';
 import { useEffect } from 'react';
+import { Footer } from '../../components';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -123,6 +124,7 @@ export const Home = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
