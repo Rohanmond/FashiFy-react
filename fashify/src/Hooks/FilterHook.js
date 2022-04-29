@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { useData } from '../contexts/data-context';
 import {
   categoryFilter,
@@ -26,10 +25,7 @@ export const useFilterHook = () => {
     newData = sortByPrice(newData, sortBy);
     return newData;
   };
-  // const newData = useMemo(
-  //   () => applyFilters(products, filters),
-  //   [filters, products]
-  // );
+
   const newData = applyFilters(products, filters);
   return { filteredData: newData };
 };
