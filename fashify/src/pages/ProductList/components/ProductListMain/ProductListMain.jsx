@@ -16,7 +16,7 @@ export const ProductListMain = () => {
   const getThresholdValue = () => {
     return (
       Math.ceil(
-        6 /
+        8 /
           window
             .getComputedStyle(gridRef.current)
             .getPropertyValue('grid-template-columns')
