@@ -1,0 +1,35 @@
+.ph-no-section {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.address-list-stacked-item {
+  border: none;
+}
+.address-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.city-state-section {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.list-stacked-item {
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 2px dashed var(--blue-400);
+  border-bottom: none;
+}
+.list-stacked-item:last-of-type {
+  border-bottom: 2px dashed var(--blue-400);
+}
+.address-footer {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.address-footer button {
+  flex-grow: 1;
+}

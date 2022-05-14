@@ -36,7 +36,7 @@ export const ProductListAside = () => {
             <input
               type='range'
               name='rangeInput'
-              className='slider'
+              className='slider cursor-pointer'
               min='0'
               max={maxValue}
               value={state.filters.priceRange}
@@ -60,6 +60,7 @@ export const ProductListAside = () => {
                 <div className='productlist-input-item-hz' key={cat}>
                   <input
                     type='checkbox'
+                    className='cursor-pointer'
                     name='category-checkbox'
                     id={`${cat}-checkbox`}
                     checked={state.filters.categories[cat]}
@@ -76,7 +77,9 @@ export const ProductListAside = () => {
                       })
                     }
                   />
-                  <label htmlFor={`${cat}-checkbox`}>{cat}</label>
+                  <label className='cursor-pointer' htmlFor={`${cat}-checkbox`}>
+                    {cat}
+                  </label>
                 </div>
               );
             })}
@@ -90,6 +93,7 @@ export const ProductListAside = () => {
                 <div className='productlist-input-item-hz' key={size}>
                   <input
                     type='checkbox'
+                    className='cursor-pointer'
                     name='category-checkbox'
                     id={`${size}-checkbox`}
                     checked={state.filters.sizes[size]}
@@ -106,7 +110,12 @@ export const ProductListAside = () => {
                       })
                     }
                   />
-                  <label htmlFor={`${size}-checkbox`}>{size}</label>
+                  <label
+                    className='cursor-pointer'
+                    htmlFor={`${size}-checkbox`}
+                  >
+                    {size}
+                  </label>
                 </div>
               );
             })}
@@ -121,6 +130,7 @@ export const ProductListAside = () => {
                 <div className='productlist-input-item-hz' key={el}>
                   <input
                     type='radio'
+                    className='cursor-pointer'
                     name='rating-radio'
                     id={`${el}star-radio`}
                     value={el}
@@ -135,7 +145,7 @@ export const ProductListAside = () => {
                       })
                     }
                   />
-                  <label htmlFor={`${el}star-radio`}>
+                  <label className='cursor-pointer' htmlFor={`${el}star-radio`}>
                     {el} stars {'&'} above
                   </label>
                 </div>
@@ -151,6 +161,7 @@ export const ProductListAside = () => {
                 <div className='productlist-input-item-hz' key={el}>
                   <input
                     type='radio'
+                    className='cursor-pointer'
                     name='sortby-radio'
                     id={`${el}-radio`}
                     value={el}
@@ -165,7 +176,9 @@ export const ProductListAside = () => {
                       })
                     }
                   />
-                  <label htmlFor={`${el}-radio`}>price - {el}</label>
+                  <label className='cursor-pointer' htmlFor={`${el}-radio`}>
+                    price - {el}
+                  </label>
                 </div>
               );
             })}

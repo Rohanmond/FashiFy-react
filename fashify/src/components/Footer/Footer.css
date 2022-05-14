@@ -1,0 +1,24 @@
+.main-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white-color);
+  align-items: center;
+  padding: 1rem 0;
+  gap: 0.5rem;
+  color: var(--primary-color);
+}
+.footer-links {
+  font-size: 1.75rem;
+  display: flex;
+  gap: 2rem;
+}
+.footer-text {
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 750px) {
+  .main-footer {
+    display: none;
+  }
+}

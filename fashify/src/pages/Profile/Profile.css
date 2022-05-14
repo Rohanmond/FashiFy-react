@@ -8,8 +8,9 @@
 }
 .profile-container {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  width: 90%;
+  width: fit-content;
   min-height: 90%;
+  margin-bottom: 2rem;
 }
 .profile-nav {
   display: flex;
@@ -26,9 +27,23 @@
   align-items: center;
 }
 
+.nav-link-active {
+  background-color: var(--blue-200);
+  color: var(--primary-color);
+}
+.nav-link {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
 @media screen and (max-width: 750px) {
   .profile-outer-container {
     margin-top: 9rem;
+  }
+  .profile-nav-item {
+    font-size: 1rem;
+    font-weight: 520;
+    text-align: center;
   }
 }
 @media screen and (max-width: 500px) {

@@ -8,6 +8,10 @@ export const ActionType = {
   SetCartPriceDetails: 'SET_CART_PRICE_DETAILS',
   ResetCartPriceDetails: 'RESET_CART_PRICE_DETAILS',
   ClearCart: 'CLEAR_CART',
+  AddAddress: 'ADD_ADDRESS',
+  EditAddress: 'EDIT_ADDRESS',
+  DeleteAddress: 'DELETE_ADDRESS',
+  ADD_ORDER: 'ADD_ORDER',
 };
 export const ToastType = {
   Warn: 'warn',

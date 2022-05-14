@@ -104,6 +104,7 @@
   font-weight: 600;
   display: flex;
   gap: 0.5rem;
+  justify-content: space-evenly;
 }
 .product-card-discount {
   margin-left: auto;

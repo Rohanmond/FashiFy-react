@@ -55,7 +55,6 @@
 .nav-explore-link {
   font-size: 1.2rem;
   font-weight: 550;
-  text-decoration: underline;
   padding-right: 0.5rem;
 }
 .nav-badge-icon span {
@@ -70,7 +69,6 @@
 .nav-explore-container {
   font-size: 1.2rem;
   padding: 0 1rem;
-  text-decoration: underline;
   font-weight: 600;
 }
 @media screen and (max-width: 1000px) {

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { createContext, useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { ToastType } from '../DataReducer/constants';
 import { LoginService } from '../Services';
 import { SignUpService } from '../Services/services';

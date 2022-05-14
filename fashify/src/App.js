@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import { Loader, Nav, PrivateRoute } from './components';
+import { Footer, Loader, Nav, PrivateRoute } from './components';
 import './App.css';
 import {
   CartList,
