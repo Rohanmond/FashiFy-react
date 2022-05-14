@@ -25,6 +25,7 @@ $ npm start
 - Wishlist managment
 - Order management
 - Address management
+- Coupon Codes
 - Checkout page
 - Payment gateway integration
 - Authentication:
@@ -44,6 +45,8 @@ $ npm start
 - Razorpay payment gateway
 
 ## **Demo -**
-https://user-images.githubusercontent.com/52956782/162228345-a335cf27-346b-4d38-acca-8ca1b5e116bc.mov
+https://user-images.githubusercontent.com/52956782/168444003-09be2604-f67f-469b-b1bb-5fc2cb29e47f.mov
+
+
 
 
