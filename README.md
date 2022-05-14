@@ -23,6 +23,8 @@ $ npm start
 - Individual product page
 - Cart Managment
 - Wishlist managment
+- Order management
+- Address management
 - Checkout page
 - Payment gateway integration
 - Authentication:
@@ -30,6 +32,7 @@ $ npm start
   - User Login
   - logout page
  - Fully Responsive
+ - Pagination
  - Error Page
 
 ## **Built with -**
