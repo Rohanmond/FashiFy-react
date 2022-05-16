@@ -52,9 +52,11 @@ export const ProductListMain = () => {
     <main className='productlist-main'>
       <div className='productlist-main-header'>
         <p className='font-wt-bold'>Showing All Products</p>
-        {/* <p>(Showing {filteredData.length} products)</p> */}
       </div>
       <div ref={gridRef} className='productlist-main-card-container'>
+        {pagedData.length === 0 ? (
+          <p className='font-weight-bold text-lg'>No product to display!</p>
+        ) : null}
         {pagedData.map((el) => {
           return <ProductCard product={el} key={el._id} />;
         })}
