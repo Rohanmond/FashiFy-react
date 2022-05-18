@@ -20,14 +20,16 @@ export const Nav = () => {
   const [showSearchOutputModal, setShowOutputModal] = useState(false);
 
   useEffect(() => {
-    setInput('');
-    dispatch({
-      type: ActionType.ChangeFilter,
-      payload: {
-        filterType: Filters.Search,
-        filterValue: '',
-      },
-    });
+    if (location.pathname !== '/products') {
+      setInput('');
+      dispatch({
+        type: ActionType.ChangeFilter,
+        payload: {
+          filterType: Filters.Search,
+          filterValue: '',
+        },
+      });
+    }
   }, [location.pathname]);
 
   useEffect(() => {
