@@ -18,6 +18,7 @@ $ npm start
 
 - Home page
 - Product listing page
+- Pagination on product listing page
 - Filter and sort products functionalities
 - Search product functionality
 - Individual product page
@@ -33,7 +34,6 @@ $ npm start
   - User Login
   - logout page
  - Fully Responsive
- - Pagination
  - Error Page
 
 ## **Built with -**
